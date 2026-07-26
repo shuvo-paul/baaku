@@ -27,3 +27,23 @@
 @utility text-balance {
     text-wrap: balance;
 }
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--color-signal-orange-light);
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pulse-dot::after {
+        animation: none;
+    }
+}

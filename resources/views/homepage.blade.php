@@ -4,6 +4,7 @@
     <main>
         <x-hero />
         <x-about />
+        <x-announcement />
         <x-committee />
         <x-events />
         <x-blogs />
