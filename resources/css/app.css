@@ -4,5 +4,26 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Noto Sans Bengali', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Design System Colors */
+    --color-canvas-cream: #F3F0EE;
+    --color-lifted-cream: #FCFBFA;
+    --color-ink: #141413;
+    --color-charcoal: #262627;
+    --color-slate-gray: #696969;
+    --color-signal-orange: #CF4500;
+    --color-signal-orange-light: #F37338;
+    --color-clay: #9A3A0A;
+    --color-ghost-cream: #E8E2DA;
+    --color-soft-bone: #F4F4F4;
+    --color-dust-taupe: #D1CDC7;
+
+    /* Elevation shadows */
+    --shadow-nav: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
+    --shadow-elevated: 0px 24px 48px 0px rgba(0, 0, 0, 0.08);
+}
+
+@utility text-balance {
+    text-wrap: balance;
 }
