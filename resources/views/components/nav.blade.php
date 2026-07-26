@@ -5,7 +5,7 @@
             <div class="w-10 h-10 rounded-full bg-ink flex items-center justify-center">
                 <span class="text-canvas-cream font-bold text-lg leading-none">বা</span>
             </div>
-            <span class="font-medium text-[15px] tracking-[-0.03em] text-ink hidden lg:block">বাংলা প্রাক্তন ছাত্র</span>
+            <span class="font-medium text-[15px] tracking-[-0.03em] text-ink hidden lg:block">বাকু</span>
         </a>
 
         {{-- Desktop Nav Links --}}

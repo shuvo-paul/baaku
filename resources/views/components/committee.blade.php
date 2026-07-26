@@ -39,7 +39,7 @@
             </div>
             <h3 class="text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-2 text-center">মোঃ আব্দুল করিম</h3>
             <p class="text-[15px] text-slate-gray leading-[1.5] text-center" style="font-weight: 450;">
-                বাংলা বিভাগের সাবেক অধ্যাপক, ঢাকা বিশ্ববিদ্যালয়
+                বাংলা বিভাগের সাবেক অধ্যাপক, খুলনা বিশ্ববিদ্যালয়
             </p>
         </div>
 
