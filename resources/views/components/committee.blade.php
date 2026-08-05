@@ -142,7 +142,7 @@
 
         {{-- View All CTA --}}
         <div class="mt-16 lg:mt-24 text-center">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-ink text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
+            <a href="{{ route('committee') }}" class="inline-flex items-center px-6 py-3 bg-ink text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
                 সম্পূর্ণ কমিটি দেখুন
             </a>
         </div>
