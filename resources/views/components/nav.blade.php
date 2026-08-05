@@ -2,9 +2,7 @@
     <div class="bg-white shadow-nav rounded-[999px] px-10 py-4 flex items-center justify-between">
         {{-- Logo --}}
         <a href="/" class="flex items-center gap-3 shrink-0">
-            <div class="w-10 h-10 rounded-full bg-ink flex items-center justify-center">
-                <span class="text-canvas-cream font-bold text-lg leading-none">বা</span>
-            </div>
+            <img src="/logo.png" alt="বাকু" class="w-10 h-10 object-contain">
             <span class="font-medium text-[15px] tracking-[-0.03em] text-ink hidden lg:block">বাকু</span>
         </a>
 
