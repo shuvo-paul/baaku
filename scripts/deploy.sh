@@ -23,6 +23,7 @@ rsync -avz --delete -e "ssh -p ${DEPLOY_PORT}" \
   --exclude='storage/framework/sessions/*' \
   --exclude='storage/framework/views/*' \
   --exclude='bootstrap/cache/*' \
+  --exclude='database/database.sqlite' \
   --exclude='.DS_Store' \
   ./ "${DEPLOY_HOST}:${DEPLOY_PATH}/"
 
