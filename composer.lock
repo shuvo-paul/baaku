@@ -4404,12 +4404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stonadev/alumkit.git",
-                "reference": "0ae94fb1d4767cdf2bdcc89d5fbd79757f8d3712"
+                "reference": "6d6a4251cf49c6e7b16cc9d4bd3e7bad77410c06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stonadev/alumkit/zipball/0ae94fb1d4767cdf2bdcc89d5fbd79757f8d3712",
-                "reference": "0ae94fb1d4767cdf2bdcc89d5fbd79757f8d3712",
+                "url": "https://api.github.com/repos/stonadev/alumkit/zipball/6d6a4251cf49c6e7b16cc9d4bd3e7bad77410c06",
+                "reference": "6d6a4251cf49c6e7b16cc9d4bd3e7bad77410c06",
                 "shasum": ""
             },
             "require": {
@@ -4443,13 +4443,13 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Alumkit\\Alumkit\\": "src/"
+                    "Alumkit\\Alumkit\\": "src/",
+                    "Alumkit\\Alumkit\\Database\\Seeders\\": "database/seeders/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
                     "Alumkit\\Alumkit\\Tests\\": "tests/",
-                    "Alumkit\\Alumkit\\Database\\Seeders\\": "database/seeders/",
                     "Workbench\\App\\": "workbench/app/",
                     "Workbench\\Database\\Factories\\": "workbench/database/factories/",
                     "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -4523,7 +4523,7 @@
                     "url": "https://github.com/stonadev"
                 }
             ],
-            "time": "2026-08-05T20:40:55+00:00"
+            "time": "2026-08-08T11:25:36+00:00"
         },
         {
             "name": "symfony/clock",
