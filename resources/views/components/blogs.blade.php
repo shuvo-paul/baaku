@@ -50,7 +50,7 @@
                     <p class="text-[15px] text-slate-gray leading-[1.6] mb-6" style="font-weight: 450;">
                         বিংশ শতাব্দীর শেষার্ধে বাংলা কবিতায় নারী কবিদের অবদান কেবল সাহিত্যিক নয়, বরং সামাজিক পরিবর্তনের একটি শক্তিশালী মাধ্যম ছিল। এই প্রবন্ধে আমরা সেই যাত্রাপথের একটি পুনর্পাঠ করি।
                     </p>
-                    <a href="#" class="inline-flex items-center gap-2 text-ink font-medium text-[16px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
+                    <a href="{{ route('blogs.show', ['post' => 'featured']) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[16px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                         পুরো প্রবন্ধ পড়ুন
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -73,7 +73,7 @@
                     <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">
                         গ্রামবাংলার লোককথা, প্রবাদ ও গানে লুকিয়ে থাকা সামাজিক ইতিহাসের একটি গবেষণামূলক পাঠ।
                     </p>
-                    <a href="#" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
+                    <a href="{{ route('blogs.show', ['post' => 'featured']) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                         পড়ুন
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -93,7 +93,7 @@
                     <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">
                         বাংলা সাহিত্যের বর্তমান অবস্থা ও ভবিষ্যৎ সম্ভাবনা নিয়ে বিশিষ্ট সাহিত্যিকের সাথে একটি দীর্ঘ সাক্ষাৎকার।
                     </p>
-                    <a href="#" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
+                    <a href="{{ route('blogs.show', ['post' => 'featured']) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                         পড়ুন
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
