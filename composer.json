@@ -13,7 +13,8 @@
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
         "livewire/blaze": "^1.0",
-        "livewire/livewire": "^4.1"
+        "livewire/livewire": "^4.1",
+        "stonadev/alumkit": "@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24",
@@ -107,5 +108,10 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [{
+        "name": "stonadev/alumkit",
+        "type": "vcs",
+        "url": "https://github.com/stonadev/alumkit"
+    }]
 }
