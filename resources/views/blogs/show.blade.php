@@ -1,32 +1,4 @@
-@php
-    $post = [
-        'title' => 'আধুনিক বাংলা কবিতায় নারীর ভাষা: একটি নতুন পাঠ',
-        'category' => 'সাহিত্য আলোচনা',
-        'date' => '১২ জুলাই, ২০২৬',
-        'excerpt' => 'বিংশ শতাব্দীর শেষার্ধে বাংলা কবিতায় নারী কবিদের অবদান কেবল সাহিত্যিক নয়, বরং সামাজিক পরিবর্তনের একটি শক্তিশালী মাধ্যম ছিল।',
-        'initial' => 'প',
-        'gradient' => 'from-ink/5 to-signal-orange/5',
-        'author' => 'সম্পাদকীয় বোর্ড, বাকু',
-        'reading_time' => '৮ মিনিটের পাঠ',
-        'quote' => 'নারী কবিদের কলমে ভাষা কেবল প্রকাশের মাধ্যম নয় — প্রতিরোধেরও।',
-        'body' => [
-            ['type' => 'p', 'text' => 'বিংশ শতাব্দীর শেষার্ধে বাংলা কবিতায় নারী কবিদের অবদান কেবল সাহিত্যিক নয়, বরং সামাজিক পরিবর্তনের একটি শক্তিশালী মাধ্যম ছিল। ব্যক্তিগত অভিজ্ঞতার সেই কলম-উচ্চারণ ধীরে ধীরে জনজীবনের প্রশ্ন হয়ে উঠল, এবং সেই প্রকাশই আজ আমাদের কাছে এক প্রজন্মের চেতনার দলিল।'],
-            ['type' => 'p', 'text' => 'ঊনবিংশ শতাব্দীর শেষভাগে শিক্ষিত বাঙালি নারী যখন প্রথম মুদ্রিত পৃষ্ঠায় কলম ধরেন, তখন সাময়িকপত্রই ছিল তাদের আত্মপ্রকাশের প্রধান ক্ষেত্র। প্রথম দিকের সংকলনগুলোতে সেই লেখাগুলো মূলত গৃহকোণের অনুভূতির কথাই বলত — স্বামী, সন্তান, সংসারের সুখ-দুঃখ। কিন্তু বিংশ শতাব্দী এগোনোর সঙ্গে সঙ্গে সেই অন্তরঙ্গ কণ্ঠস্বর জনজীবনের প্রশ্নগুলোর মুখোমুখি দাঁড়ায়। ব্যক্তিগত যখন রাজনৈতিক হয়ে ওঠে, তখনই নারী কবিতার ভাষা অন্য মাত্রা পায়।'],
-            ['type' => 'h2', 'text' => 'নারী কবিতার ভাষা-ভূগোল'],
-            ['type' => 'p', 'text' => 'নারী কবিদের ভাষা-ভূগোল নির্মিত হয়েছে ঘর, দেহ এবং নীরবতা — এই তিনটি ভূখণ্ডকে কেন্দ্র করে। গৃহস্থালির জিনিসপত্র, রান্নাঘরের ধোঁয়া, আলমারির ভাঁজে রাখা চিঠি — এসব ক্ষুদ্র চিত্রকল্প তাদের কবিতায় মহৎ প্রতীকে রূপ নেয়। দেহের কথা বলা যেমন ছিল নিষিদ্ধ, তেমনি নীরবতাকেই তারা বেছে নেন প্রতিবাদের ভাষা হিসেবে। যে নীরবতা শতাব্দীর পর শতাব্দী ধরে নারীর প্রতি চাপিয়ে দেওয়া হয়েছিল, সেই নীরবতাই তাদের কলমে পরিণত হয় সচেতন উচ্চারণে।'],
-            ['type' => 'quote'],
-            ['type' => 'p', 'text' => 'এই ভাষা নির্মিত হয়েছে ঐতিহ্যের সঙ্গে সংলাপে, কিন্তু ঐতিহ্যের ছায়ায় নয়। পূর্বসূরি পুরুষ কবিদের ছন্দ ও প্রতীক তারা গ্রহণ করেছেন, তবে তা নিজেদের অভিজ্ঞতার আলোকে নতুন অর্থে সাজিয়ে। ফলে তাদের কবিতা পিতৃতান্ত্রিক ক্যাননের পরিপূরক নয়, বরং তারই সমান্তরাল একটি স্বাধীন ধারা — যে ধারা কখনো আত্মরক্ষামূলক নয়, কেবল আত্মসচেতন।'],
-            ['type' => 'h2', 'text' => 'সমাজ পরিবর্তনের দর্পণ'],
-            ['type' => 'p', 'text' => 'নারী কবিতার এই ধারাটি সমাজ পরিবর্তনের এক প্রামাণ্য দর্পণ। শিক্ষার বিস্তার, কর্মজীবনে নারীর প্রবেশ, শহরের দিকে অভিবাসন — এসব সামাজিক রূপান্তর তাদের ছন্দে ধরা পড়ে নিখুঁতভাবে। ষাটের দশকের কবিতায় যে নারী ঘরের জানালায় দাঁড়িয়ে ছিলেন, আশির দশকে তিনি সেই কবিতাতেই পাড়ি দেন শহরের পথে, ট্রামের ভিড়ে, বিশ্ববিদ্যালয়ের ক্লাসরুমে। কবিতার এই নথি-চরিত্রই তাদের অবদানকে কালোত্তীর্ণ করেছে।'],
-            ['type' => 'p', 'text' => 'আজ যখন আমরা এই কবিদের পুনর্পাঠ করি, তখন তারা গুরুত্বপূর্ণ হন কেবল ইতিহাসের তথ্য হিসেবে নয়, বরং সমসাময়িক সংলাপের অংশীদার হিসেবে। এই নতুন পাঠ আমাদের শেখায় — নারী কবিতাকে পড়তে হবে শূন্যস্থানের খোঁজে নয়, বরং কণ্ঠস্বরের সন্ধানে। সেই কণ্ঠস্বর আজও বেজে চলেছে আমাদের সাহিত্যের অন্দরে, এক সজীব কথোপকথনের মতো।'],
-        ],
-        'related' => [
-            ['title' => 'রবীন্দ্রনাথের শেষ কবিতা: প্রেম ও বিচ্ছেদের দর্শন', 'category' => 'সাহিত্য আলোচনা', 'date' => '২০ জুন, ২০২৬', 'excerpt' => 'শেষ কবিতা উপন্যাসের ভাষা ও দর্শন নিয়ে একটি নিবিড় পাঠ — প্রেম যেখানে পরিণত হয় মৃত্যুর সঙ্গে সংলাপে।', 'initial' => 'র', 'gradient' => 'from-signal-orange-light/8 to-signal-orange/5'],
-            ['title' => 'পুরান ঢাকার গলিপথে ভাষার বিবর্তন', 'category' => 'গবেষণা', 'date' => '১২ জুন, ২০২৬', 'excerpt' => 'চারশো বছরের পুরান ঢাকার বাণিজ্য, ধর্ম ও অভিবাসনের ছাপ বাংলা ভাষার আঞ্চলিক রূপে কীভাবে রয়ে গেছে।', 'initial' => 'প', 'gradient' => 'from-ink/6 to-charcoal/4'],
-            ['title' => 'কবি শঙ্খ ঘোষের সঙ্গে এক সন্ধ্যা', 'category' => 'সাক্ষাৎকার', 'date' => '১ জুন, ২০২৬', 'excerpt' => 'কবিতা, সমাজ ও ভাষার ভবিষ্যৎ — প্রখ্যাত কবির সঙ্গে আড্ডাভরা এক বিকেলের স্মৃতি।', 'initial' => 'শ', 'gradient' => 'from-signal-orange/8 to-signal-orange-light/5'],
-        ],
-    ];
-@endphp
+@php $related = \App\Posts::related($post['slug']); @endphp
 
 <x-layouts.app title="{{ $post['title'] }} — বাকু">
     <x-nav />
@@ -60,9 +32,13 @@
         {{-- Media + body --}}
         <section class="relative px-6 pb-24 lg:px-12 lg:pb-32">
             <div class="max-w-[1200px] mx-auto">
-                <div class="aspect-[16/10] bg-gradient-to-br {{ $post['gradient'] }} flex items-center justify-center rounded-[40px]">
-                    <span class="text-[120px] lg:text-[200px] font-medium text-ink/10">{{ $post['initial'] }}</span>
-                </div>
+                @if (! empty($post['image']))
+                    <img src="{{ $post['image'] }}" alt="{{ $post['title'] }}" class="aspect-[16/10] w-full object-cover rounded-[40px]">
+                @else
+                    <div class="aspect-[16/10] bg-gradient-to-br {{ $post['gradient'] }} flex items-center justify-center rounded-[40px]">
+                        <span class="text-[120px] lg:text-[200px] font-medium text-ink/10">{{ $post['initial'] }}</span>
+                    </div>
+                @endif
 
                 <div class="max-w-[720px] mx-auto mt-14 lg:mt-16">
                     @foreach ($post['body'] as $block)
@@ -131,11 +107,15 @@
                 <h2 class="text-[36px] font-medium tracking-[-0.02em] text-ink mb-10">সম্পর্কিত প্রবন্ধ</h2>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @foreach ($post['related'] as $related)
+                    @foreach ($related as $related)
                     <div class="bg-white rounded-[40px] overflow-hidden">
-                        <div class="aspect-[16/10] bg-gradient-to-br {{ $related['gradient'] }} flex items-center justify-center">
-                            <span class="text-[64px] font-medium text-ink/10">{{ $related['initial'] }}</span>
-                        </div>
+                        @if (! empty($related['image']))
+                            <img src="{{ $related['image'] }}" alt="{{ $related['title'] }}" class="aspect-[16/10] w-full object-cover">
+                        @else
+                            <div class="aspect-[16/10] bg-gradient-to-br {{ $related['gradient'] }} flex items-center justify-center">
+                                <span class="text-[64px] font-medium text-ink/10">{{ $related['initial'] }}</span>
+                            </div>
+                        @endif
                         <div class="p-6 lg:p-8">
                             <div class="flex items-center gap-3 mb-4">
                                 <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $related['category'] }}</span>
@@ -143,7 +123,7 @@
                             </div>
                             <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $related['title'] }}</h3>
                             <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">{{ $related['excerpt'] }}</p>
-                            <a href="{{ route('blogs.show', ['post' => 'featured']) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
+                            <a href="{{ route('blogs.show', ['post' => $related['slug']]) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                                 পড়ুন
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
