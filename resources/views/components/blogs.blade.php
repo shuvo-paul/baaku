@@ -23,7 +23,7 @@
                     সাম্প্রতিক প্রবন্ধ ও লেখা
                 </h2>
             </div>
-            <a href="#" class="mt-6 lg:mt-0 inline-flex items-center gap-2 text-ink font-medium text-[16px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
+            <a href="{{ route('blogs') }}" class="mt-6 lg:mt-0 inline-flex items-center gap-2 text-ink font-medium text-[16px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                 সব প্রবন্ধ পড়ুন
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
