@@ -14,12 +14,12 @@
             {{-- Eyebrow --}}
             <div class="flex items-center gap-2 mb-6">
                 <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
-                <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">Est. 1985</span>
+                <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">Est. 2024</span>
             </div>
 
             {{-- Headline --}}
             <h1 class="text-[40px] lg:text-[64px] font-medium leading-[1] tracking-[-0.02em] text-canvas-cream mb-6 text-balance">
-                বাংলা ভাষা ও সাহিত্য প্রাক্তন ছাত্র সমিতি
+                বাংলা অ্যালামনাই অ্যাসোসিয়েশন
             </h1>
 
             {{-- Subtitle --}}
