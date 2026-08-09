@@ -12,6 +12,11 @@ Route::middleware(['auth', 'verified', 'user.state', 'complete-profile.check', '
     ->prefix('dashboard')
     ->name('alumkit.')
     ->group(function () {
-        Route::get('content', [ContentController::class, 'edit'])->name('content.edit');
+        foreach (['hero', 'about', 'announcement', 'stats', 'cta', 'nav', 'footer'] as $section) {
+            Route::get("content/{$section}", [ContentController::class, 'edit'])
+                ->defaults('section', $section)
+                ->name("content.{$section}");
+        }
+
         Route::put('content', [ContentController::class, 'update'])->name('content.update');
     });

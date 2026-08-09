@@ -10,14 +10,26 @@ use Illuminate\View\View;
 
 class ContentController extends Controller
 {
-    public function edit(): View
+    public function edit(string $section): View
     {
-        $groups = Content::values()
-            ->sortKeys()
-            ->map(fn (?string $value, string $key) => (object) ['key' => $key, 'value' => $value])
-            ->groupBy(fn (object $item) => Str::before($item->key, '.'));
+        $sections = Content::sections();
 
-        return view('content.edit', ['groups' => $groups]);
+        abort_unless(isset($sections[$section]), 404);
+
+        $values = Content::values();
+
+        $fields = collect($sections[$section]['fields'])
+            ->map(fn (array $field, string $key) => (object) [
+                'key' => $key,
+                'label' => $field['label'],
+                'type' => $field['type'],
+                'value' => $values[$key],
+            ]);
+
+        return view('content.edit', [
+            'section' => $sections[$section]['label'],
+            'fields' => $fields,
+        ]);
     }
 
     public function update(Request $request): RedirectResponse
@@ -36,6 +48,8 @@ class ContentController extends Controller
             );
         }
 
-        return redirect()->route('alumkit.content.edit')->with('status', 'Content updated.');
+        $section = Str::before(array_key_first($validated['contents']), '.');
+
+        return redirect()->route("alumkit.content.$section")->with('status', 'Content updated.');
     }
 }

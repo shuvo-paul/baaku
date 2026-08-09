@@ -32,7 +32,19 @@ return [
     ],
 
     'dashboard_nav' => [
-        ['label' => 'Content', 'route' => 'alumkit.content.edit', 'permission' => 'manage content'],
+        [
+            'label' => 'Pages & Sections',
+            'permission' => 'manage content',
+            'children' => [
+                ['label' => 'Homepage', 'route' => 'alumkit.content.hero'],
+                ['label' => 'About', 'route' => 'alumkit.content.about'],
+                ['label' => 'Announcement', 'route' => 'alumkit.content.announcement'],
+                ['label' => 'Impact Stats', 'route' => 'alumkit.content.stats'],
+                ['label' => 'Call to Action', 'route' => 'alumkit.content.cta'],
+                ['label' => 'Navigation', 'route' => 'alumkit.content.nav'],
+                ['label' => 'Footer', 'route' => 'alumkit.content.footer'],
+            ],
+        ],
         // A link:            ['label' => 'Events', 'route' => 'events.index', 'permission' => 'manage events']
         // permission is optional; omitted -> visible to all authenticated users.
         // A group:           ['label' => 'Settings', 'permission' => 'manage settings', 'children' => [
