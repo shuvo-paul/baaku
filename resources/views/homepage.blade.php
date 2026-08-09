@@ -8,7 +8,7 @@
         <x-committee />
         <x-events />
         <x-blogs />
-        <x-stats />
+        <x-impact-stats />
         <x-cta />
     </main>
 
