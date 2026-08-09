@@ -44,12 +44,31 @@ it('renders the seeded hero defaults', function () {
     $this->get('/')->assertOk()->assertSee('Est. 1985');
 });
 
-it('shows all content fields in the dashboard without seeding', function () {
+it('shows all hero fields in the dashboard without seeding', function () {
     $this->actingAs(contentManagerUser())
-        ->get(route('alumkit.content.edit'))
+        ->get(route('alumkit.content.hero'))
         ->assertOk()
         ->assertSee('contents[hero.headline]')
         ->assertSee('Est. 1985');
+});
+
+it('renders every content section page without seeding', function () {
+    foreach (['hero', 'about', 'announcement', 'stats', 'cta', 'nav', 'footer'] as $section) {
+        $this->actingAs(contentManagerUser())
+            ->get(route("alumkit.content.$section"))
+            ->assertOk()
+            ->assertSee('Save Section');
+    }
+});
+
+it('renders homepage section defaults without seeding', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('About Us')
+        ->assertSee('ঘোষণা')
+        ->assertSee('Our Impact')
+        ->assertSee('Join Us')
+        ->assertSee('দ্রুত লিংক');
 });
 
 it('lets a permitted user edit content and updates the homepage', function () {
@@ -57,7 +76,7 @@ it('lets a permitted user edit content and updates the homepage', function () {
         ->put(route('alumkit.content.update'), [
             'contents' => ['hero.headline' => 'নতুন হেডলাইন'],
         ])
-        ->assertRedirect(route('alumkit.content.edit'));
+        ->assertRedirect(route('alumkit.content.hero'));
 
     $this->assertDatabaseHas('contents', ['key' => 'hero.headline', 'value' => 'নতুন হেডলাইন']);
 
@@ -79,5 +98,5 @@ it('forbids users without the manage content permission', function () {
         'is_current' => true,
     ]);
 
-    $this->actingAs($user)->get(route('alumkit.content.edit'))->assertForbidden();
+    $this->actingAs($user)->get(route('alumkit.content.hero'))->assertForbidden();
 });
