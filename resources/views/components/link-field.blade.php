@@ -16,7 +16,7 @@
     {{-- Popup --}}
     <div x-show="open" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" @keydown.escape.window="open = false">
         <div class="absolute inset-0 bg-gray-900/50" @click="open = false"></div>
-        <div class="relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
+        <div class="relative w-full max-w-sm rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
             <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ $field->label }}</h3>
             <div class="space-y-4">
                 <div>
