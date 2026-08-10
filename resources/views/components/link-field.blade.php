@@ -1,5 +1,5 @@
 <div
-    x-data="{ open: false, label: {{ Js::from($field->label_value ?? '') }}, url: {{ Js::from($field->url_value ?? '') }}, draftLabel: '', draftUrl: '', openModal() { this.draftLabel = this.label; this.draftUrl = this.url; this.open = true; }, save() { this.label = this.draftLabel; this.url = this.draftUrl; this.open = false; } }"
+    x-data="{ open: false, label: {{ Js::from($field->label_value ?? '') }}, url: {{ Js::from($field->url_value ?? '') }}, draftLabel: '', draftUrl: '', sugOpen: false, highlight: -1, routes: {{ Js::from($routes ?? []) }}, suggestions() { const q = this.draftUrl.trim().toLowerCase(); return this.routes.filter(r => !q || r.uri.toLowerCase().includes(q) || r.label.toLowerCase().includes(q)).slice(0, 8); }, pick(r) { this.draftUrl = r.uri; this.highlight = -1; this.sugOpen = false; }, onKeydown(e) { const list = this.suggestions(); if (e.key === 'ArrowDown') { e.preventDefault(); this.highlight = Math.min(this.highlight + 1, list.length - 1); } else if (e.key === 'ArrowUp') { e.preventDefault(); this.highlight = Math.max(this.highlight - 1, 0); } else if (e.key === 'Enter' && this.highlight >= 0) { e.preventDefault(); this.pick(list[this.highlight]); } else if (e.key === 'Escape') { this.sugOpen = false; } }, openModal() { this.draftLabel = this.label; this.draftUrl = this.url; this.open = true; }, save() { this.label = this.draftLabel; this.url = this.draftUrl; this.open = false; } }"
 >
     <input type="hidden" name="contents[{{ $field->label_key }}]" x-model="label">
     <input type="hidden" name="contents[{{ $field->url_key }}]" x-model="url">
@@ -25,7 +25,17 @@
                 </div>
                 <div>
                     <label class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">URL</label>
-                    <input type="text" x-model="draftUrl" class="w-full rounded-md border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                    <div class="relative">
+                        <input type="text" x-model="draftUrl" @focus="sugOpen = true" @blur="sugOpen = false" @keydown="onKeydown($event)" class="w-full rounded-md border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                        <div x-show="sugOpen && suggestions().length" x-cloak class="absolute z-10 mt-1 w-full max-h-48 overflow-auto rounded-md border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
+                            <template x-for="(r, i) in suggestions()" :key="r.uri">
+                                <button type="button" @mousedown.prevent="pick(r)" @mouseenter="highlight = i" :class="i === highlight ? 'bg-indigo-50 dark:bg-gray-700' : ''" class="flex w-full items-center justify-between px-3 py-2 text-left text-sm">
+                                    <span class="font-medium text-gray-900 dark:text-white" x-text="r.label"></span>
+                                    <span class="text-xs text-gray-400" x-text="r.uri"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mt-6 flex items-center justify-end gap-3">

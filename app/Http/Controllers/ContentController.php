@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Content;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -42,7 +43,30 @@ class ContentController extends Controller
         return view('content.edit', [
             'section' => $sections[$section]['label'],
             'fields' => $fields,
+            'routes' => $this->linkSuggestions(),
         ]);
+    }
+
+    /**
+     * Public, selectable link targets: named GET routes with no required
+     * parameters, minus dashboard/auth/vendor noise.
+     *
+     * @return array<int, array{label: string, uri: string}>
+     */
+    private function linkSuggestions(): array
+    {
+        $excluded = ['dashboard', 'email/', 'two-factor', 'passkeys', 'profile', 'user/', 'storage', 'livewire', 'tallstackui', 'up'];
+
+        return collect(app('router')->getRoutes())
+            ->filter(fn (Route $route) => $route->getName() !== null && in_array('GET', $route->methods(), true))
+            ->filter(fn (Route $route) => ! Str::contains($route->uri(), '{') && ! Str::startsWith($route->uri(), $excluded))
+            ->map(fn (Route $route) => [
+                'label' => Str::of($route->getName())->replace('.', ' ')->title()->toString(),
+                'uri' => '/'.ltrim($route->uri(), '/'),
+            ])
+            ->unique('uri')
+            ->values()
+            ->all();
     }
 
     public function update(Request $request): RedirectResponse

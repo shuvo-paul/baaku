@@ -11,7 +11,7 @@
             <div class="space-y-4">
                 @foreach ($fields as $field)
                     @if ($field->type === 'link')
-                        <x-link-field :field="$field" />
+                        <x-link-field :field="$field" :routes="$routes" />
                     @else
                         <div>
                             <label for="{{ $field->key }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
