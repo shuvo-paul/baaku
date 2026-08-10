@@ -52,6 +52,17 @@ it('shows all hero fields in the dashboard without seeding', function () {
         ->assertSee('Est. 2024');
 });
 
+it('renders link popup fields with current values', function () {
+    $this->actingAs(contentManagerUser())
+        ->get(route('alumkit.content.hero'))
+        ->assertOk()
+        ->assertSee('Primary Button')
+        ->assertSee('contents[hero.cta_primary_label]')
+        ->assertSee('contents[hero.cta_primary_url]')
+        ->assertSee('সদস্য হোন')
+        ->assertSee('#join');
+});
+
 it('renders every content section page without seeding', function () {
     foreach (['hero', 'about', 'announcement', 'stats', 'cta', 'nav', 'footer'] as $section) {
         $this->actingAs(contentManagerUser())

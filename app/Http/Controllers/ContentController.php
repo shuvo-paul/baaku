@@ -19,12 +19,25 @@ class ContentController extends Controller
         $values = Content::values();
 
         $fields = collect($sections[$section]['fields'])
-            ->map(fn (array $field, string $key) => (object) [
-                'key' => $key,
-                'label' => $field['label'],
-                'type' => $field['type'],
-                'value' => $values[$key],
-            ]);
+            ->map(function (array $field, string $key) use ($values) {
+                if (($field['type'] ?? null) === 'link') {
+                    return (object) [
+                        'type' => 'link',
+                        'label' => $field['label'],
+                        'label_key' => $field['label_key'],
+                        'url_key' => $field['url_key'],
+                        'label_value' => $values[$field['label_key']],
+                        'url_value' => $values[$field['url_key']],
+                    ];
+                }
+
+                return (object) [
+                    'key' => $key,
+                    'label' => $field['label'],
+                    'type' => $field['type'],
+                    'value' => $values[$key],
+                ];
+            });
 
         return view('content.edit', [
             'section' => $sections[$section]['label'],
