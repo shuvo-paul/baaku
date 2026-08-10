@@ -28,6 +28,6 @@ final class Posts
             return [];
         }
 
-        return array_values(array_slice(array_merge($all, $all), $index + 1, $count));
+        return array_slice(array_merge($all, $all), $index + 1, $count);
     }
 }

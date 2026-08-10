@@ -8,7 +8,9 @@ Route::view('/', 'homepage')->name('home');
 Route::view('/committee', 'committee-full')->name('committee');
 Route::view('/blogs', 'blogs.index')->name('blogs');
 Route::get('/blogs/{post}', function (string $post) {
-    abort_unless($post = Posts::find($post), 404);
+    $post = Posts::find($post);
+
+    abort_unless($post !== null, 404);
 
     return view('blogs.show', ['post' => $post]);
 })->name('blogs.show');

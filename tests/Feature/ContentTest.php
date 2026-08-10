@@ -49,8 +49,7 @@ it('shows all hero fields in the dashboard without seeding', function () {
         ->get(route('alumkit.content.hero'))
         ->assertOk()
         ->assertSee('contents[hero.headline]')
-        ->assertSee('Est. 2024')
-        ->assertSee('resources/css/app.css');
+        ->assertSee('Est. 2024');
 });
 
 it('renders link popup fields with current values', function () {

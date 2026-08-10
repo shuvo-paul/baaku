@@ -21,7 +21,7 @@ class ContentController extends Controller
 
         $fields = collect($sections[$section]['fields'])
             ->map(function (array $field, string $key) use ($values) {
-                if (($field['type'] ?? null) === 'link') {
+                if (isset($field['label_key'])) {
                     return (object) [
                         'type' => 'link',
                         'label' => $field['label'],
@@ -57,7 +57,7 @@ class ContentController extends Controller
     {
         $excluded = ['dashboard', 'email/', 'two-factor', 'passkeys', 'profile', 'user/', 'storage', 'livewire', 'tallstackui', 'up'];
 
-        return collect(app('router')->getRoutes())
+        return collect(app('router')->getRoutes()->getRoutes())
             ->filter(fn (Route $route) => $route->getName() !== null && in_array('GET', $route->methods(), true))
             ->filter(fn (Route $route) => ! Str::contains($route->uri(), '{') && ! Str::startsWith($route->uri(), $excluded))
             ->map(fn (Route $route) => [

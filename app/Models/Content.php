@@ -19,7 +19,7 @@ class Content extends Model
     /**
      * Per-section field definitions: label, input type, and default value.
      *
-     * @return array<string, array{label: string, fields: array<string, array{label: string, type: string, default: string}|array{type: string, label: string, label_key: string, url_key: string, default_label: string, default_url: string}>}>
+     * @return array<string, array{label: string, fields: array<string, array{label: string, type: 'text'|'textarea', default: string}|array{type: 'link', label: string, label_key: string, url_key: string, default_label: string, default_url: string}>}>
      */
     public static function sections(): array
     {
@@ -263,7 +263,7 @@ class Content extends Model
 
         foreach (self::sections() as $section) {
             foreach ($section['fields'] as $key => $field) {
-                if (($field['type'] ?? null) === 'link') {
+                if ($field['type'] === 'link') {
                     $defaults[$field['label_key']] = $field['default_label'];
                     $defaults[$field['url_key']] = $field['default_url'];
 
