@@ -1,7 +1,7 @@
 <?php
 
-use App\Posts;
 use App\Http\Controllers\ContentController;
+use App\Posts;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'homepage')->name('home');
