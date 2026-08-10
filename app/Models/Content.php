@@ -27,8 +27,8 @@ class Content extends Model
             'hero' => [
                 'label' => 'Homepage',
                 'fields' => [
-                    'hero.eyebrow' => ['label' => 'Eyebrow', 'type' => 'text', 'default' => 'Est. 1985'],
-                    'hero.headline' => ['label' => 'Headline', 'type' => 'textarea', 'default' => 'বাংলা ভাষা ও সাহিত্য প্রাক্তন ছাত্র সমিতি'],
+                    'hero.eyebrow' => ['label' => 'Eyebrow', 'type' => 'text', 'default' => 'Est. 2024'],
+                    'hero.headline' => ['label' => 'Headline', 'type' => 'textarea', 'default' => 'বাংলা অ্যালামনাই অ্যাসোসিয়েশন'],
                     'hero.subtitle' => ['label' => 'Subtitle', 'type' => 'textarea', 'default' => 'বাংলা ভাষা ও সাহিত্য বিভাগের প্রাক্তন ছাত্রদের একটি ঐক্যবদ্ধ প্ল্যাটফর্ম — যেখানে আমরা একসাথে বাংলা সাহিত্য ও সংস্কৃতি সংরক্ষণ ও প্রসারে কাজ করি।'],
                     'hero.cta_primary_label' => ['label' => 'Primary Button Label', 'type' => 'text', 'default' => 'সদস্য হোন'],
                     'hero.cta_primary_url' => ['label' => 'Primary Button URL', 'type' => 'text', 'default' => '#join'],

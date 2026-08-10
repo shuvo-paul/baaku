@@ -35,13 +35,13 @@ it('renders hero values from the database', function () {
 });
 
 it('renders default hero values without seeding', function () {
-    $this->get('/')->assertOk()->assertSee('Est. 1985');
+    $this->get('/')->assertOk()->assertSee('Est. 2024');
 });
 
 it('renders the seeded hero defaults', function () {
     $this->seed(ContentSeeder::class);
 
-    $this->get('/')->assertOk()->assertSee('Est. 1985');
+    $this->get('/')->assertOk()->assertSee('Est. 2024');
 });
 
 it('shows all hero fields in the dashboard without seeding', function () {
@@ -49,7 +49,7 @@ it('shows all hero fields in the dashboard without seeding', function () {
         ->get(route('alumkit.content.hero'))
         ->assertOk()
         ->assertSee('contents[hero.headline]')
-        ->assertSee('Est. 1985');
+        ->assertSee('Est. 2024');
 });
 
 it('renders every content section page without seeding', function () {
