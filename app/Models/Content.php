@@ -36,7 +36,7 @@ class Content extends Model
                         'label_key' => 'hero.cta_primary_label',
                         'url_key' => 'hero.cta_primary_url',
                         'default_label' => 'সদস্য হোন',
-                        'default_url' => '#join',
+                        'default_url' => '/register',
                     ],
                     'hero.cta_secondary' => [
                         'type' => 'link',
