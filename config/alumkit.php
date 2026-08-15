@@ -55,26 +55,8 @@ return [
     ],
 
     'education' => [
-        'levels' => [
-            'honors' => 'Honors',
-            'masters' => 'Masters',
-            'phd' => 'PhD',
-            'diploma' => 'Diploma',
-            'certificate' => 'Certificate',
-        ],
-    ],
+        'levels' => ['Honors', 'Masters', 'PhD', 'Diploma', 'Certificate'],
 
-    'career' => [
-        'employment_types' => [
-            'full_time' => 'Full-Time',
-            'part_time' => 'Part-Time',
-            'contract' => 'Contract',
-            'freelance' => 'Freelance',
-            'internship' => 'Internship',
-        ],
-    ],
-
-    'education' => [
         'institutions' => [
             'University of Khulna',
             'Bangabandhu Sheikh Mujib Medical University (BSMMU)',
