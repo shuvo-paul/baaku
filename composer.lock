@@ -4404,12 +4404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stonadev/alumkit.git",
-                "reference": "96836db41665209855bea80dd10091ad79e340c3"
+                "reference": "d2fd8eff8f1fbf63c8f2d9e1af4b5becf631c6e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stonadev/alumkit/zipball/96836db41665209855bea80dd10091ad79e340c3",
-                "reference": "96836db41665209855bea80dd10091ad79e340c3",
+                "url": "https://api.github.com/repos/stonadev/alumkit/zipball/d2fd8eff8f1fbf63c8f2d9e1af4b5becf631c6e3",
+                "reference": "d2fd8eff8f1fbf63c8f2d9e1af4b5becf631c6e3",
                 "shasum": ""
             },
             "require": {
@@ -4524,7 +4524,7 @@
                     "url": "https://github.com/stonadev"
                 }
             ],
-            "time": "2026-08-15T14:52:39+00:00"
+            "time": "2026-08-18T04:51:12+00:00"
         },
         {
             "name": "symfony/clock",
