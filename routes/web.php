@@ -13,3 +13,5 @@ Route::get('/blogs/{post}', function (string $post) {
 
     return view('blogs.show', ['post' => $post]);
 })->name('blogs.show');
+
+Route::view('/constitution', 'constitution')->name('constitution');

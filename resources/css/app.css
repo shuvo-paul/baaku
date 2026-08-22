@@ -43,6 +43,44 @@
     animation: pulse-ring 2s ease-out infinite;
 }
 
+.constitution-body h3 {
+    @apply font-display text-[24px] lg:text-[28px] font-medium tracking-[-0.02em] text-ink mt-16 mb-6 scroll-mt-32;
+}
+.constitution-toc {
+    @apply space-y-4 border-l border-ink/10 pl-6;
+}
+.constitution-toc a {
+    @apply block text-[15px] leading-[1.5] text-slate-gray hover:text-ink transition-colors;
+}
+.constitution-body p {
+    @apply text-[17px] leading-[1.8] text-ink mb-6;
+}
+.constitution-body p:last-child {
+    @apply mb-0;
+}
+.constitution-body ul {
+    @apply pl-6 mb-6 space-y-2;
+}
+.constitution-body li {
+    @apply text-[17px] leading-[1.8] text-ink;
+}
+.constitution-body li > p {
+    @apply mb-2;
+}
+.constitution-body strong {
+    @apply font-bold text-ink;
+}
+.constitution-body table {
+    @apply w-full border-collapse my-10;
+}
+.constitution-body th,
+.constitution-body td {
+    @apply border border-ink/10 px-4 py-3 text-left text-[15px] leading-[1.6] text-ink align-top;
+}
+.constitution-body th {
+    @apply bg-lifted-cream font-bold;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .pulse-dot::after {
         animation: none;
