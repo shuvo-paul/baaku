@@ -24,7 +24,7 @@
                     <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $post['category'] }}</span>
                     <span class="text-[13px] text-slate-gray">{{ $post['date'] }}</span>
                 </div>
-                <h1 class="text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">{{ $post['title'] }}</h1>
+                <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">{{ $post['title'] }}</h1>
                 <p class="mt-6 text-[14px] text-slate-gray" style="font-weight: 450;">{{ $post['author'] }} · {{ $post['reading_time'] }}</p>
             </div>
         </section>
@@ -43,7 +43,7 @@
                 <div class="max-w-[720px] mx-auto mt-14 lg:mt-16">
                     @foreach ($post['body'] as $block)
                         @if ($block['type'] === 'h2')
-                            <h2 class="text-[24px] lg:text-[28px] font-medium tracking-[-0.02em] text-ink mt-12 mb-5">{{ $block['text'] }}</h2>
+                            <h2 class="font-display text-[24px] lg:text-[28px] font-medium tracking-[-0.02em] text-ink mt-12 mb-5">{{ $block['text'] }}</h2>
                         @elseif ($block['type'] === 'quote')
                             <div class="bg-lifted-cream rounded-[40px] p-10 lg:p-12 my-12 text-center">
                                 <span class="text-[56px] text-signal-orange-light font-bold leading-none block mb-4" aria-hidden="true">"</span>
@@ -104,7 +104,7 @@
                     <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">আরও পড়ুন</span>
                 </div>
-                <h2 class="text-[36px] font-medium tracking-[-0.02em] text-ink mb-10">সম্পর্কিত প্রবন্ধ</h2>
+                <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] text-ink mb-10">সম্পর্কিত প্রবন্ধ</h2>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($related as $related)
@@ -121,7 +121,7 @@
                                 <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $related['category'] }}</span>
                                 <span class="text-[13px] text-slate-gray">{{ $related['date'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $related['title'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $related['title'] }}</h3>
                             <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">{{ $related['excerpt'] }}</p>
                             <a href="{{ route('blogs.show', ['post' => $related['slug']]) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                                 পড়ুন

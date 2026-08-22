@@ -2,7 +2,7 @@
     @php $content = \App\Models\Content::values(); @endphp
     <div class="max-w-[1200px] mx-auto">
         {{-- Conversational headline --}}
-        <h2 class="text-[32px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-white mb-16 max-w-[500px]">
+        <h2 class="font-display text-[32px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-white mb-16 max-w-[500px]">
             {{ $content['footer.heading'] ?? '' }}
         </h2>
 

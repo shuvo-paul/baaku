@@ -14,7 +14,7 @@
                 <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                 <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Current Committee</span>
             </div>
-            <h2 class="text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance">
+            <h2 class="font-display text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance">
                 বর্তমান কার্যনির্বাহী কমিটি
             </h2>
         </div>
@@ -37,7 +37,7 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">সভাপতি</span>
             </div>
-            <h3 class="text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-2 text-center">মোঃ আব্দুল করিম</h3>
+            <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-2 text-center">মোঃ আব্দুল করিম</h3>
             <p class="text-[15px] text-slate-gray leading-[1.5] text-center" style="font-weight: 450;">
                 বাংলা বিভাগের সাবেক অধ্যাপক, খুলনা বিশ্ববিদ্যালয়
             </p>
@@ -68,7 +68,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                         <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">সহ-সভাপতি</span>
                     </div>
-                    <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">ফাতেমা বেগম</h3>
+                    <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">ফাতেমা বেগম</h3>
                     <p class="text-[14px] text-slate-gray leading-[1.5] text-center" style="font-weight: 450;">সহযোগী অধ্যাপক</p>
                 </div>
 
@@ -90,7 +90,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                         <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">সাধারণ সম্পাদক</span>
                     </div>
-                    <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">আনিসুর রহমান</h3>
+                    <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">আনিসুর রহমান</h3>
                     <p class="text-[14px] text-slate-gray leading-[1.5] text-center" style="font-weight: 450;">লেকচারার</p>
                 </div>
 
@@ -112,7 +112,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                         <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">কোষাধ্যক্ষ</span>
                     </div>
-                    <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">নাসরিন আক্তার</h3>
+                    <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">নাসরিন আক্তার</h3>
                     <p class="text-[14px] text-slate-gray leading-[1.5] text-center" style="font-weight: 450;">সহযোগী অধ্যাপক</p>
                 </div>
 
@@ -134,7 +134,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                         <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">সাংস্কৃতিক সম্পাদক</span>
                     </div>
-                    <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">তানভীর হোসেন</h3>
+                    <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-1 text-center">তানভীর হোসেন</h3>
                     <p class="text-[14px] text-slate-gray leading-[1.5] text-center" style="font-weight: 450;">কবি ও গবেষক</p>
                 </div>
             </div>

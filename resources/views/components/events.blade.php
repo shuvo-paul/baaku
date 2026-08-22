@@ -7,7 +7,7 @@
                     <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Events</span>
                 </div>
-                <h2 class="text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[500px]">
+                <h2 class="font-display text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[500px]">
                     আসন্ন অনুষ্ঠান ও কার্যক্রম
                 </h2>
             </div>
@@ -31,7 +31,7 @@
                 </div>
                 {{-- Content --}}
                 <div class="p-8 lg:p-10 lg:py-8 flex-1 flex flex-col justify-center">
-                    <h3 class="text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
+                    <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
                         বার্ষিক সাহিত্য সম্মেলন
                     </h3>
                     <p class="text-[15px] text-slate-gray leading-[1.5] mb-6" style="font-weight: 450;">
@@ -55,7 +55,7 @@
                 </div>
                 {{-- Content --}}
                 <div class="p-8 lg:p-10 lg:py-8 flex-1 flex flex-col justify-center">
-                    <h3 class="text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
+                    <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
                         কবিতা আবৃত্তি প্রতিযোগিতা
                     </h3>
                     <p class="text-[15px] text-slate-gray leading-[1.5] mb-6" style="font-weight: 450;">
@@ -82,7 +82,7 @@
                 </div>
                 {{-- Content --}}
                 <div class="p-8 lg:p-10 lg:py-8 flex-1 flex flex-col justify-center">
-                    <h3 class="text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
+                    <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
                         আন্তর্জাতিক মাতৃভাষা দিবস
                     </h3>
                     <p class="text-[15px] text-slate-gray leading-[1.5] mb-6" style="font-weight: 450;">

@@ -7,7 +7,7 @@
             <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">{{ $content['cta.eyebrow'] ?? '' }}</span>
         </div>
 
-        <h2 class="text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-canvas-cream mb-6 text-balance max-w-[700px] mx-auto">
+        <h2 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-canvas-cream mb-6 text-balance max-w-[700px] mx-auto">
             {{ $content['cta.heading'] ?? '' }}
         </h2>
 

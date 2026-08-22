@@ -20,7 +20,7 @@
                     <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Blog</span>
                 </div>
-                <h2 class="text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[500px]">
+                <h2 class="font-display text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[500px]">
                     সাম্প্রতিক প্রবন্ধ ও লেখা
                 </h2>
             </div>
@@ -49,7 +49,7 @@
                         <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $posts[0]['category'] }}</span>
                         <span class="text-[13px] text-slate-gray">{{ $posts[0]['date'] }}</span>
                     </div>
-                    <h3 class="text-[24px] lg:text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-4">
+                    <h3 class="font-display text-[24px] lg:text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-4">
                         {{ $posts[0]['title'] }}
                     </h3>
                     <p class="text-[15px] text-slate-gray leading-[1.6] mb-6" style="font-weight: 450;">
@@ -72,7 +72,7 @@
                         <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $post['category'] }}</span>
                         <span class="text-[13px] text-slate-gray">{{ $post['date'] }}</span>
                     </div>
-                    <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
+                    <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">
                         {{ $post['title'] }}
                     </h3>
                     <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">

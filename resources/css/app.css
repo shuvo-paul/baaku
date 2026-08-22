@@ -5,6 +5,7 @@
 
 @theme {
     --font-sans: 'Noto Sans Bengali', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Noto Serif Bengali', 'Noto Sans Bengali', ui-serif, Georgia, serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* Design System Colors */
     --color-canvas-cream: #F3F0EE;

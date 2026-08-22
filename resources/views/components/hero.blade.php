@@ -19,7 +19,7 @@
             </div>
 
             {{-- Headline --}}
-            <h1 class="text-[40px] lg:text-[64px] font-medium leading-[1] tracking-[-0.02em] text-canvas-cream mb-6 text-balance">
+            <h1 class="font-display text-[40px] lg:text-[64px] font-medium leading-[1] tracking-[-0.02em] text-canvas-cream mb-6 text-balance">
                 {{ $content['hero.headline'] ?? '' }}
             </h1>
 

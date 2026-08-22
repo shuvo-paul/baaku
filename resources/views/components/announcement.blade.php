@@ -23,7 +23,7 @@
                     <div class="flex items-center gap-2 mb-4">
                         <span class="uppercase text-[13px] font-bold tracking-[0.04em] text-dust-taupe">{{ $content['announcement.label'] ?? '' }}</span>
                     </div>
-                    <h2 class="text-[24px] lg:text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-canvas-cream mb-3">
+                    <h2 class="font-display text-[24px] lg:text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-canvas-cream mb-3">
                         {{ $content['announcement.title'] ?? '' }}
                     </h2>
                     <p class="text-[15px] text-dust-taupe leading-[1.5] mb-6 max-w-[550px]" style="font-weight: 450;">

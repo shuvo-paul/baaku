@@ -15,7 +15,7 @@
                     <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">{{ $content['about.eyebrow'] ?? '' }}</span>
                 </div>
-                <h2 class="text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance">
+                <h2 class="font-display text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance">
                     {{ $content['about.heading'] ?? '' }}
                 </h2>
             </div>

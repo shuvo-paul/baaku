@@ -19,7 +19,7 @@
                     <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Blog</span>
                 </div>
-                <h1 class="text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">সব প্রবন্ধ</h1>
+                <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">সব প্রবন্ধ</h1>
                 <p class="mt-6 text-[17px] text-slate-gray leading-[1.6] max-w-[560px]" style="font-weight: 450;">
                     বাংলা ভাষা ও সাহিত্যের নানা প্রসঙ্গে আমাদের লেখা, গবেষণা ও সাক্ষাৎকার।
                 </p>
@@ -44,7 +44,7 @@
                                 <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $posts[0]['category'] }}</span>
                                 <span class="text-[13px] text-slate-gray">{{ $posts[0]['date'] }}</span>
                             </div>
-                            <h3 class="text-[24px] lg:text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-4">{{ $posts[0]['title'] }}</h3>
+                            <h3 class="font-display text-[24px] lg:text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-4">{{ $posts[0]['title'] }}</h3>
                             <p class="text-[15px] text-slate-gray leading-[1.6] mb-6" style="font-weight: 450;">{{ $posts[0]['excerpt'] }}</p>
                             <a href="{{ route('blogs.show', ['post' => $posts[0]['slug']]) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[16px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                                 পুরো প্রবন্ধ পড়ুন
@@ -63,7 +63,7 @@
                                 <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $posts[$i]['category'] }}</span>
                                 <span class="text-[13px] text-slate-gray">{{ $posts[$i]['date'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $posts[$i]['title'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $posts[$i]['title'] }}</h3>
                             <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">{{ $posts[$i]['excerpt'] }}</p>
                             <a href="{{ route('blogs.show', ['post' => $posts[$i]['slug']]) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                                 পড়ুন
@@ -92,7 +92,7 @@
                                 <span class="px-4 py-2 bg-canvas-cream rounded-[999px] text-[13px] font-medium text-ink">{{ $post['category'] }}</span>
                                 <span class="text-[13px] text-slate-gray">{{ $post['date'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $post['title'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink mb-3">{{ $post['title'] }}</h3>
                             <p class="text-[14px] text-slate-gray leading-[1.5] mb-5" style="font-weight: 450;">{{ $post['excerpt'] }}</p>
                             <a href="{{ route('blogs.show', ['post' => $post['slug']]) }}" class="inline-flex items-center gap-2 text-ink font-medium text-[14px] tracking-[-0.02em] hover:opacity-70 transition-opacity">
                                 পড়ুন

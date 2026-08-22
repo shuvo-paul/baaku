@@ -24,7 +24,7 @@
                     <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Current Committee</span>
                 </div>
-                <h1 class="text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
+                <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
                     বর্তমান কার্যনির্বাহী কমিটি
                 </h1>
                 <p class="mt-6 text-[17px] text-slate-gray leading-[1.6] max-w-[560px]" style="font-weight: 450;">
@@ -48,7 +48,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                         <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">সভাপতি (ভারপ্রাপ্ত)</span>
                     </div>
-                    <h2 class="text-[28px] lg:text-[32px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">লাবণ্য</h2>
+                    <h2 class="font-display text-[28px] lg:text-[32px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">লাবণ্য</h2>
                 </div>
             </div>
         </section>
@@ -82,7 +82,7 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $officer['role'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $officer['name'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $officer['name'] }}</h3>
                         </div>
                         @endforeach
                     </div>
@@ -120,7 +120,7 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $officer['role'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $officer['name'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $officer['name'] }}</h3>
                         </div>
                         @endforeach
                     </div>
@@ -159,7 +159,7 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $sec['role'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $sec['name'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $sec['name'] }}</h3>
                         </div>
                         @endforeach
                     </div>
@@ -198,7 +198,7 @@
                                 <span class="w-1.5 h-1.5 rounded-full {{ $sec['vacant'] ?? false ? 'bg-dust-taupe' : 'bg-signal-orange-light' }}"></span>
                                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $sec['role'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] {{ $sec['vacant'] ?? false ? 'text-dust-taupe' : 'text-ink' }} text-center">{{ $sec['name'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] {{ $sec['vacant'] ?? false ? 'text-dust-taupe' : 'text-ink' }} text-center">{{ $sec['name'] }}</h3>
                         </div>
                         @endforeach
                     </div>
@@ -241,7 +241,7 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
                                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $member['role'] }}</span>
                             </div>
-                            <h3 class="text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $member['name'] }}</h3>
+                            <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $member['name'] }}</h3>
                         </div>
                         @endforeach
                     </div>
