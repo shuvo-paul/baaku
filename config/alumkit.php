@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Alumkit\Alumkit\Enums\UserState;
 
 return [
@@ -45,7 +46,7 @@ return [
         'levels' => ['Honors', 'Masters', 'PhD', 'Diploma', 'Certificate'],
 
         'institutions' => [
-            'University of Khulna',
+            'Khulna University',
             'Bangabandhu Sheikh Mujib Medical University (BSMMU)',
             'Bangabandhu Sheikh Mujibur Rahman Agricultural University',
             'Bangabandhu Sheikh Mujibur Rahman Digital University',
@@ -85,9 +86,9 @@ return [
             'Sheikh Hasina University',
             'Sher-e-Bangla Agricultural University',
             'Sylhet Agricultural University',
-            'University of Chittagong',
-            'University of Dhaka',
-            'University of Rajshahi',
+            'Chittagong University',
+            'Dhaka University',
+            'Rajshahi University',
         ],
         'subjects' => [
             'Bangla',
