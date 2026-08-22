@@ -14,7 +14,7 @@ set +a
 composer install --no-dev --optimize-autoloader
 npm run build
 
-rsync -avzO --delete --no-perms --no-owner --no-group -e "ssh -p ${DEPLOY_PORT}" \
+rsync -avzO --delete --no-perms --no-owner --no-group --chmod=ug+rwX -e "ssh -p ${DEPLOY_PORT}" \
   --exclude='.git' \
   --exclude='node_modules' \
   --exclude='.env' \
