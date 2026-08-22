@@ -1,0 +1,130 @@
+[
+    {
+        "initial": "লা",
+        "role": "সভাপতি (ভারপ্রাপ্ত)",
+        "name": "লাবণ্য",
+        "image": "\/temp\/committee\/লাবণ্য_.jpg"
+    },
+    {
+        "initial": "লি",
+        "role": "সহ-সভাপতি",
+        "name": "লিওন"
+    },
+    {
+        "initial": "সু",
+        "role": "সহ-সভাপতি",
+        "name": "সুফল",
+        "image": "\/temp\/committee\/সুফল.jpg"
+    },
+    {
+        "initial": "লা",
+        "role": "সাধারণ সম্পাদক",
+        "name": "লাবণ্য",
+        "image": "\/temp\/committee\/লাবণ্য_.jpg"
+    },
+    {
+        "initial": "ক",
+        "role": "যুগ্ম-সাধারণ সম্পাদক",
+        "name": "কনক"
+    },
+    {
+        "initial": "সা",
+        "role": "কোষাধ্যক্ষ",
+        "name": "সাগর",
+        "image": "\/temp\/committee\/সাগর.jpg"
+    },
+    {
+        "initial": "কি",
+        "role": "সাংগঠনিক সম্পাদক",
+        "name": "কিশোর",
+        "image": "\/temp\/committee\/কিশোর_.jpg"
+    },
+    {
+        "initial": "শা",
+        "role": "দপ্তর সম্পাদক",
+        "name": "শাহরিয়ার",
+        "image": "\/temp\/committee\/শাহরিয়ার.jpg"
+    },
+    {
+        "initial": "তা",
+        "role": "সাংস্কৃতিক বিষয়ক সম্পাদক",
+        "name": "তাওসিফ",
+        "image": "\/temp\/committee\/তাওসিফ.jpg"
+    },
+    {
+        "initial": "রু",
+        "role": "ক্রীড়া বিষয়ক সম্পাদক",
+        "name": "রুবেল"
+    },
+    {
+        "initial": "হ্যা",
+        "role": "আন্তর্জাতিক যোগাযোগ, প্রচার ও সংযোগ বিষয়ক সম্পাদক",
+        "name": "হ্যাপি",
+        "image": "\/temp\/committee\/হ্যাপি_.jpg"
+    },
+    {
+        "initial": "—",
+        "role": "শিক্ষার্থী কল্যাণ বিষয়ক সম্পাদক",
+        "name": "শূন্য আসন",
+        "vacant": true
+    },
+    {
+        "initial": "—",
+        "role": "সাহিত্য, গবেষণা ও প্রকাশনা সম্পাদক",
+        "name": "শূন্য আসন",
+        "vacant": true
+    },
+    {
+        "initial": "—",
+        "role": "মিডিয়া ও প্রচার বিষয়ক সম্পাদক",
+        "name": "শূন্য আসন",
+        "vacant": true
+    },
+    {
+        "initial": "না",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "নাফিসা",
+        "image": "\/temp\/committee\/নাফিসা.jpg"
+    },
+    {
+        "initial": "সো",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "সোনিয়া",
+        "image": "\/temp\/committee\/সোনিয়া.jpg"
+    },
+    {
+        "initial": "আমি",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "আমিনুর",
+        "image": "\/temp\/committee\/আমিনুর.jpg"
+    },
+    {
+        "initial": "আহ",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "আহসান"
+    },
+    {
+        "initial": "অ",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "অভিজিৎ",
+        "image": "\/temp\/committee\/অভিজিৎ_.jpg"
+    },
+    {
+        "initial": "আবি",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "আবিদ",
+        "image": "\/temp\/committee\/আবিদ.jpg"
+    },
+    {
+        "initial": "আসা",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "আসাদ",
+        "image": "\/temp\/committee\/আসাদ.jpg"
+    },
+    {
+        "initial": "স্ম",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "স্মরণ",
+        "image": "\/temp\/committee\/স্মরণ কার্যনির্বাহী সদস্য.JPG"
+    }
+]
