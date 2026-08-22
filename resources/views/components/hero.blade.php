@@ -1,5 +1,4 @@
 <section id="home" class="px-6 pt-28 pb-16 lg:px-12 lg:pt-32 lg:pb-24">
-    @php $content = \App\Models\Content::values(); @endphp
     <div class="relative bg-ink rounded-[40px] overflow-hidden min-h-[60vh] lg:min-h-[70vh] flex items-center">
         {{-- Background decorative pattern --}}
         <div class="absolute inset-0 opacity-[0.03]">
@@ -15,26 +14,26 @@
             {{-- Eyebrow --}}
             <div class="flex items-center gap-2 mb-6">
                 <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
-                <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">{{ $content['hero.eyebrow'] ?? '' }}</span>
+                <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">Est. 2024</span>
             </div>
 
             {{-- Headline --}}
             <h1 class="font-display text-[40px] lg:text-[64px] font-medium leading-[1] tracking-[-0.02em] text-canvas-cream mb-6 text-balance">
-                {{ $content['hero.headline'] ?? '' }}
+                বাংলা অ্যালামনাই অ্যাসোসিয়েশন
             </h1>
 
             {{-- Subtitle --}}
             <p class="text-[18px] lg:text-[20px] font-normal leading-[1.5] text-dust-taupe mb-10 max-w-[600px]">
-                {{ $content['hero.subtitle'] ?? '' }}
+                বাংলা ভাষা ও সাহিত্য বিভাগের প্রাক্তন ছাত্রদের একটি ঐক্যবদ্ধ প্ল্যাটফর্ম — যেখানে আমরা একসাথে বাংলা সাহিত্য ও সংস্কৃতি সংরক্ষণ ও প্রসারে কাজ করি।
             </p>
 
             {{-- CTAs --}}
             <div class="flex flex-wrap gap-4">
-                <a href="{{ $content['hero.cta_primary_url'] ?? '' }}" class="inline-flex items-center px-6 py-3 bg-canvas-cream text-ink rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
-                    {{ $content['hero.cta_primary_label'] ?? '' }}
+                <a href="/register" class="inline-flex items-center px-6 py-3 bg-canvas-cream text-ink rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
+                    সদস্য হোন
                 </a>
-                <a href="{{ $content['hero.cta_secondary_url'] ?? '' }}" class="inline-flex items-center px-6 py-3 border-[1.5px] border-canvas-cream/40 text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:bg-canvas-cream/10 transition-colors">
-                    {{ $content['hero.cta_secondary_label'] ?? '' }}
+                <a href="/login" class="inline-flex items-center px-6 py-3 border-[1.5px] border-canvas-cream/40 text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:bg-canvas-cream/10 transition-colors">
+                    প্রবেশ করুন
                 </a>
             </div>
         </div>
