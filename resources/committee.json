@@ -8,7 +8,8 @@
     {
         "initial": "লি",
         "role": "সহ-সভাপতি",
-        "name": "লিওন"
+        "name": "লিওন",
+        "image": "\/temp\/committee\/লিওন.jpg"
     },
     {
         "initial": "সু",
@@ -25,7 +26,8 @@
     {
         "initial": "ক",
         "role": "যুগ্ম-সাধারণ সম্পাদক",
-        "name": "কনক"
+        "name": "কনক",
+        "image": "\/temp\/committee\/কনক.jpg"
     },
     {
         "initial": "সা",
@@ -37,7 +39,7 @@
         "initial": "কি",
         "role": "সাংগঠনিক সম্পাদক",
         "name": "কিশোর",
-        "image": "\/temp\/committee\/কিশোর_.jpg"
+        "image": "\/temp\/committee\/কিশোর_.jpg"
     },
     {
         "initial": "শা",
@@ -54,7 +56,8 @@
     {
         "initial": "রু",
         "role": "ক্রীড়া বিষয়ক সম্পাদক",
-        "name": "রুবেল"
+        "name": "রুবেল",
+        "image": "\/temp\/committee\/রুবেল.jpg"
     },
     {
         "initial": "হ্যা",
@@ -90,7 +93,7 @@
         "initial": "সো",
         "role": "কার্যনির্বাহী সদস্য",
         "name": "সোনিয়া",
-        "image": "\/temp\/committee\/সোনিয়া.jpg"
+        "image": "\/temp\/committee\/সোনিয়া.jpg"
     },
     {
         "initial": "আমি",
