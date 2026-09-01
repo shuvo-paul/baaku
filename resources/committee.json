@@ -39,7 +39,7 @@
         "initial": "কি",
         "role": "সাংগঠনিক সম্পাদক",
         "name": "কিশোর",
-        "image": "\/temp\/committee\/কিশোর_.jpg"
+        "image": "\/temp\/committee\/কিশোর.jpg"
     },
     {
         "initial": "শা",
@@ -93,7 +93,7 @@
         "initial": "সো",
         "role": "কার্যনির্বাহী সদস্য",
         "name": "সোনিয়া",
-        "image": "\/temp\/committee\/সোনিয়া.jpg"
+        "image": "\/temp\/committee\/সোনিয়া.jpg"
     },
     {
         "initial": "আমি",
@@ -104,7 +104,8 @@
     {
         "initial": "আহ",
         "role": "কার্যনির্বাহী সদস্য",
-        "name": "আহসান"
+        "name": "আহসান",
+        "image": "\/temp\/committee\/আহসান.jpg"
     },
     {
         "initial": "অ",
@@ -125,9 +126,27 @@
         "image": "\/temp\/committee\/আসাদ.jpg"
     },
     {
+        "initial": "সা",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "সাইফুল্লাহ",
+        "image": "\/temp\/committee\/সাইফুল্লাহ.jpg"
+    },
+    {
         "initial": "স্ম",
         "role": "কার্যনির্বাহী সদস্য",
         "name": "স্মরণ",
         "image": "\/temp\/committee\/স্মরণ কার্যনির্বাহী সদস্য.JPG"
+    },
+    {
+        "initial": "অ",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "অর্ণব",
+        "image": "\/temp\/committee\/অর্ণব.jpg"
+    },
+    {
+        "initial": "শা",
+        "role": "কার্যনির্বাহী সদস্য",
+        "name": "শাহারিয়া",
+        "image": "\/temp\/committee\/শাহারিয়া.jpg"
     }
 ]
