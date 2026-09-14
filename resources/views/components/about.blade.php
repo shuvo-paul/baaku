@@ -27,7 +27,7 @@
                 <p class="text-[16px] font-normal leading-[1.5] text-ink mb-8" style="font-weight: 450;">
                     আমরা বিশ্বাস করি বাংলা ভাষা ও সাহিত্য আমাদের জাতীয় পরিচয়ের মূল ভিত্তি। এই ভিত্তিকে শক্তিশালী করতে আমরা সাহিত্য আলোচনা, সেমিনার, প্রকাশনা এবং সাংস্কৃতিক অনুষ্ঠানের আয়োজন করি।
                 </p>
-                <a href="#" class="inline-flex items-center px-6 py-3 bg-ink text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
+                <a href="{{ route('about') }}" class="inline-flex items-center px-6 py-3 bg-ink text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
                     বিস্তারিত জানুন
                 </a>
             </div>

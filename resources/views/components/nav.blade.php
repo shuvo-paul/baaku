@@ -9,9 +9,10 @@
         {{-- Desktop Nav Links --}}
         <div class="hidden lg:flex items-center gap-12">
             <a href="#home" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">হোম</a>
-            <a href="#about" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">পরিচিতি</a>
+            <a href="{{ route('about') }}" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">পরিচিতি</a>
             <a href="#events" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">ইভেন্ট</a>
             <a href="#contact" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">যোগাযোগ</a>
+            <a href="{{ route('about') }}" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">আমাদের সম্পর্কে</a>
             <a href="{{ route('constitution') }}" class="font-medium text-[16px] tracking-[-0.03em] text-ink hover:opacity-70 transition-opacity">গঠনতন্ত্র</a>
         </div>
 

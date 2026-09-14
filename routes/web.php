@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'homepage')->name('home');
 Route::view('/committee', 'committee-full')->name('committee');
+Route::view('/about', 'about')->name('about');
 Route::view('/blogs', 'blogs.index')->name('blogs');
 Route::get('/blogs/{post}', function (string $post) {
     $post = Posts::find($post);
