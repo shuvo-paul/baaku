@@ -47,10 +47,8 @@
             <div>
                 <h4 class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray mb-6">সদস্যপদ</h4>
                 <ul class="flex flex-col gap-4">
-                    <li><a href="#" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">সদস্য হোন</a></li>
-                    <li><a href="#" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">সদস্য তালিকা</a></li>
-                    <li><a href="#" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">সদস্য সুবিধা</a></li>
-                    <li><a href="#" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">বার্ষিক সমাবেশ</a></li>
+                    <li><a href="{{ route('login') }}" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">লগইন</a></li>
+                    <li><a href="{{ route('register') }}" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">রেজিস্টার</a></li>
                 </ul>
             </div>
 
