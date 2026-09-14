@@ -15,10 +15,10 @@
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">
-            <a href="#" class="inline-flex items-center px-8 py-4 bg-canvas-cream text-ink rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
-                সদস্যপদ আবেদন
+            <a href="/register" class="inline-flex items-center px-8 py-4 bg-canvas-cream text-ink rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:opacity-90 transition-opacity">
+                সদস্য হোন
             </a>
-            <a href="#" class="inline-flex items-center px-8 py-4 border-[1.5px] border-canvas-cream/30 text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:bg-canvas-cream/10 transition-colors">
+            <a href="mailto:info@baaku.org" class="inline-flex items-center px-8 py-4 border-[1.5px] border-canvas-cream/30 text-canvas-cream rounded-[20px] font-medium text-[16px] tracking-[-0.02em] hover:bg-canvas-cream/10 transition-colors">
                 যোগাযোগ করুন
             </a>
         </div>
