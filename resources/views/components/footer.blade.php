@@ -11,9 +11,9 @@
             <div>
                 <h4 class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray mb-6">দ্রুত লিংক</h4>
                 <ul class="flex flex-col gap-4">
-                    <li><a href="#home" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">হোম</a></li>
-                    <li><a href="#about" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">আমাদের সম্পর্কে</a></li>
-                    <li><a href="#events" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">ইভেন্ট</a></li>
+                    <li><a href="/" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">হোম</a></li>
+                    <li><a href="/about" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">আমাদের সম্পর্কে</a></li>
+                    <li><a href="/constitution" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">গঠনতন্ত্র</a></li>
                 </ul>
             </div>
 
@@ -38,7 +38,7 @@
                         <svg class="w-4 h-4 text-white/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <a href="tel:+880 1700-000000" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">+880 1700-000000</a>
+                        <a href="tel:+880 1700-000000" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">+880 1758-484983</a>
                     </li>
                 </ul>
             </div>
@@ -47,8 +47,8 @@
             <div>
                 <h4 class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray mb-6">সদস্যপদ</h4>
                 <ul class="flex flex-col gap-4">
-                    <li><a href="{{ route('login') }}" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">লগইন</a></li>
-                    <li><a href="{{ route('register') }}" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">রেজিস্টার</a></li>
+                    <li><a href="{{ route('login') }}" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">প্রবেশ করুন</a></li>
+                    <li><a href="{{ route('register') }}" class="text-[14px] text-white hover:opacity-70 transition-opacity" style="font-weight: 450;">সদস্য হোন</a></li>
                 </ul>
             </div>
 
@@ -90,11 +90,11 @@
         {{-- Bottom row --}}
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <p class="text-[13px] text-slate-gray" style="font-weight: 450;">
-                © ২০২৬ বাংলা ভাষা ও সাহিত্য প্রাক্তন ছাত্র সমিতি। সর্বস্বত্ব সংরক্ষিত।
+                © ২০২৬ বাংলা অ্যালামনাই অ্যাসোসিয়েশন। সর্বস্বত্ব সংরক্ষিত।
             </p>
             <div class="flex items-center gap-6">
-                <a href="#" class="text-[13px] text-slate-gray hover:text-white transition-colors" style="font-weight: 450;">গোপনীয়তা নীতি</a>
-                <a href="#" class="text-[13px] text-slate-gray hover:text-white transition-colors" style="font-weight: 450;">ব্যবহারের শর্তাবলী</a>
+                <a href="#" class="hidden text-[13px] text-slate-gray hover:text-white transition-colors" style="font-weight: 450;">গোপনীয়তা নীতি</a>
+                <a href="#" class="hidden text-[13px] text-slate-gray hover:text-white transition-colors" style="font-weight: 450;">ব্যবহারের শর্তাবলী</a>
             </div>
         </div>
     </div>
