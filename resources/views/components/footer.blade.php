@@ -1,10 +1,5 @@
 <footer id="contact" class="bg-ink px-6 pt-16 pb-32 lg:px-[100px] lg:pt-20 lg:pb-36">
     <div class="max-w-[1200px] mx-auto">
-        {{-- Conversational headline --}}
-        <h2 class="font-display text-[32px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-white mb-16 max-w-[500px]">
-            আমরা সবসময় আপনার পাশে
-        </h2>
-
         {{-- 4-column grid --}}
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
             {{-- Column 1: Quick Links --}}
