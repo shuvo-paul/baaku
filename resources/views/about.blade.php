@@ -25,7 +25,7 @@
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">About Us</span>
                 </div>
                 <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
-                    বাংলা সাহিত্যের ঐতিহ্য বহনকারী একটি সম্প্রদায়
+                    খুলনা বিশ্ববিদ্যালয়ের বাংলা ডিসিপ্লিন: ঐতিহ্য, সাফল্য ও গৌরবের এক অনন্য পথচলা
                 </h1>
             </div>
         </section>
