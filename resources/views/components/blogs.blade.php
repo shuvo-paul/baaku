@@ -7,7 +7,7 @@
 <section id="blogs" class="relative px-6 py-24 lg:px-12 lg:py-32 overflow-hidden">
     {{-- Ghost watermark --}}
     <div class="absolute top-8 left-0 right-0 pointer-events-none select-none" aria-hidden="true">
-        <span class="text-[72px] lg:text-[128px] font-medium tracking-[-0.02em] text-ghost-cream leading-none block px-6 lg:px-12">
+        <span class="text-[72px] lg:text-[128px] font-display font-medium tracking-[-0.02em] text-ghost-cream leading-none block px-6 lg:px-12">
             প্রবন্ধ
         </span>
     </div>

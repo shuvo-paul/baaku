@@ -49,7 +49,7 @@
         <section class="relative px-6 pb-16 lg:px-12 lg:pb-24 overflow-hidden">
             {{-- Ghost watermark --}}
             <div class="absolute top-0 left-0 right-0 pointer-events-none select-none" aria-hidden="true">
-                <span class="text-[72px] lg:text-[160px] font-medium tracking-[-0.02em] text-ghost-cream leading-none block px-6 lg:px-12">
+                <span class="text-[72px] lg:text-[160px] font-display font-medium tracking-[-0.02em] text-ghost-cream leading-none block px-6 lg:px-12">
                     কমিটি
                 </span>
             </div>
