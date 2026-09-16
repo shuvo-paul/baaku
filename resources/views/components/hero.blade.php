@@ -1,5 +1,5 @@
 <section id="home" class="px-6 pt-28 pb-16 lg:px-12 lg:pt-32 lg:pb-24">
-    <div class="relative bg-ink rounded-[40px] overflow-hidden min-h-[60vh] lg:min-h-[70vh]">
+    <div class="relative rounded-[40px] overflow-hidden min-h-[60vh] lg:min-h-[70vh]" style="background: linear-gradient(to right, #000, #434343)">
         {{-- Content + Video grid --}}
         <div class="relative z-10 grid lg:grid-cols-2 gap-0 min-h-[inherit]">
             {{-- Left: Text --}}
@@ -17,7 +17,7 @@
 
                 {{-- Subtitle --}}
                 <p class="text-[18px] lg:text-[20px] font-normal leading-[1.5] text-dust-taupe mb-10 max-w-[500px]">
-                    বাংলা ডিসিপ্লিনের প্রাক্তন গ্র্যাজুয়েটদের একটি সংবদ্ধ নেটওয়ার্ক। আমাদের উদ্দেশ্য বিশ্বজুড়ে ছড়িয়ে থাকা অ্যালামনাইদের সংযুক্ত করা, প্রবীণ-নবীনদের বন্ধন অটুট রাখা।
+                    বাংলা ডিসিপ্লিনের প্রাক্তন গ্র্যাজুয়েটদের একটি সংবদ্ধ নেটওয়ার্ক। আমাদের উদ্দেশ্য বিশ্বজুড়ে ছড়িয়ে থাকা অ্যালামনাইদের সংযুক্ত করে প্রবীণ-নবীনদের বন্ধন অটুট রাখা।
                 </p>
 
                 {{-- CTAs --}}
