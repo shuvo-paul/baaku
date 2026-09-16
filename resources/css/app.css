@@ -46,6 +46,9 @@
 .constitution-body h3 {
     @apply font-display text-[24px] lg:text-[28px] font-medium tracking-[-0.02em] text-ink mt-16 mb-6 scroll-mt-32;
 }
+.constitution-body h4 {
+    @apply text-[19px] font-semibold tracking-[-0.01em] text-ink mt-10 mb-4 scroll-mt-32;
+}
 .constitution-toc {
     @apply space-y-4 border-l border-ink/10 pl-6;
 }
