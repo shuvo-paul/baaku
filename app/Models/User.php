@@ -2,18 +2,11 @@
 
 namespace App\Models;
 
-use Alumkit\Alumkit\Traits\HasCareers;
-use Alumkit\Alumkit\Traits\HasEducations;
+use Alumkit\Alumkit\Models\User as BaseUser;
 use Database\Factories\UserFactory;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
@@ -25,25 +18,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password', 'state', 'email_verified_at'])]
-#[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable implements MustVerifyEmail
+class User extends BaseUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasCareers, HasEducations, HasFactory, HasRoles, Notifiable;
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    use HasFactory;
 
     /**
      * Get the user's initials
