@@ -49,7 +49,12 @@
 
         @if($others->isNotEmpty())
         {{-- Next members — centered row --}}
-        <div class="flex flex-wrap justify-center gap-12 lg:gap-8">
+        <div class="relative">
+            <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" viewBox="0 0 1200 300" fill="none" preserveAspectRatio="xMidYMid meet">
+                <path d="M 200 120 Q 400 30 600 120 Q 800 210 1000 120" stroke="#F37338" stroke-width="1.2" fill="none" opacity="0.35"/>
+            </svg>
+
+            <div class="flex flex-wrap justify-center gap-12 lg:gap-8">
             @foreach($others as $member)
             <div class="flex flex-col items-center">
                 <div class="relative mb-6">
@@ -70,6 +75,7 @@
                 <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $member['name'] }}</h3>
             </div>
             @endforeach
+            </div>
         </div>
         @endif
 
