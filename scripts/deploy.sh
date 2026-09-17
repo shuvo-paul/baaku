@@ -33,6 +33,9 @@ set +a
 : "${SSH_PORT:?Set SSH_PORT in ${ENV_FILE} (e.g. 2222)}"
 : "${APP_PATH:?Set APP_PATH in ${ENV_FILE} (e.g. /var/www/edaaku)}"
 
+echo "Building frontend assets locally..."
+npm ci && npm run build
+
 echo "Syncing files to remote server..."
 rsync -avzO --delete --no-perms --no-owner --no-group --chmod=ug+rwX -e "ssh -p ${SSH_PORT}" \
     --exclude='.git' \
@@ -48,11 +51,9 @@ rsync -avzO --delete --no-perms --no-owner --no-group --chmod=ug+rwX -e "ssh -p 
     --exclude='.DS_Store' \
     ./ "${SSH_USER}@${SSH_SERVER}:${APP_PATH}/"
 
-# 3. Composer install and npm build to the remote server
-echo "Running build and post-deployment commands on the server..."
+echo "Running post-deployment commands on the server..."
 ssh -p "${SSH_PORT}" "${SSH_USER}@${SSH_SERVER}" "cd ${APP_PATH} && \
     composer install --no-dev --optimize-autoloader && \
-    npm install && npm run build && \
     php artisan optimize:clear && \
     php artisan config:cache && \
     php artisan route:cache && \
