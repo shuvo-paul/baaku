@@ -1,9 +1,7 @@
-{{-- Committee section: Leadership Arc — President elevated center, orbiting officers --}}
 @php
-    // First member is the president; next four orbit below.
     $committee = \App\Committee::all();
-    $president = $committee[0];
-    $officers = collect($committee)->slice(1, 4);
+    $first = $committee[0] ?? null;
+    $others = collect($committee)->slice(1, 4);
     $gradients = ['from-signal-orange/8 to-signal-orange-light/5', 'from-charcoal/8 to-ink/5', 'from-signal-orange-light/8 to-signal-orange/5', 'from-ink/6 to-charcoal/4'];
 @endphp
 
@@ -27,65 +25,53 @@
             </h2>
         </div>
 
-        {{-- President — hero treatment --}}
+        @if($first)
+        {{-- First member — hero treatment --}}
         <div class="flex flex-col items-center mb-16 lg:mb-24">
             <div class="relative mb-8">
                 <div class="w-[260px] h-[260px] lg:w-[320px] lg:h-[320px] rounded-full overflow-hidden bg-gradient-to-br from-ink/8 to-charcoal/5 border border-ink/5">
-                    @isset($president['image'])
-                        <img src="{{ $president['image'] }}" alt="{{ $president['name'] }}" class="w-full h-full object-cover">
+                    @isset($first['image'])
+                        <img src="{{ $first['image'] }}" alt="{{ $first['name'] }}" class="w-full h-full object-cover">
                     @else
                         <div class="w-full h-full flex items-center justify-center">
-                            <span class="text-[72px] lg:text-[96px] font-medium text-ink/15">{{ $president['initial'] }}</span>
+                            <span class="text-[72px] lg:text-[96px] font-medium text-ink/15">{{ mb_substr($first['name'], 0, 1) }}</span>
                         </div>
                     @endisset
                 </div>
-                <a href="#" class="absolute -bottom-2 -right-2 w-[56px] h-[56px] rounded-full bg-white flex items-center justify-center shadow-elevated hover:scale-105 transition-transform">
-                    <svg class="w-5 h-5 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path d="M7 17L17 7M17 7H7M17 7v10" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
             </div>
             <div class="flex items-center gap-2 mb-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
-                <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $president['role'] }}</span>
+                <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $first['role'] }}</span>
             </div>
-            <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $president['name'] }}</h3>
+            <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $first['name'] }}</h3>
         </div>
+        @endif
 
-        {{-- Officers row — orbital arc connecting them --}}
-        <div class="relative">
-            <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" viewBox="0 0 1200 400" fill="none" preserveAspectRatio="xMidYMid meet">
-                <path d="M 200 150 Q 400 50 600 150 Q 800 250 1000 150" stroke="#F37338" stroke-width="1.2" fill="none" opacity="0.4"/>
-            </svg>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-                @foreach($officers as $officer)
-                <div class="flex flex-col items-center {{ $loop->even ? 'lg:mt-8' : '' }}">
-                    <div class="relative mb-6">
-                        <div class="w-[180px] h-[180px] lg:w-[220px] lg:h-[220px] rounded-full overflow-hidden bg-gradient-to-br {{ $gradients[$loop->index % 4] }} border border-ink/5">
-                            @isset($officer['image'])
-                                <img src="{{ $officer['image'] }}" alt="{{ $officer['name'] }}" class="w-full h-full object-cover">
-                            @else
-                                <div class="w-full h-full flex items-center justify-center">
-                                    <span class="text-[48px] lg:text-[60px] font-medium text-ink/15">{{ $officer['initial'] }}</span>
-                                </div>
-                            @endisset
-                        </div>
-                        <a href="#" class="absolute -bottom-1 -right-1 w-[44px] h-[44px] rounded-full bg-white flex items-center justify-center shadow-elevated hover:scale-105 transition-transform">
-                            <svg class="w-4 h-4 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7v10" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
+        @if($others->isNotEmpty())
+        {{-- Next members — centered row --}}
+        <div class="flex flex-wrap justify-center gap-12 lg:gap-8">
+            @foreach($others as $member)
+            <div class="flex flex-col items-center">
+                <div class="relative mb-6">
+                    <div class="w-[180px] h-[180px] lg:w-[220px] lg:h-[220px] rounded-full overflow-hidden bg-gradient-to-br {{ $gradients[$loop->index % 4] }} border border-ink/5">
+                        @isset($member['image'])
+                            <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" class="w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center">
+                                <span class="text-[48px] lg:text-[60px] font-medium text-ink/15">{{ mb_substr($member['name'], 0, 1) }}</span>
+                            </div>
+                        @endisset
                     </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
-                        <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $officer['role'] }}</span>
-                    </div>
-                    <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $officer['name'] }}</h3>
                 </div>
-                @endforeach
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
+                    <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $member['role'] }}</span>
+                </div>
+                <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $member['name'] }}</h3>
             </div>
+            @endforeach
         </div>
+        @endif
 
         {{-- View All CTA --}}
         <div class="mt-16 lg:mt-24 text-center">

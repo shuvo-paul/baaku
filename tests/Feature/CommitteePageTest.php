@@ -1,41 +1,47 @@
 <?php
 
+use Alumkit\Alumkit\Models\CommitteeMember;
+use Alumkit\Alumkit\Models\Position;
 use App\Committee;
 
 it('serves the committee page', function () {
+    $position = Position::create(['name' => 'সভাপতি']);
+    CommitteeMember::create(['position_id' => $position->id, 'name' => 'লাবণ্য', 'sort_order' => 0]);
+
     $this->get('/committee')
         ->assertOk()
         ->assertSee('বর্তমান কার্যনির্বাহী কমিটি')
-        ->assertSee('লাবণ্য');
+        ->assertSee('লাবণ্য')
+        ->assertSee('সভাপতি');
 });
 
-it('shows the top five committee members on the homepage', function () {
+it('maps backend members and omits the stored initial', function () {
+    $position = Position::create(['name' => 'সভাপতি']);
+    CommitteeMember::create(['position_id' => $position->id, 'name' => 'লাবণ্য', 'sort_order' => 0]);
+
     $members = Committee::all();
 
-    $this->get('/')
+    expect($members)
+        ->toHaveCount(1)
+        ->and($members[0]['role'])->toBe('সভাপতি')
+        ->and($members[0]['name'])->toBe('লাবণ্য')
+        ->and($members[0]['image'])->toBeNull()
+        ->and($members[0]['vacant'])->toBeFalse()
+        ->and($members[0])->not->toHaveKey('initial');
+});
+
+it('marks unassigned seats as vacant', function () {
+    $position = Position::create(['name' => 'সাধারণ সম্পাদক']);
+    CommitteeMember::create(['position_id' => $position->id, 'sort_order' => 0]);
+
+    $members = Committee::all();
+
+    expect($members[0]['vacant'])->toBeTrue()
+        ->and($members[0]['name'])->toBe('—');
+});
+
+it('renders the committee page without crashing when no members exist', function () {
+    $this->get('/committee')
         ->assertOk()
-        ->assertSee($members[0]['name'])
-        ->assertSee($members[1]['name'])
-        ->assertSee($members[2]['name'])
-        ->assertSee($members[3]['name'])
-        ->assertSee($members[4]['name'])
-        ->assertDontSee('মোঃ আব্দুল করিম');
-});
-
-it('renders photos for members with images and initials for the rest', function () {
-    $this->get('/committee')
-        ->assertSee('/temp/committee/লাবণ্য_.jpg')
-        ->assertSee('লিওন');
-});
-
-it('renders every committee member from the data file', function () {
-    $members = Committee::all();
-
-    $this->get('/committee')
-        ->assertSee($members[0]['name'])
-        ->assertSee('শূন্য আসন');
-
-    foreach ($members as $member) {
-        $this->get('/committee')->assertSee($member['name']);
-    }
+        ->assertSee('বর্তমান কার্যনির্বাহী কমিটি');
 });
