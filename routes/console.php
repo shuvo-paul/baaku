@@ -11,5 +11,8 @@ Artisan::command('inspire', function () {
 // Daily backup to Google Drive at 3:00 AM
 Schedule::command('backup:run')->dailyAt('03:00');
 
+// Check backup health daily at 3:30 AM (after backup completes)
+Schedule::command('backup:monitor')->dailyAt('03:30');
+
 // Weekly cleanup of old backups on Sunday at 4:00 AM
 Schedule::command('backup:clean')->weeklyOn(0, '04:00');
