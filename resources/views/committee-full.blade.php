@@ -15,6 +15,10 @@
     }
 
     $gradients = ['from-signal-orange/8 to-signal-orange-light/5', 'from-charcoal/8 to-ink/5', 'from-signal-orange-light/8 to-signal-orange/5', 'from-ink/6 to-charcoal/4'];
+    $curves = [
+        'M 200 120 Q 400 30 600 120 Q 800 210 1000 120',
+        'M 200 120 Q 400 210 600 120 Q 800 30 1000 120',
+    ];
 @endphp
 
 <x-layouts.app title="কার্যনির্বাহী কমিটি — বাকু">
@@ -82,7 +86,12 @@
         @foreach($rows as $row)
         <section class="relative px-6 pb-20 lg:px-12 lg:pb-28">
             <div class="max-w-[1200px] mx-auto">
-                <div class="flex flex-wrap justify-center gap-12 lg:gap-8">
+                <div class="relative">
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" viewBox="0 0 1200 300" fill="none" preserveAspectRatio="xMidYMid meet">
+                        <path d="{{ $curves[$loop->index % 2] }}" stroke="#F37338" stroke-width="1.2" fill="none" opacity="0.35"/>
+                    </svg>
+
+                    <div class="flex flex-wrap justify-center gap-12 lg:gap-8">
                     @foreach($row as $member)
                     <div class="flex flex-col items-center w-[180px] lg:w-[220px]">
                         <div class="relative mb-6">
@@ -103,6 +112,7 @@
                         <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] {{ ($member['vacant'] ?? false) ? 'text-dust-taupe' : 'text-ink' }} text-center">{{ $member['name'] }}</h3>
                     </div>
                     @endforeach
+                    </div>
                 </div>
             </div>
         </section>
