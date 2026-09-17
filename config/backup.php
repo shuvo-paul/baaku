@@ -27,7 +27,7 @@ return [
                  */
                 'include' => [
                     storage_path('app/public'),
-                    //base_path(),
+                    // base_path(),
                     // storage_path(),  // Include if you use zero downtime deployments and don't follow symlinks
                 ],
 
@@ -166,7 +166,7 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+                'google_drive',
             ],
 
             /*
@@ -299,7 +299,7 @@ return [
     'monitor_backups' => [
         [
             'name' => env('APP_NAME', 'laravel-backup'),
-            'disks' => ['local'],
+            'disks' => ['google_drive'],
             'health_checks' => [
                 MaximumAgeInDays::class => 1,
                 MaximumStorageInMegabytes::class => 5000,
