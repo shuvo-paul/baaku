@@ -6,6 +6,11 @@ use Alumkit\Alumkit\Enums\UserState;
 
 return [
 
+    'features' => [
+        'posts' => false,
+        'committee' => true,
+    ],
+
     'auth' => [
 
         'user_model' => 'App\\Models\\User',
