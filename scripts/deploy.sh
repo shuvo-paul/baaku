@@ -33,6 +33,7 @@ rsync -avzO --delete --no-perms --no-owner --no-group --chmod=ug+rwX -e "ssh -p 
   --exclude='node_modules' \
   --exclude='.env' \
   --exclude='.env.prod' \
+  --exclude='storage/app/*' \
   --exclude='storage/logs/*' \
   --exclude='storage/framework/cache/*' \
   --exclude='storage/framework/sessions/*' \
