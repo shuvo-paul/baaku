@@ -10,8 +10,8 @@ it('gates a newly registered user on email verification', function () {
         'name' => 'New Member',
         'email' => 'new@example.com',
         'phone' => '01700000000',
-        'password' => 'password',
-        'password_confirmation' => 'password',
+        'password' => 'Password1!',
+        'password_confirmation' => 'Password1!',
     ])->assertRedirect('/dashboard');
 
     $user = User::where('email', 'new@example.com')->firstOrFail();
