@@ -37,6 +37,10 @@ return [
         'permissions' => [],
     ],
 
+    'local_names' => [
+        'bn' => ['label' => 'বাংলা নাম', 'required' => true],
+    ],
+
     'dashboard_nav' => [
         // A link:            ['label' => 'Events', 'route' => 'events.index', 'permission' => 'manage events']
         // permission is optional; omitted -> visible to all authenticated users.
