@@ -14,7 +14,7 @@
     --color-charcoal: #262627;
     --color-slate-gray: #696969;
     --color-signal-orange: #CF4500;
-    --color-signal-orange-light: #F37338;
+    --color-accent: #ED1C24;
     --color-clay: #9A3A0A;
     --color-ghost-cream: #E8E2DA;
     --color-soft-bone: #F4F4F4;
@@ -39,7 +39,7 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: var(--color-signal-orange-light);
+    background: var(--color-accent);
     animation: pulse-ring 2s ease-out infinite;
 }
 

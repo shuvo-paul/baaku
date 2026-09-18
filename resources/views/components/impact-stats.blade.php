@@ -2,7 +2,7 @@
     <div class="max-w-[1200px] mx-auto">
         {{-- Eyebrow --}}
         <div class="flex items-center gap-2 mb-6">
-            <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
             <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Our Impact</span>
         </div>
 

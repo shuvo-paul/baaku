@@ -16,7 +16,7 @@
                     <span class="text-[14px] font-medium tracking-[-0.01em]">হোমে ফিরে যান</span>
                 </a>
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Blog</span>
                 </div>
                 <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">সব প্রবন্ধ</h1>

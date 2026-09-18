@@ -15,7 +15,7 @@ Typography is rendered entirely in **MarkForMC**, Mastercard's proprietary geome
 - Ghost "watermark" headlines (cream-on-cream text at heading scale) layered behind circle portraits
 - Black primary CTAs with 20px radius in the body — the cookie-banner orange is kept to consent flows
 - Floating pill-shaped navigation that docks below the viewport top with rounded shoulders
-- Eyebrow labels with a tiny accent dot + uppercase bold tracking — used as the section-category signal
+- Eyebrow labels with a tiny accent dot (Vivid Red `#ED1C24`) + uppercase bold tracking — used as the section-category signal
 - Dark warm-black footer (`#141413`) with four-column link layout and large conversational headline
 
 ## 2. Color Palette & Roles
@@ -26,8 +26,9 @@ Typography is rendered entirely in **MarkForMC**, Mastercard's proprietary geome
 - **Ink Black** (`#141413`): The warm near-black used for primary CTAs, headline text on cream, and the footer surface. Slightly warm (the `13` blue value pulls toward the cream) so it never feels jet-black on the warm canvas.
 
 ### Secondary & Accent
-- **Signal Orange** (`#CF4500`): The burnt/rust CTA orange used on consent actions and eyebrow dots. Deeper than the brand yellow, brighter than ink — it's the page's single aggressive color and must be used sparingly.
+- **Signal Orange** (`#CF4500`): The burnt/rust CTA orange used on consent actions. Deeper than the brand yellow, brighter than ink — it's the page's single aggressive compliance color and must be used sparingly.
 - **Light Signal Orange** (`#F37338`): A lighter carroty orange used for carousel active indicators and decorative orbital arcs. Always acts as an attention cue, never as body color.
+- **Vivid Red** (`#ED1C24`): A bright, saturated red used for eyebrow accent dots and list bullet indicators — the section-category signal color.
 - **Clay Brown** (`#9A3A0A`): The deep rust used for secondary link-style buttons (e.g., cookie details). Sits between ink and signal orange.
 
 ### Surface & Background
@@ -338,11 +339,12 @@ Circular portraits scale proportionally (maintaining the perfect circle at every
 - Muted text: "Slate Gray (`#696969`)"
 - Signal / Consent: "Signal Orange (`#CF4500`) — reserve for cookie consent and legal actions"
 - Accent arc: "Light Signal Orange (`#F37338`) — orbital decorative lines only"
+- Accent dot / bullet: "Vivid Red (`#ED1C24`) — eyebrow accent dots and list bullet indicators"
 - Border / Outline: "Ink Black at 1.5px for pill buttons; 1px at low opacity elsewhere"
 - Footer: "Ink Black (`#141413`) with White text"
 
 ### Example Component Prompts
-- "Create a circular portrait card 300px in diameter, with a square photograph cropped to a perfect circle. Attach a 56px white satellite button with a dark arrow icon at the bottom-right, so it protrudes ~40% outside the portrait. Below the portrait, add an eyebrow label with a Light Signal Orange dot and uppercase 'SERVICES' text in MarkForMC weight 700 at 14px. Below the eyebrow, set a 24px / weight 500 title in Ink Black."
+- "Create a circular portrait card 300px in diameter, with a square photograph cropped to a perfect circle. Attach a 56px white satellite button with a dark arrow icon at the bottom-right, so it protrudes ~40% outside the portrait. Below the portrait, add an eyebrow label with a Vivid Red (`#ED1C24`) dot and uppercase 'SERVICES' text in MarkForMC weight 700 at 14px. Below the eyebrow, set a 24px / weight 500 title in Ink Black."
 - "Design a primary CTA button: Ink Black (`#141413`) background, Canvas Cream (`#F3F0EE`) text, 20px border-radius, 6px vertical and 24px horizontal padding, MarkForMC font at 16px weight 500 with -2% letter-spacing."
 - "Build a floating navigation pill: white background with `rgba(0, 0, 0, 0.04) 0px 4px 24px 0px` shadow, 999px border-radius, ~16px vertical and 40px horizontal internal padding. Position it 24px below the viewport top, centered, with the Mastercard logo at the left, five primary links centered with 48px gap, and a circular 48px search button at the right."
 - "Create a hero media frame: 40px border-radius on all corners, full viewport width minus 48px gutters, ~60% viewport height, dark background for video content. Place it directly on the cream canvas with no shadow."

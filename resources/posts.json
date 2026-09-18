@@ -52,7 +52,7 @@
         "date": "৯ ফেব্রুয়ারি, ২০২৬",
         "excerpt": "খুলনা বিশ্ববিদ্যালয়ের (খুবি) ১১তম আন্তঃডিসিপ্লিন ভলিবল প্রতিযোগিতা-২০২৬ এ দারুণ আধিপত্য বজায় রেখে ছাত্রীদের বিভাগে চ্যাম্পিয়ন হওয়ার গৌরব অর্জন করেছে বাংলা ডিসিপ্লিন।",
         "initial": "খ",
-        "gradient": "from-signal-orange\/8 to-signal-orange-light\/5",
+        "gradient": "from-signal-orange\/8 to-accent\/5",
         "author": "সম্পাদকীয় বোর্ড, বাকু",
         "reading_time": "১ মিনিটের পাঠ",
         "body": [
@@ -108,7 +108,7 @@
         "date": "১৩ আগস্ট, ২০১৮",
         "excerpt": "আন্তঃডিসিপ্লিন টেবিল টেনিস টুর্নামেন্ট ২০১৮-তে অপরাজিত চ্যাম্পিয়ন বাংলা ডিসিপ্লিন।",
         "initial": "আ",
-        "gradient": "from-signal-orange-light\/8 to-signal-orange\/5",
+        "gradient": "from-accent\/8 to-signal-orange\/5",
         "author": "সম্পাদকীয় বোর্ড, বাকু",
         "reading_time": "১ মিনিটের পাঠ",
         "body": [

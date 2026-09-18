@@ -21,7 +21,7 @@
                 </a>
 
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">About Us</span>
                 </div>
                 <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
@@ -43,7 +43,7 @@
         <section class="px-6 pb-20 lg:px-12 lg:pb-28">
             <div class="max-w-[800px] mx-auto">
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">আমাদের পথচলা ও ঐতিহ্য</span>
                 </div>
                 <div class="space-y-6">
@@ -64,7 +64,7 @@
         <section class="px-6 pb-20 lg:px-12 lg:pb-28">
             <div class="max-w-[800px] mx-auto">
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">সাংস্কৃতিক উৎকর্ষ ও নেতৃত্ব</span>
                 </div>
                 <div class="space-y-6">
@@ -85,7 +85,7 @@
         <section class="px-6 pb-20 lg:px-12 lg:pb-28">
             <div class="max-w-[800px] mx-auto">
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">ক্রীড়াঙ্গনে গৌরবময় সাফল্য</span>
                 </div>
                 <div class="space-y-6">
@@ -94,19 +94,19 @@
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-3 text-[17px] leading-[1.8] text-ink" style="font-weight: 450;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light mt-2.5 shrink-0"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></span>
                             <span>ভলিবলে পুরুষ দল ৩ বার বিশ্ববিদ্যালয় চ্যাম্পিয়ন</span>
                         </li>
                         <li class="flex items-start gap-3 text-[17px] leading-[1.8] text-ink" style="font-weight: 450;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light mt-2.5 shrink-0"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></span>
                             <span>ফুটবলে পুরুষ দল ২ বার চ্যাম্পিয়ন</span>
                         </li>
                         <li class="flex items-start gap-3 text-[17px] leading-[1.8] text-ink" style="font-weight: 450;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light mt-2.5 shrink-0"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></span>
                             <span>ভলিবলে মহিলা দল বিশ্ববিদ্যালয় পর্যায়ে সফল প্রদর্শনী</span>
                         </li>
                         <li class="flex items-start gap-3 text-[17px] leading-[1.8] text-ink" style="font-weight: 450;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light mt-2.5 shrink-0"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0"></span>
                             <span>টেবিল টেনিসে অপরাজিত রেকর্ড</span>
                         </li>
                     </ul>
@@ -121,7 +121,7 @@
         <section class="px-6 pb-20 lg:px-12 lg:pb-28">
             <div class="max-w-[800px] mx-auto">
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">আমাদের অ্যালামনাই ও কর্মক্ষেত্র</span>
                 </div>
                 <div class="space-y-6">
@@ -139,7 +139,7 @@
         <section class="px-6 pb-20 lg:px-12 lg:pb-28">
             <div class="max-w-[800px] mx-auto">
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">আমাদের ভবিষ্যৎ অঙ্গীকার</span>
                 </div>
                 <div class="space-y-6">

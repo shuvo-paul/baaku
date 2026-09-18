@@ -2,7 +2,7 @@
     <div class="bg-ink rounded-[40px] px-8 py-16 lg:px-20 lg:py-20 text-center">
         {{-- Eyebrow --}}
         <div class="flex items-center justify-center gap-2 mb-6">
-            <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+            <span class="w-2 h-2 rounded-full bg-accent"></span>
             <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">Join Us</span>
         </div>
 

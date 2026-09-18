@@ -4,7 +4,7 @@
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16">
             <div>
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Events</span>
                 </div>
                 <h2 class="font-display text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[500px]">
@@ -25,7 +25,7 @@
             <div class="bg-white rounded-[40px] overflow-hidden flex flex-col lg:flex-row">
                 {{-- Date block --}}
                 <div class="flex flex-row lg:flex-col items-center justify-center gap-1 lg:gap-0 px-8 py-6 lg:py-0 lg:px-0 lg:w-[200px] shrink-0 border-b lg:border-b-0 lg:border-r border-canvas-cream">
-                    <span class="text-[13px] font-bold uppercase tracking-[0.04em] text-signal-orange-light lg:mb-1">আগস্ট</span>
+                    <span class="text-[13px] font-bold uppercase tracking-[0.04em] text-accent lg:mb-1">আগস্ট</span>
                     <span class="text-[48px] lg:text-[56px] font-medium leading-none tracking-[-0.02em] text-ink lg:mb-1">১৫</span>
                     <span class="text-[13px] text-slate-gray">২০২৬</span>
                 </div>
@@ -49,7 +49,7 @@
             <div class="bg-white rounded-[40px] overflow-hidden flex flex-col lg:flex-row">
                 {{-- Date block --}}
                 <div class="flex flex-row lg:flex-col items-center justify-center gap-1 lg:gap-0 px-8 py-6 lg:py-0 lg:px-0 lg:w-[200px] shrink-0 border-b lg:border-b-0 lg:border-r border-canvas-cream">
-                    <span class="text-[13px] font-bold uppercase tracking-[0.04em] text-signal-orange-light lg:mb-1">সেপ্টেম্বর</span>
+                    <span class="text-[13px] font-bold uppercase tracking-[0.04em] text-accent lg:mb-1">সেপ্টেম্বর</span>
                     <span class="text-[48px] lg:text-[56px] font-medium leading-none tracking-[-0.02em] text-ink lg:mb-1">৫</span>
                     <span class="text-[13px] text-slate-gray">২০২৬</span>
                 </div>
@@ -76,7 +76,7 @@
             <div class="bg-white rounded-[40px] overflow-hidden flex flex-col lg:flex-row">
                 {{-- Date block --}}
                 <div class="flex flex-row lg:flex-col items-center justify-center gap-1 lg:gap-0 px-8 py-6 lg:py-0 lg:px-0 lg:w-[200px] shrink-0 border-b lg:border-b-0 lg:border-r border-canvas-cream">
-                    <span class="text-[13px] font-bold uppercase tracking-[0.04em] text-signal-orange-light lg:mb-1">ফেব্রুয়ারি</span>
+                    <span class="text-[13px] font-bold uppercase tracking-[0.04em] text-accent lg:mb-1">ফেব্রুয়ারি</span>
                     <span class="text-[48px] lg:text-[56px] font-medium leading-none tracking-[-0.02em] text-ink lg:mb-1">২১</span>
                     <span class="text-[13px] text-slate-gray">২০২৭</span>
                 </div>

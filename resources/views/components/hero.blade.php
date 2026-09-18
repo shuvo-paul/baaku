@@ -6,7 +6,7 @@
             <div class="flex flex-col justify-center px-8 py-16 lg:px-16 lg:py-20">
                 {{-- Eyebrow --}}
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-dust-taupe">Est. 2011 · Khulna University</span>
                 </div>
 

@@ -17,7 +17,7 @@
                     <span class="text-[14px] font-medium tracking-[-0.01em]">সব প্রবন্ধে ফিরে যান</span>
                 </a>
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Blog</span>
                 </div>
                 <div class="flex items-center gap-3 mb-6">
@@ -46,7 +46,7 @@
                             <h2 class="font-display text-[24px] lg:text-[28px] font-medium tracking-[-0.02em] text-ink mt-12 mb-5">{{ $block['text'] }}</h2>
                         @elseif ($block['type'] === 'quote')
                             <div class="bg-lifted-cream rounded-[40px] p-10 lg:p-12 my-12 text-center">
-                                <span class="text-[56px] text-signal-orange-light font-bold leading-none block mb-4" aria-hidden="true">"</span>
+                                <span class="text-[56px] text-accent font-bold leading-none block mb-4" aria-hidden="true">"</span>
                                 <p class="text-[22px] lg:text-[26px] font-medium tracking-[-0.02em] text-ink leading-[1.5]">{{ $post['quote'] }}</p>
                             </div>
                         @elseif ($loop->first)
@@ -101,7 +101,7 @@
         <section class="relative px-6 pb-24 lg:px-12 lg:pb-32">
             <div class="max-w-[1200px] mx-auto">
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">আরও পড়ুন</span>
                 </div>
                 <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] text-ink mb-10">সম্পর্কিত প্রবন্ধ</h2>

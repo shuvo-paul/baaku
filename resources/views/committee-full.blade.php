@@ -14,7 +14,7 @@
         $i++;
     }
 
-    $gradients = ['from-signal-orange/8 to-signal-orange-light/5', 'from-charcoal/8 to-ink/5', 'from-signal-orange-light/8 to-signal-orange/5', 'from-ink/6 to-charcoal/4'];
+    $gradients = ['from-signal-orange/8 to-accent/5', 'from-charcoal/8 to-ink/5', 'from-accent/8 to-signal-orange/5', 'from-ink/6 to-charcoal/4'];
     $curves = [
         'M 200 120 Q 400 30 600 120 Q 800 210 1000 120',
         'M 200 120 Q 400 210 600 120 Q 800 30 1000 120',
@@ -44,7 +44,7 @@
                 </a>
 
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Current Committee</span>
                 </div>
                 <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-2 mb-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
                         <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $first['role'] }}</span>
                     </div>
                     <h2 class="font-display text-[28px] lg:text-[32px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $first['name'] }}</h2>
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-2 mb-2">
-                            <span class="w-1.5 h-1.5 rounded-full {{ ($member['vacant'] ?? false) ? 'bg-dust-taupe' : 'bg-signal-orange-light' }}"></span>
+                            <span class="w-1.5 h-1.5 rounded-full {{ ($member['vacant'] ?? false) ? 'bg-dust-taupe' : 'bg-accent' }}"></span>
                             <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $member['role'] }}</span>
                         </div>
                         <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] {{ ($member['vacant'] ?? false) ? 'text-dust-taupe' : 'text-ink' }} text-center">{{ $member['name'] }}</h3>

@@ -608,7 +608,7 @@ $body = preg_replace_callback('/<h3>(.*?)<\/h3>/s', function (array $m) use (&$c
                 </a>
 
                 <div class="flex items-center gap-2 mb-6">
-                    <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
                     <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Constitution</span>
                 </div>
                 <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
@@ -626,7 +626,7 @@ $body = preg_replace_callback('/<h3>(.*?)<\/h3>/s', function (array $m) use (&$c
                 <aside class="hidden lg:block">
                     <nav class="sticky top-32">
                         <div class="flex items-center gap-2 mb-6">
-                            <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                            <span class="w-2 h-2 rounded-full bg-accent"></span>
                             <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">সূচিপত্র</span>
                         </div>
                         <ul class="constitution-toc">

@@ -2,7 +2,7 @@
     $committee = \App\Committee::all();
     $first = $committee[0] ?? null;
     $others = collect($committee)->slice(1, 4);
-    $gradients = ['from-signal-orange/8 to-signal-orange-light/5', 'from-charcoal/8 to-ink/5', 'from-signal-orange-light/8 to-signal-orange/5', 'from-ink/6 to-charcoal/4'];
+    $gradients = ['from-signal-orange/8 to-accent/5', 'from-charcoal/8 to-ink/5', 'from-accent/8 to-signal-orange/5', 'from-ink/6 to-charcoal/4'];
 @endphp
 
 <section id="committee" class="relative px-6 py-24 lg:px-12 lg:py-32 overflow-hidden">
@@ -17,7 +17,7 @@
         {{-- Header --}}
         <div class="mb-16 lg:mb-24 max-w-[600px]">
             <div class="flex items-center gap-2 mb-6">
-                <span class="w-2 h-2 rounded-full bg-signal-orange-light"></span>
+                <span class="w-2 h-2 rounded-full bg-accent"></span>
                 <span class="uppercase text-[14px] font-bold tracking-[0.04em] text-slate-gray">Current Committee</span>
             </div>
             <h2 class="font-display text-[36px] lg:text-[48px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="flex items-center gap-2 mb-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
                 <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $first['role'] }}</span>
             </div>
             <h3 class="font-display text-[24px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $first['name'] }}</h3>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2 mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-signal-orange-light"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
                     <span class="uppercase text-[12px] font-bold tracking-[0.04em] text-slate-gray">{{ $member['role'] }}</span>
                 </div>
                 <h3 class="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-center">{{ $member['name'] }}</h3>
