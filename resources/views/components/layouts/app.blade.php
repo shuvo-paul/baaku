@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="বাংলা ভাষা ও সাহিত্য বিভাগ প্রাক্তন ছাত্র সমিতি — বাংলা ভাষা ও সাহিত্যের প্রাক্তন ছাত্রদের সমিতি">
+        <meta name="description" content="বাংলা ভাষা ও সাহিত্য ডিসিপ্লিনের প্রাক্তন ছাত্রদের একটি সংবদ্ধ নেটওয়ার্ক।">
 
-        <title>{{ $title ?? 'বাংলা ভাষা ও সাহিত্য প্রাক্তন ছাত্র সমিতি' }}</title>
+        <title>{{ $title ?? 'বাংলা অ্যালামনাই অ্যাসোসিয়েশন' }}</title>
 
         <link rel="icon" href="/logo.png" type="image/png">
         <link rel="apple-touch-icon" href="/logo.png">
