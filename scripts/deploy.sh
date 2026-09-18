@@ -36,7 +36,7 @@ REMOTE="ssh -p ${SSH_PORT} ${SSH_USER}@${SSH_SERVER}"
 RELEASE_NAME="$(date +%Y%m%d_%H%M%S)"
 RELEASE_DIR="${APP_PATH}/releases/${RELEASE_NAME}"
 SHARED_DIR="${APP_PATH}/shared"
-KEEP_RELEASES=5
+KEEP_RELEASES=2
 
 # ── Build frontend locally ───────────────────────────────────────────────────
 echo "Building frontend assets locally..."
@@ -87,17 +87,17 @@ ${REMOTE} "ln -sfn '${RELEASE_DIR}' '${APP_PATH}/current.tmp' \
     && mv -Tf '${APP_PATH}/current.tmp' '${APP_PATH}/current'"
 
 # ── Server / OPcache Reload ──────────────────────────────────────────────────
-echo "Reloading server to clear OPcache..."
+# echo "Reloading server to clear OPcache..."
 # Note: If running FrankenPHP or Octane, replace this block with your specific
 # reload command (e.g., `sudo systemctl reload frankenphp` or `php artisan octane:reload`).
-${REMOTE} "[ -x /usr/sbin/php-fpm* ] && \
-    sudo systemctl reload php*-fpm 2>/dev/null || \
-    sudo service php*-fpm reload 2>/dev/null || \
-    echo '⚠ PHP-FPM reload skipped'" || true
+# ${REMOTE} "[ -x /usr/sbin/php-fpm* ] && \
+#     sudo systemctl reload php*-fpm 2>/dev/null || \
+#     sudo service php*-fpm reload 2>/dev/null || \
+#     echo '⚠ PHP-FPM reload skipped'" || true
 
 # ── Restart queue workers ────────────────────────────────────────────────────
-echo "Restarting queue workers..."
-${REMOTE} "cd '${APP_PATH}/current' && php artisan queue:restart" || true
+# echo "Restarting queue workers..."
+# ${REMOTE} "cd '${APP_PATH}/current' && php artisan queue:restart" || true
 
 # ── Prune old releases ───────────────────────────────────────────────────────
 echo "Keeping last ${KEEP_RELEASES} releases..."
