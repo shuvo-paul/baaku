@@ -12,6 +12,13 @@ it('gates a newly registered user on email verification', function () {
         'phone' => '01700000000',
         'password' => 'Password1!',
         'password_confirmation' => 'Password1!',
+        'educations' => [[
+            'level' => 'Honors',
+            'institution' => 'Dhaka University',
+            'subject' => 'Bangla',
+            'start_year' => 2018,
+            'is_current' => true,
+        ]],
     ])->assertRedirect('/dashboard');
 
     $user = User::where('email', 'new@example.com')->firstOrFail();
@@ -25,7 +32,7 @@ it('gates a newly registered user on email verification', function () {
 
 it('sends an unverified user to complete their profile only after verification', function () {
     $user = User::factory()->create([
-        'state' => UserState::Active->value,
+        'state' => UserState::Registered->value,
         'email_verified_at' => Carbon::now(),
     ]);
 
