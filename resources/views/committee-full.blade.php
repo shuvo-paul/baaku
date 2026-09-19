@@ -50,9 +50,6 @@
                 <h1 class="font-display text-[36px] lg:text-[56px] font-medium leading-[1.1] tracking-[-0.02em] text-ink text-balance max-w-[700px]">
                     বর্তমান কার্যনির্বাহী কমিটি
                 </h1>
-                <p class="mt-6 text-[17px] text-slate-gray leading-[1.6] max-w-[560px]" style="font-weight: 450;">
-                    বাংলা ভাষা ও সাহিত্য বিভাগ প্রাক্তন ছাত্র সমিতির কার্যনির্বাহী কমিটি।
-                </p>
             </div>
         </section>
 
