@@ -58,6 +58,7 @@ rsync -avzO --delete --no-perms --no-owner --no-group --chmod=ug+rwX \
     -e "ssh -p ${SSH_PORT}" \
     --exclude='.git' \
     --exclude='node_modules' \
+    --exclude='vendor' \
     --exclude='.env*' \
     --exclude='storage/' \
     --exclude='bootstrap/cache/' \
