@@ -9,6 +9,7 @@ return [
     'features' => [
         'posts' => false,
         'committee' => true,
+        'memberships' => true
     ],
 
     'auth' => [
