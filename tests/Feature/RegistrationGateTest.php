@@ -1,6 +1,6 @@
 <?php
 
-use Alumkit\Alumkit\Enums\UserState;
+use App\Enums\UserState;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -32,11 +32,11 @@ it('gates a newly registered user on email verification', function () {
 
 it('sends an unverified user to complete their profile only after verification', function () {
     $user = User::factory()->create([
-        'state' => UserState::Registered->value,
+        'state' => UserState::Unverified->value,
         'email_verified_at' => Carbon::now(),
     ]);
 
     $this->actingAs($user)
         ->get('/dashboard')
-        ->assertRedirect(route('alumkit.profile.complete'));
+        ->assertRedirect(route('profile.complete'));
 });
