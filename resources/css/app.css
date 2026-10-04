@@ -1,9 +1,39 @@
-@import 'tailwindcss';
+/*
+ * App entry — auth views (layouts/app) + the pre-existing BAAKU public pages
+ * (components/layouts/app). Cream BAAKU theme with Noto fonts; Heritage
+ * tokens are imported so auth keeps its navy TallStackUI controls and
+ * heritage utility classes (e.g. photo-cropper on complete-profile).
+ */
+@import 'tailwindcss' source(none);
+@import './theme-heritage.css';
 
 [x-cloak] { display: none !important; }
 
-@source '../views';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+/*
+ * Narrow source list: auth + BAAKU views and the components they render.
+ * If a page ships an unstyled element, widen with one more @source line.
+ */
+@source '../views/auth';
+@source '../views/blogs';
+@source '../views/homepage.blade.php';
+@source '../views/committee-full.blade.php';
+@source '../views/about.blade.php';
+@source '../views/constitution.blade.php';
+@source '../views/components/layouts/app.blade.php';
+@source '../views/components/nav.blade.php';
+@source '../views/components/hero.blade.php';
+@source '../views/components/about.blade.php';
+@source '../views/components/committee.blade.php';
+@source '../views/components/blogs.blade.php';
+@source '../views/components/footer.blade.php';
+@source '../views/components/form-wrapper.blade.php';
+@source '../views/components/input-error.blade.php';
+@source '../views/components/form';
+@source '../views/components/suggest.blade.php';
+@source '../views/components/select.blade.php';
+@source '../views/components/year-select.blade.php';
+@source '../views/components/month-select.blade.php';
+@source '../views/components/photo-cropper.blade.php';
 
 @theme {
     --font-sans: 'Noto Sans Bengali', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
