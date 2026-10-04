@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-use Alumkit\Alumkit\Enums\UserState;
+use App\Enums\UserState;
 
 return [
 
     'features' => [
+        // Toggle dashboard features off to hide their routes and dashboard
+        // links. Enabled by default.
         'posts' => false,
         'committee' => true,
-        'memberships' => true
+        'memberships' => true,
     ],
 
     'auth' => [
@@ -32,8 +34,8 @@ return [
         |-----------------------------------------------------------------------
         | Permissions
         |-----------------------------------------------------------------------
-        | Add your app-specific permissions here. Package permissions (defined
-        | in Alumkit::PERMISSIONS) are always seeded and cannot be removed.
+        | Add your app-specific permissions here. Built-in permissions (defined
+        | in Permissions::PERMISSIONS) are always seeded and cannot be removed.
         */
         'permissions' => [],
     ],
@@ -55,6 +57,8 @@ return [
     'education' => [
         'levels' => ['Honors', 'Masters', 'PhD', 'Diploma', 'Certificate'],
 
+        // Suggested levels, institutions and subjects for the education form fields.
+        // Users may still type any value.
         'institutions' => [
             'Khulna University',
             'Bangabandhu Sheikh Mujib Medical University (BSMMU)',
@@ -190,6 +194,47 @@ return [
             'Urban and Regional Planning',
             'Women and Gender Studies',
             'Zoology',
+        ],
+    ],
+
+    'career' => [
+        'employment_types' => [
+            'full_time' => 'Full-Time',
+            'part_time' => 'Part-Time',
+            'contract' => 'Contract',
+            'freelance' => 'Freelance',
+            'internship' => 'Internship',
+        ],
+    ],
+
+    'maintenance' => [
+        'enabled' => env('ALUMKIT_MAINTENANCE_ENABLED', false),
+    ],
+
+    'membership' => [
+        // App-wide currency for all membership money, rendered by
+        // Members::formatMoney() (e.g. "BDT 1,500.00").
+        'currency' => env('ALUMKIT_MEMBERSHIP_CURRENCY', 'BDT'),
+
+        // Feature keys an admin can gate behind a membership plan. Each is a
+        // toggle in the plan editor; when a plan grants a key, members with an
+        // active plan reach the matching dashboard area. While the memberships
+        // feature is enabled these areas require a granting plan (staff who
+        // administer memberships bypass the gate). Apps may extend the list —
+        // add a matching `feature_{key}` label to lang/en/membership.php.
+        'gateable_features' => ['members', 'posts'],
+
+        // Payment methods (bKash, Nagad, bank transfer) are managed from the
+        // dashboard and stored in the database.
+        'expiry' => [
+            'enabled' => true,
+            'at' => '00:30',
+        ],
+
+        'proof' => [
+            'disk' => 'public',
+            'max_kb' => 2048,
+            'mimes' => ['jpg', 'jpeg', 'png', 'pdf'],
         ],
     ],
 
