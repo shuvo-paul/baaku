@@ -36,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody id="committee-tbody" x-data x-init="
-                        import('{{ url('alumkit/style/alumkit-sortable.esm.js') }}').then(function(m) {
+                        import('{{ url('assets/sortable.esm.js') }}').then(function(m) {
                             new m.default($el, {
                                 animation: 150,
                                 handle: '.drag-handle',
