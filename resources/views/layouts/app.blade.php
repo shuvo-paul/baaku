@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'AlumKit') }}</title>
     @tallStackUiStyle
-    <link rel="stylesheet" href="{{ url('alumkit/style/alumkit.css') }}">
+    @fonts(['noto-sans-bengali', 'instrument-sans'])
+    @vite('resources/css/app.css')
     <style>[x-cloak] { display: none !important; }</style>
     @stack('styles')
 </head>

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
     @tallStackUiStyle
-    <link rel="stylesheet" href="{{ url('alumkit/style/alumkit.css') }}">
+    @vite('resources/css/dashboard.css')
     <style>[x-cloak] { display: none !important; }</style>
 </head>
 <body>

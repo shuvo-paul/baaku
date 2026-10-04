@@ -15,6 +15,5 @@
         <div class="alumkit-editor-holder"></div>
     </div>
 
-    <link rel="stylesheet" href="{{ url('alumkit/style/alumkit-editor.css') }}">
-    <script defer src="{{ url('alumkit/style/alumkit-editor.js') }}"></script>
+    @vite('resources/js/editor.js')
 </div>

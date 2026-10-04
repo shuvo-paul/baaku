@@ -86,6 +86,5 @@
         </div>
     </div>
 
-    <link rel="stylesheet" href="{{ url('alumkit/style/alumkit-cropper.css') }}">
-    <script defer src="{{ url('alumkit/style/alumkit-cropper.js') }}"></script>
+    @vite('resources/js/cropper.js')
 </div>
