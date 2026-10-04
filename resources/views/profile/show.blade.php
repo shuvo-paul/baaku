@@ -1,0 +1,547 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+    use Laravel\Fortify\Features;
+@endphp
+
+@extends('layouts.dashboard')
+
+@section('content')
+    <div class="space-y-6">
+        <x-card>
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-navy">
+                    {{ __('auth.profile') }}
+                </h1>
+            </div>
+        </x-card>
+
+        <div
+            x-data="{
+                tab: 'profile',
+                tabs: ['profile', 'education', 'career', 'security'],
+                syncTab() { this.tab = this.tabs.includes((location.hash || '#profile').slice(1)) ? (location.hash || '#profile').slice(1) : 'profile'; },
+                moveTab(direction) {
+                    const index = this.tabs.indexOf(this.tab);
+                    document.getElementById('tab-' + this.tabs[(index + direction + this.tabs.length) % this.tabs.length])?.focus();
+                },
+            }"
+            x-init="syncTab()"
+            @hashchange.window="syncTab()"
+        >
+            <nav role="tablist" aria-label="{{ __('profile.details') }}" @keydown.arrow-right.prevent="moveTab(1)" @keydown.arrow-left.prevent="moveTab(-1)" class="mb-6 flex gap-1 border-b border-outline-variant/60">
+                <a href="#profile" id="tab-profile" role="tab" aria-controls="profile" :aria-selected="tab === 'profile'" :tabindex="tab === 'profile' ? 0 : -1"
+                   :class="tab === 'profile' ? 'text-navy border-gold' : 'text-on-surface-variant hover:text-navy border-transparent'"
+                   class="border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors">{{ __('auth.profile') }}</a>
+
+                <a href="#education" id="tab-education" role="tab" aria-controls="education" :aria-selected="tab === 'education'" :tabindex="tab === 'education' ? 0 : -1"
+                   :class="tab === 'education' ? 'text-navy border-gold' : 'text-on-surface-variant hover:text-navy border-transparent'"
+                   class="border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors">{{ __('education.education') }}</a>
+
+                <a href="#career" id="tab-career" role="tab" aria-controls="career" :aria-selected="tab === 'career'" :tabindex="tab === 'career' ? 0 : -1"
+                   :class="tab === 'career' ? 'text-navy border-gold' : 'text-on-surface-variant hover:text-navy border-transparent'"
+                   class="border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors">{{ __('career.career') }}</a>
+
+                <a href="#security" id="tab-security" role="tab" aria-controls="security" :aria-selected="tab === 'security'" :tabindex="tab === 'security' ? 0 : -1"
+                   :class="tab === 'security' ? 'text-navy border-gold' : 'text-on-surface-variant hover:text-navy border-transparent'"
+                   class="border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors">{{ __('profile.security') }}</a>
+            </nav>
+
+            <section id="profile" role="tabpanel" aria-labelledby="tab-profile" x-show="tab === 'profile'" x-cloak>
+                @php
+                    $localNameRules = [];
+                    foreach (config('alumkit.local_names', []) as $code => $langConfig) {
+                        if ($langConfig['required'] ?? false) {
+                            $localNameRules["local_names.{$code}"] = [
+                                'required' => true,
+                                'requiredMsg' => __('validation.required', ['attribute' => $langConfig['label']]),
+                            ];
+                        }
+                    }
+
+                    $profileFieldRules = Features::enabled(Features::updateProfileInformation())
+                        ? array_merge([
+                            'name' => ['required' => true, 'requiredMsg' => __('validation.required', ['attribute' => __('auth.name')]), 'regex' => '/^[A-Za-z\\s]+$/', 'regexMsg' => __('validation.name_latin_only')],
+                            'email' => ['required' => true, 'requiredMsg' => __('validation.required', ['attribute' => __('auth.email')]), 'email' => true, 'emailMsg' => __('validation.email', ['attribute' => __('auth.email')])],
+                            'phone' => ['required' => true, 'requiredMsg' => __('validation.required', ['attribute' => __('auth.phone')])],
+                            'present_address' => ['required' => true, 'requiredMsg' => __('validation.required', ['attribute' => __('profile.present_address')])],
+                            'permanent_address' => ['required' => true, 'requiredMsg' => __('validation.required', ['attribute' => __('profile.permanent_address')])],
+                        ], $localNameRules)
+                        : $localNameRules;
+                @endphp
+
+                <x-card>
+                    @if (in_array(session('status'), ['profile-details-updated', 'profile-information-updated'], true))
+                        <div class="mb-4 text-sm text-green-600">
+                            {{ __('profile.updated') }}
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('dashboard.profile.details.update') }}" enctype="multipart/form-data" class="space-y-4"
+                          x-data="alumkitForm({{ Js::from($profileFieldRules) }}, {{ Js::from($errors->getMessages()) }})"
+                          @focusout="validateField($event.target.name, $event.target.value)">
+                        @csrf
+                        @method('PUT')
+
+                        @if (Features::enabled(Features::updateProfileInformation()))
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <x-input
+                                        type="text"
+                                        name="name"
+                                        :value="old('name', Auth::user()->name)"
+                                        :label="__('auth.name')"
+                                        required
+                                        invalidate
+                                    />
+                                    <p x-show="fieldError('name')" x-cloak x-text="fieldError('name')"
+                                       class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                                </div>
+
+                                <div>
+                                    <x-input
+                                        type="email"
+                                        name="email"
+                                        :value="old('email', Auth::user()->email)"
+                                        :label="__('auth.email')"
+                                        required
+                                        invalidate
+                                    />
+                                    <p x-show="fieldError('email')" x-cloak x-text="fieldError('email')"
+                                       class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <x-input
+                                    type="tel"
+                                    name="phone"
+                                    :value="old('phone', Auth::user()->phone)"
+                                    :label="__('auth.phone')"
+                                    required
+                                    invalidate
+                                />
+                                <p x-show="fieldError('phone')" x-cloak x-text="fieldError('phone')"
+                                   class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                            </div>
+                        @endif
+
+                        <x-photo-cropper name="photo"
+                            :existing="Auth::user()->profile->photoUrl()"
+                            :initial="\Illuminate\Support\Str::initials(Auth::user()->name)"
+                            box-class="h-32 w-32"
+                            :choose-label="__('profile.choose_photo')" />
+
+                        @if (config('alumkit.local_names'))
+                            <div class="space-y-4">
+                                @foreach (config('alumkit.local_names') as $code => $langConfig)
+                                    <div>
+                                        <x-input
+                                            type="text"
+                                            name="local_names[{{ $code }}]"
+                                            :value="old('local_names.' . $code, Auth::user()->profile->local_names[$code] ?? '')"
+                                            :label="$langConfig['label']"
+                                            :required="$langConfig['required'] ?? false"
+                                        />
+                                        <p x-show="fieldError('local_names.{{ $code }}')" x-cloak x-text="fieldError('local_names.{{ $code }}')"
+                                           class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <x-input
+                                    type="date"
+                                    name="date_of_birth"
+                                    :value="old('date_of_birth', Auth::user()->profile->date_of_birth?->format('Y-m-d'))"
+                                    :label="__('profile.date_of_birth')"
+                                />
+                                <x-input-error name="date_of_birth" />
+                            </div>
+
+                            <x-select
+                                name="gender"
+                                :options="\App\Enums\Gender::options()"
+                                :value="old('gender', Auth::user()->profile->gender?->value)"
+                                :label="__('profile.gender')"
+                            />
+
+                            <x-select
+                                name="blood_group"
+                                :options="\App\Enums\BloodGroup::options()"
+                                :value="old('blood_group', Auth::user()->profile->blood_group?->value)"
+                                :label="__('profile.blood_group')"
+                            />
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <x-input
+                                    type="text"
+                                    name="present_address"
+                                    :value="old('present_address', Auth::user()->profile->present_address)"
+                                    :label="__('profile.present_address')"
+                                    required
+                                />
+                                <p x-show="fieldError('present_address')" x-cloak x-text="fieldError('present_address')"
+                                   class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                            </div>
+
+                            <div>
+                                <x-input
+                                    type="text"
+                                    name="permanent_address"
+                                    :value="old('permanent_address', Auth::user()->profile->permanent_address)"
+                                    :label="__('profile.permanent_address')"
+                                    required
+                                />
+                                <p x-show="fieldError('permanent_address')" x-cloak x-text="fieldError('permanent_address')"
+                                   class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                {{ __('profile.social_links') }}
+                            </label>
+
+                            <div>
+                                <x-input
+                                    type="url"
+                                    name="social_links[facebook]"
+                                    :value="old('social_links.facebook', Auth::user()->profile->social_links['facebook'] ?? '')"
+                                    :label="__('profile.facebook')"
+                                />
+                                <x-input-error name="social_links.facebook" />
+                            </div>
+
+                            <div>
+                                <x-input
+                                    type="url"
+                                    name="social_links[linkedin]"
+                                    :value="old('social_links.linkedin', Auth::user()->profile->social_links['linkedin'] ?? '')"
+                                    :label="__('profile.linkedin')"
+                                />
+                                <x-input-error name="social_links.linkedin" />
+                            </div>
+
+                            <div>
+                                <x-input
+                                    type="url"
+                                    name="website"
+                                    :value="old('website', Auth::user()->profile->website)"
+                                    :label="__('profile.website')"
+                                />
+                                <x-input-error name="website" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                {{ __('profile.emergency_contact') }}
+                            </label>
+
+                            <div class="mt-4 grid grid-cols-2 gap-4">
+                                <div>
+                                    <x-input
+                                        type="text"
+                                        name="emergency_contact[name]"
+                                        :value="old('emergency_contact.name', Auth::user()->profile->emergency_contact['name'] ?? '')"
+                                        :label="__('profile.emergency_contact_name')"
+                                    />
+                                    <x-input-error name="emergency_contact.name" />
+                                </div>
+
+                                <div>
+                                    <x-input
+                                        type="text"
+                                        name="emergency_contact[phone]"
+                                        :value="old('emergency_contact.phone', Auth::user()->profile->emergency_contact['phone'] ?? '')"
+                                        :label="__('profile.emergency_contact_phone')"
+                                    />
+                                    <x-input-error name="emergency_contact.phone" />
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <x-input
+                                    type="text"
+                                    name="emergency_contact[relation]"
+                                    :value="old('emergency_contact.relation', Auth::user()->profile->emergency_contact['relation'] ?? '')"
+                                    :label="__('profile.emergency_contact_relation')"
+                                />
+                                <x-input-error name="emergency_contact.relation" />
+                            </div>
+                        </div>
+
+                        <x-button type="submit" :text="__('profile.save')" />
+                    </form>
+                </x-card>
+            </section>
+
+            <section id="education" role="tabpanel" aria-labelledby="tab-education" x-show="tab === 'education'" x-cloak>
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-navy">
+                        {{ __('education.educations') }}
+                    </h2>
+                    <a href="{{ route('dashboard.profile.educations.create') }}">
+                        <x-button :text="__('education.add_education')" />
+                    </a>
+                </div>
+
+                @php $educations = Auth::user()->educations()->orderByDesc('start_year')->get(); @endphp
+
+                @forelse ($educations as $education)
+                    <div class="mt-4">
+                        <x-card>
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    @if ($education->start_year)
+                                        <p class="label-caps text-gold">
+                                            {{ $education->start_year }} — {{ $education->end_year ?? __('education.present') }}
+                                        </p>
+                                    @endif
+                                    <h3 class="mt-1 font-serif text-lg font-semibold text-navy">{{ $education->institution }}</h3>
+                                    <p class="mt-0.5 text-sm text-on-surface-variant">
+                                        {{ $education->level }}{{ $education->subject ? ' · '.$education->subject : '' }}
+                                    </p>
+                                </div>
+                                <div class="flex shrink-0 items-center gap-3 text-sm">
+                                    <a href="{{ route('dashboard.profile.educations.edit', $education) }}" class="text-navy hover:text-gold">{{ __('dashboard.edit') }}</a>
+                                    <form method="POST" action="{{ route('dashboard.profile.educations.destroy', $education) }}" class="inline" data-confirm="{{ __('dashboard.confirm_delete') }}" onsubmit="return confirm(this.dataset.confirm)">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900">{{ __('dashboard.delete') }}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </x-card>
+                    </div>
+                @empty
+                    <div class="mt-4">
+                        <x-card>
+                            <p class="text-sm text-on-surface-variant">{{ __('education.no_educations') }}</p>
+                            <a href="{{ route('dashboard.profile.educations.create') }}" class="mt-3 inline-block">
+                                <x-button :text="__('education.add_education')" outline />
+                            </a>
+                        </x-card>
+                    </div>
+                @endforelse
+            </section>
+
+            <section id="career" role="tabpanel" aria-labelledby="tab-career" x-show="tab === 'career'" x-cloak>
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-navy">
+                        {{ __('career.careers') }}
+                    </h2>
+                    <a href="{{ route('dashboard.profile.careers.create') }}">
+                        <x-button :text="__('career.add_career')" />
+                    </a>
+                </div>
+
+                @php $careers = Auth::user()->careers()->orderByDesc('start_year')->get(); @endphp
+
+                @forelse ($careers as $career)
+                    <div class="mt-4">
+                        <x-card>
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <p class="label-caps text-gold">
+                                        {{ $career->start_year }} — {{ $career->is_current ? __('career.present') : ($career->end_year ?? '—') }}
+                                    </p>
+                                    <div class="mt-1 flex items-center gap-2">
+                                        <h3 class="font-serif text-lg font-semibold text-navy">{{ $career->job_title }}</h3>
+                                        <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ config("alumkit.career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}</span>
+                                    </div>
+                                    <p class="mt-0.5 text-sm text-on-surface-variant">{{ $career->company }}</p>
+                                    @if ($career->industry || $career->location)
+                                        <p class="mt-0.5 text-sm text-on-surface-variant">{{ $career->industry }} · {{ $career->location }}</p>
+                                    @endif
+                                    @if ($career->description)
+                                        <p class="mt-2 text-sm text-on-surface-variant">{{ $career->description }}</p>
+                                    @endif
+                                </div>
+                                <div class="flex shrink-0 items-center gap-3 text-sm">
+                                    <a href="{{ route('dashboard.profile.careers.edit', $career) }}" class="text-navy hover:text-gold">{{ __('dashboard.edit') }}</a>
+                                    <form method="POST" action="{{ route('dashboard.profile.careers.destroy', $career) }}" class="inline" data-confirm="{{ __('dashboard.confirm_delete') }}" onsubmit="return confirm(this.dataset.confirm)">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900">{{ __('dashboard.delete') }}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </x-card>
+                    </div>
+                @empty
+                    <div class="mt-4">
+                        <x-card>
+                            <p class="text-sm text-on-surface-variant">{{ __('career.no_careers') }}</p>
+                            <a href="{{ route('dashboard.profile.careers.create') }}" class="mt-3 inline-block">
+                                <x-button :text="__('career.add_career')" outline />
+                            </a>
+                        </x-card>
+                    </div>
+                @endforelse
+            </section>
+
+            <section id="security" role="tabpanel" aria-labelledby="tab-security" x-show="tab === 'security'" x-cloak>
+                @if (Features::enabled(Features::updatePasswords()))
+                    <x-card>
+                        <h2 class="text-lg font-semibold text-navy">
+                            {{ __('auth.update_password') }}
+                        </h2>
+
+                        @if (session('status') === 'password-updated')
+                            <div class="mt-2 text-sm text-green-600">
+                                {{ __('auth.password_updated') }}
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('user-password.update') }}" class="mt-4 space-y-4"
+                              x-data="alumkitForm({
+                                  current_password: { required: true, requiredMsg: {{ Js::from(__('validation.required', ['attribute' => __('auth.current_password')])) }} },
+                                  password: { required: true, requiredMsg: {{ Js::from(__('validation.required', ['attribute' => __('auth.new_password')])) }}, min: 8, minMsg: {{ Js::from(__('validation.min.string', ['attribute' => __('auth.new_password'), 'min' => 8])) }} },
+                                  password_confirmation: { required: true, requiredMsg: {{ Js::from(__('validation.required', ['attribute' => __('auth.confirm_password')])) }}, confirmed: 'password', confirmedMsg: {{ Js::from(__('validation.confirmed', ['attribute' => __('auth.confirm_password')])) }} },
+                              }, {{ Js::from($errors->getMessages()) }})"
+                              @focusout="validateField($event.target.name, $event.target.value)">
+                            @csrf
+                            @method('PUT')
+
+                            <div>
+                                <x-form.password
+                                    name="current_password"
+                                    :label="__('auth.current_password')"
+                                    required
+                                    autocomplete="current-password"
+                                    :show-error="false"
+                                />
+                                <p x-show="fieldError('current_password')" x-cloak x-text="fieldError('current_password')"
+                                   class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                            </div>
+
+                            <div>
+                                <x-form.password
+                                    name="password"
+                                    :label="__('auth.new_password')"
+                                    required
+                                    :show-error="false"
+                                />
+                                <p x-show="fieldError('password')" x-cloak x-text="fieldError('password')"
+                                   class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                            </div>
+
+                            <div>
+                                <x-form.password
+                                    name="password_confirmation"
+                                    :label="__('auth.confirm_password')"
+                                    required
+                                    :show-error="false"
+                                />
+                                <p x-show="fieldError('password_confirmation')" x-cloak x-text="fieldError('password_confirmation')"
+                                   class="mt-1.5 text-sm font-medium text-error" role="alert"></p>
+                            </div>
+
+                            <x-button type="submit" :text="__('auth.save')" />
+                        </form>
+                    </x-card>
+                @endif
+
+                @if (Features::enabled(Features::twoFactorAuthentication()))
+                    <x-card>
+                        <h2 class="text-lg font-semibold text-navy">
+                            {{ __('auth.two_factor_auth') }}
+                        </h2>
+
+                        @if (session('status') === 'two-factor-authentication-enabled')
+                            <div class="mt-4 text-sm text-green-600">
+                                {{ __('auth.two_factor_enabled') }}
+                            </div>
+
+                            @if (session('confirmation') === 'required')
+                                <div class="mt-4 space-y-4">
+                                    <p class="text-sm text-gray-600">
+                                        {{ __('auth.two_factor_scan_qr') }}
+                                    </p>
+
+                                    <div class="flex justify-center">
+                                        {!! Auth::user()->twoFactorQrCodeSvg() !!}
+                                    </div>
+
+                                    <p class="text-sm text-gray-600">
+                                        {{ __('auth.two_factor_setup_key') }}
+                                        <code class="bg-gray-100 px-2 py-1 rounded">
+                                            {{ decrypt(Auth::user()->two_factor_secret) }}
+                                        </code>
+                                    </p>
+
+                                    <form method="POST" action="{{ route('two-factor.confirm') }}">
+                                        @csrf
+                                        <div class="space-y-4">
+                                            <x-input
+                                                type="text"
+                                                name="code"
+                                                :label="__('auth.two_factor_code')"
+                                                inputmode="numeric"
+                                                required
+                                            />
+                                            <x-button type="submit" :text="__('auth.confirm')" />
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
+
+                            @if (session('recoveryCodes'))
+                                <div class="mt-4">
+                                    <p class="text-sm text-gray-600">
+                                        {{ __('auth.two_factor_recovery_codes') }}
+                                    </p>
+                                    <div class="mt-2 bg-gray-100 rounded-md p-4">
+                                        @foreach (session('recoveryCodes') as $code)
+                                            <code class="block text-sm">{{ $code }}</code>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+
+                        @if (session('status') === 'two-factor-authentication-confirmed')
+                            <div class="mt-4 text-sm text-green-600">
+                                {{ __('auth.two_factor_confirmed') }}
+                            </div>
+
+                            <div class="mt-4 flex space-x-4">
+                                <form method="POST" action="{{ route('two-factor.disable') }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-button type="submit" color="red" :text="__('auth.disable_2fa')" />
+                                </form>
+
+                                <form method="POST" action="{{ route('two-factor.recovery-codes') }}">
+                                    @csrf
+                                    <x-button type="submit" outline :text="__('auth.regenerate_recovery_codes')" />
+                                </form>
+                            </div>
+                        @endif
+
+                        @if (
+                            ! session('status') ||
+                            (session('status') !== 'two-factor-authentication-enabled' &&
+                             session('status') !== 'two-factor-authentication-confirmed'))
+                            <form method="POST" action="{{ route('two-factor.enable') }}" class="mt-4">
+                                @csrf
+                                <x-button type="submit" :text="__('auth.enable_2fa')" />
+                            </form>
+                        @endif
+                    </x-card>
+                @endif
+            </section>
+        </div>
+
+        <div class="text-center">
+            <a href="{{ route('dashboard') }}" class="text-sm text-navy hover:text-gold">
+                {{ __('auth.back_to_dashboard') }}
+            </a>
+        </div>
+    </div>
+@endsection

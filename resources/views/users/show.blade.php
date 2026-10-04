@@ -1,0 +1,377 @@
+@extends('layouts.dashboard')
+
+@section('content')
+    @php
+        $profile = $user->profile;
+        $educations = collect($profile?->educations ?? [])->sortByDesc('start_year');
+        $careers = collect($profile?->careers ?? [])->sortByDesc('start_year');
+        $currentCareer = $careers->firstWhere('is_current', true) ?? $careers->first();
+        $currentState = \App\Enums\UserState::from($user->state);
+        $transitions = $currentState->transitions();
+        $socials = collect($profile?->social_links ?? [])->filter();
+        $emergency = $profile?->emergency_contact ?? [];
+    @endphp
+
+    <a href="{{ route('dashboard.users.index') }}" class="mb-6 inline-block text-sm text-navy hover:text-gold">
+        {{ __('dashboard.back_to_users') }}
+    </a>
+
+    <div class="grid gap-6 lg:grid-cols-12">
+        {{-- Identity rail --}}
+        <aside class="space-y-6 lg:order-2 lg:col-span-4">
+            <div class="card p-6">
+                <div class="flex items-center gap-5">
+                    @if ($profile?->photoUrl())
+                        <img src="{{ $profile->photoUrl() }}" alt="{{ $user->name }}" class="h-28 w-24 shrink-0 rounded-lg object-cover">
+                    @else
+                        <div class="flex h-28 w-24 shrink-0 items-center justify-center rounded-lg bg-surface-container font-serif text-2xl font-semibold text-navy">
+                            {{ \Illuminate\Support\Str::initials($user->name) }}
+                        </div>
+                    @endif
+                    <div class="min-w-0">
+                        @if ($currentCareer)
+                            <p class="label-caps text-gold">{{ $currentCareer->job_title }}</p>
+                        @endif
+                        <h1 class="mt-1 font-serif text-2xl font-semibold leading-tight text-navy">{{ $user->name }}</h1>
+                        <p class="mt-1 truncate text-sm text-on-surface-variant">{{ $user->email }}</p>
+                        @if ($isAdmin && $user->phone)
+                            <p class="mt-1 truncate text-sm text-on-surface-variant">{{ $user->phone }}</p>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="mt-5 flex flex-wrap items-center gap-2">
+                    @include('users.partials.state-badge', ['state' => $user->state, 'emailVerifiedAt' => $user->email_verified_at])
+                    @foreach ($user->roles as $role)
+                        <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ $role->name }}</span>
+                    @endforeach
+                </div>
+
+                <dl class="mt-6 space-y-3 border-t border-outline-variant/60 pt-5 text-sm">
+                    <div class="flex items-start justify-between gap-4">
+                        <dt class="shrink-0 text-on-surface-variant">{{ __('dashboard.member_since_label') }}</dt>
+                        <dd class="text-right text-navy">{{ $user->created_at?->format('M Y') }}</dd>
+                    </div>
+                </dl>
+
+                @if ($profile)
+                    <div class="mt-6 border-t border-outline-variant/60 pt-5">
+                        <p class="label-caps text-gold">{{ __('profile.details') }}</p>
+                        <dl class="mt-3 space-y-3 text-sm">
+                            @if ($profile->date_of_birth)
+                                <div>
+                                    <dt class="text-on-surface-variant">{{ __('profile.date_of_birth') }}</dt>
+                                    <dd class="mt-0.5 text-navy">{{ $profile->date_of_birth->format('Y-m-d') }}</dd>
+                                </div>
+                            @endif
+                            @if ($profile->gender)
+                                <div>
+                                    <dt class="text-on-surface-variant">{{ __('profile.gender') }}</dt>
+                                    <dd class="mt-0.5 text-navy">{{ $profile->gender->value }}</dd>
+                                </div>
+                            @endif
+                            @if ($profile->blood_group)
+                                <div>
+                                    <dt class="text-on-surface-variant">{{ __('profile.blood_group') }}</dt>
+                                    <dd class="mt-0.5 text-navy">{{ $profile->blood_group->value }}</dd>
+                                </div>
+                            @endif
+                            @if ($isAdmin && $profile->present_address)
+                                <div>
+                                    <dt class="text-on-surface-variant">{{ __('profile.present_address') }}</dt>
+                                    <dd class="mt-0.5 text-navy">{{ $profile->present_address }}</dd>
+                                </div>
+                            @endif
+                            @if ($isAdmin && $profile->permanent_address)
+                                <div>
+                                    <dt class="text-on-surface-variant">{{ __('profile.permanent_address') }}</dt>
+                                    <dd class="mt-0.5 text-navy">{{ $profile->permanent_address }}</dd>
+                                </div>
+                            @endif
+                            @if ($profile->website)
+                                <div>
+                                    <dt class="text-on-surface-variant">{{ __('profile.website') }}</dt>
+                                    <dd class="mt-0.5 break-all text-navy">
+                                        <a href="{{ filter_var($profile->website, FILTER_VALIDATE_URL) ? $profile->website : 'https://'.$profile->website }}" target="_blank" rel="noopener noreferrer" class="hover:text-gold">{{ $profile->website }}</a>
+                                    </dd>
+                                </div>
+                            @endif
+                        </dl>
+                    </div>
+                @endif
+
+                @if ($socials->isNotEmpty())
+                    <div class="mt-6 border-t border-outline-variant/60 pt-5">
+                        <p class="label-caps text-gold">{{ __('profile.social_links') }}</p>
+                        <div class="mt-3 flex items-center gap-3">
+                            @foreach ($socials as $key => $url)
+                                @php $absoluteUrl = filter_var($url, FILTER_VALIDATE_URL) ? $url : 'https://'.$url; @endphp
+                                <a href="{{ $absoluteUrl }}" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-2 rounded-lg border border-outline-variant/60 px-3 py-2 text-sm font-medium text-navy transition-colors hover:border-gold hover:text-gold">
+                                    @if ($key === 'linkedin')
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                    @elseif ($key === 'facebook')
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    @endif
+                                    {{ $key === 'linkedin' ? __('profile.linkedin') : __('profile.facebook') }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            @if ($isAdmin && ($emergency['name'] ?? null))
+                <div class="card p-6">
+                    <p class="label-caps text-gold">{{ __('profile.emergency_contact') }}</p>
+                    <p class="mt-3 text-sm font-semibold text-navy">{{ $emergency['name'] }}</p>
+                    @if ($emergency['relation'] ?? null)
+                        <p class="mt-0.5 text-sm text-on-surface-variant">{{ $emergency['relation'] }}</p>
+                    @endif
+                    @if ($emergency['phone'] ?? null)
+                        <p class="mt-0.5 text-sm text-on-surface-variant">{{ $emergency['phone'] }}</p>
+                    @endif
+                </div>
+            @endif
+        </aside>
+
+        {{-- Main narrative --}}
+        <div class="space-y-6 lg:order-1 lg:col-span-8">
+            @if (! $profile)
+                <div class="card px-6 py-8 text-sm text-on-surface-variant">
+                    {{ __('dashboard.no_profile_data') }}
+                </div>
+            @endif
+
+            <section class="card p-6 lg:p-8">
+                <h2 class="font-serif text-2xl font-semibold text-navy">{{ __('education.educations') }}</h2>
+                <div class="mt-6 space-y-6">
+                    @forelse ($educations as $education)
+                        <div class="border-t border-outline-variant/60 pt-5 first:border-t-0 first:pt-0">
+                            <p class="label-caps text-gold">
+                                {{ $education->start_year }} — {{ $education->end_year ?? __('education.present') }}
+                            </p>
+                            <h3 class="mt-1 font-serif text-lg font-semibold text-navy">{{ $education->institution }}</h3>
+                            <p class="mt-0.5 text-on-surface-variant">
+                                {{ $education->level }}{{ $education->subject ? ' · '.$education->subject : '' }}
+                            </p>
+                            @if ($education->student_id)
+                                <p class="mt-0.5 text-sm text-on-surface-variant">
+                                    {{ __('education.student_id') }}: {{ $education->student_id }}
+                                </p>
+                            @endif
+                        </div>
+                    @empty
+                        <p class="text-sm text-on-surface-variant">{{ __('education.no_educations') }}</p>
+                    @endforelse
+                </div>
+            </section>
+
+            <section class="card p-6 lg:p-8">
+                <h2 class="font-serif text-2xl font-semibold text-navy">{{ __('career.careers') }}</h2>
+                <div class="mt-6 space-y-6">
+                    @forelse ($careers as $career)
+                        <div class="border-t border-outline-variant/60 pt-5 first:border-t-0 first:pt-0">
+                            <p class="label-caps text-gold">
+                                {{ $career->start_year }} — {{ $career->is_current ? __('career.present') : ($career->end_year ?? '—') }}
+                            </p>
+                            <div class="mt-1 flex flex-wrap items-center gap-2">
+                                <h3 class="font-serif text-lg font-semibold text-navy">{{ $career->job_title }}</h3>
+                                <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ config("alumkit.career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}</span>
+                            </div>
+                            <p class="mt-0.5 text-on-surface-variant">{{ $career->company }}</p>
+                            @if ($career->industry || $career->location)
+                                <p class="mt-0.5 text-sm text-on-surface-variant">{{ $career->industry }} · {{ $career->location }}</p>
+                            @endif
+                            @if ($career->description)
+                                <p class="mt-3 max-w-prose text-on-surface-variant">{{ $career->description }}</p>
+                            @endif
+                        </div>
+                    @empty
+                        <p class="text-sm text-on-surface-variant">{{ __('career.no_careers') }}</p>
+                    @endforelse
+                </div>
+            </section>
+
+            <section class="card p-6 lg:p-8">
+                <h2 class="font-serif text-2xl font-semibold text-navy">{{ __('dashboard.membership') }}</h2>
+
+                @if (auth()->user()->can('manage memberships') && config('alumkit.features.memberships'))
+                    @php
+                        $memberMembership = $user->latestMembership()->with('plan')->first();
+                        $memberPayments = \App\Models\MembershipPayment::where('user_id', $user->getKey())->with('plan')->latest('id')->limit(5)->get();
+                    @endphp
+
+                    <div class="mt-6 rounded-lg bg-surface-container/60 px-4 py-4">
+                        <p class="label-caps text-gold">{{ __('membership.current_membership') }}</p>
+
+                        @if ($memberMembership)
+                            @php $memberEffective = $memberMembership->effectiveStatus(); @endphp
+                            <div class="mt-2 flex flex-wrap items-center gap-2">
+                                <span class="font-semibold text-navy">{{ $memberMembership->plan?->name ?? '—' }}</span>
+                                <span class="rounded px-2 py-0.5 text-xs font-medium {{ $memberEffective->value === 'active' ? 'bg-emerald-100 text-emerald-800' : ($memberEffective->value === 'expired' ? 'bg-amber-100 text-amber-800' : 'bg-gray-100 text-gray-600') }}">
+                                    {{ __('membership.status_'.$memberEffective->value) }}
+                                </span>
+                            </div>
+                            <p class="mt-2 text-sm text-on-surface-variant">
+                                {{ $memberMembership->starts_at?->format('d M Y') ?? '—' }} → {{ $memberMembership->ends_at?->format('d M Y') ?? __('membership.never') }}
+                            </p>
+                        @else
+                            <p class="mt-2 text-sm text-on-surface-variant">{{ __('membership.no_membership') }}</p>
+                        @endif
+
+                        @if ($memberPayments->isNotEmpty())
+                            <div class="mt-4 border-t border-outline-variant/60 pt-4">
+                                <p class="label-caps text-gold">{{ __('membership.payments') }}</p>
+                                <ul class="mt-2 space-y-1.5 text-sm text-on-surface-variant">
+                                    @foreach ($memberPayments as $memberPayment)
+                                        <li class="flex items-center justify-between gap-3">
+                                            <span>{{ $memberPayment->plan?->name ?? '—' }} · {{ $memberPayment->paid_at?->format('d M Y') }}</span>
+                                            <span class="rounded px-2 py-0.5 text-xs font-medium {{ $memberPayment->status === 'approved' ? 'bg-emerald-100 text-emerald-800' : ($memberPayment->status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-gray-100 text-gray-600') }}">
+                                                {{ __('membership.payment_'.$memberPayment->status) }}
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+                @endif
+
+                <div class="mt-6 flex flex-wrap items-center gap-3">
+                    <span class="text-sm text-on-surface-variant">{{ __('dashboard.current_state') }}</span>
+                    @include('users.partials.state-badge', ['state' => $user->state, 'emailVerifiedAt' => $user->email_verified_at])
+                </div>
+
+                @if ($isAdmin)
+                @if ($user->email_verified_at && $user->getKey() !== auth()->id())
+                <script>
+                    function alumkitSubmitState(url, state, reason) {
+                        var f = document.createElement('form');
+                        f.method = 'POST';
+                        f.action = url;
+
+                        var addInput = function (name, value) {
+                            var el = document.createElement('input');
+                            el.type = 'hidden';
+                            el.name = name;
+                            el.value = value;
+                            f.appendChild(el);
+                        };
+
+                        addInput('_token', document.querySelector('meta[name="csrf-token"]').content);
+                        addInput('_method', 'PUT');
+                        addInput('state', state);
+                        if (reason) addInput('reason', reason);
+
+                        document.body.appendChild(f);
+                        f.submit();
+                    }
+                </script>
+                <div class="mt-5 space-y-3" x-data="{
+                    showModal: false,
+                    targetState: '',
+                    actionUrl: '',
+                    buttonLabel: '',
+                    needsReason: false,
+                    reason: '',
+                    open(state, url, label, needsReason) {
+                        if (!needsReason) {
+                            alumkitSubmitState(url, state, null);
+                            return;
+                        }
+                        this.targetState = state;
+                        this.actionUrl = url;
+                        this.buttonLabel = label;
+                        this.needsReason = true;
+                        this.reason = '';
+                        this.showModal = true;
+                        this.$nextTick(() => this.$refs.reasonInput?.focus());
+                    },
+                    confirm() {
+                        if (!this.reason.trim()) return;
+                        alumkitSubmitState(this.actionUrl, this.targetState, this.reason);
+                    },
+                    close() {
+                        this.showModal = false;
+                        this.reason = '';
+                    }
+                }">
+                    @forelse ($transitions as $transition)
+                        <div class="flex flex-col gap-3 rounded-lg bg-surface-container/60 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                            <p class="text-sm text-on-surface-variant">{{ __("dashboard.transition_description_{$transition->value}") }}</p>
+                            <button
+                                type="button"
+                                @click="open('{{ $transition->value }}', '{{ route('dashboard.users.state.update', $user) }}', '{{ __("dashboard.transition_to_{$transition->value}") }}', {{ in_array($transition->value, ['rejected', 'suspended']) ? 'true' : 'false' }})"
+                                @if ($transition->value === 'active')
+                                    class="inline-flex items-center justify-center rounded bg-gold px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gold/90 focus-visible:ring-2 focus-visible:ring-gold/50"
+                                @elseif ($transition->value === 'rejected')
+                                    class="inline-flex items-center justify-center rounded border border-error px-4 py-2 text-sm font-semibold text-error transition-colors hover:bg-error hover:text-white focus-visible:ring-2 focus-visible:ring-error/50"
+                                @else
+                                    class="btn-secondary"
+                                @endif
+                            >
+                                {{ __("dashboard.transition_to_{$transition->value}") }}
+                            </button>
+                        </div>
+                    @empty
+                        <p class="text-sm text-on-surface-variant">{{ __('dashboard.no_further_actions') }}</p>
+                    @endforelse
+
+                    {{-- State-change reason modal --}}
+                    <div x-show="showModal" x-cloak
+                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0"
+                         x-transition:enter-end="opacity-100"
+                         x-transition:leave="transition ease-in duration-150"
+                         x-transition:leave-start="opacity-100"
+                         x-transition:leave-end="opacity-0">
+                        <div class="absolute inset-0 bg-navy/40 backdrop-blur-sm" @click="close()" aria-hidden="true"></div>
+                        <div class="relative w-full max-w-lg rounded-lg border border-outline-variant/60 bg-white p-6 shadow-xl"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-end="opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 scale-100"
+                             x-transition:leave-end="opacity-0 scale-95"
+                             @keydown.escape.window="close()">
+                            <h3 class="font-serif text-lg font-semibold text-navy" x-text="buttonLabel"></h3>
+                            <p class="mt-2 text-sm text-on-surface-variant">{{ __('dashboard.transition_reason_description') }}</p>
+                            <textarea
+                                x-ref="reasonInput"
+                                x-model="reason"
+                                name="reason"
+                                rows="3"
+                                class="mt-4 w-full rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 text-sm text-navy placeholder:text-on-surface-variant/50 focus:border-gold focus:ring-1 focus:ring-gold/30"
+                                placeholder="{{ __('dashboard.state_reason_placeholder') }}"
+                                maxlength="2000"
+                                required
+                                @keydown.enter.meta="confirm()"
+                                @keydown.enter.ctrl="confirm()"
+                            ></textarea>
+                            <div class="mt-4 flex items-center justify-end gap-3">
+                                <button type="button" @click="close()" class="btn-secondary">
+                                    {{ __('dashboard.state_reason_cancel') }}
+                                </button>
+                                <button type="button" @click="confirm()" class="inline-flex items-center justify-center rounded bg-gold px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gold/90 focus-visible:ring-2 focus-visible:ring-gold/50">
+                                    {{ __('dashboard.state_reason_confirm') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                @if ($user->state === 'active' && $user->getKey() !== auth()->id())
+                <div class="mt-6 border-t border-outline-variant/60 pt-5">
+                    <a href="{{ route('dashboard.users.roles.edit', $user) }}" class="btn-secondary w-full">
+                        {{ __('dashboard.assign_roles') }}
+                    </a>
+                </div>
+                @endif
+                @endif
+            </section>
+        </div>
+    </div>
+@endsection
