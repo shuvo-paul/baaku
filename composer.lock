@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9da670cfd48682e74a2e651567925d7",
+    "content-hash": "0ad8e3efadb39c748839fb098bba0d96",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2012,16 +2012,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.10.0",
+            "version": "2.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "d2d1aa8b35e072966c89bc0c66cf926e56767dc4"
+                "reference": "6efbd9c472b91db0a3350fcd601c8332c2382e1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/d2d1aa8b35e072966c89bc0c66cf926e56767dc4",
-                "reference": "d2d1aa8b35e072966c89bc0c66cf926e56767dc4",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6efbd9c472b91db0a3350fcd601c8332c2382e1f",
+                "reference": "6efbd9c472b91db0a3350fcd601c8332c2382e1f",
                 "shasum": ""
             },
             "require": {
@@ -2115,7 +2115,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-11T16:06:25+00:00"
+            "time": "2026-09-21T13:07:34+00:00"
         },
         {
             "name": "league/config",
@@ -5167,136 +5167,6 @@
                 }
             ],
             "time": "2026-08-30T13:53:49+00:00"
-        },
-        {
-            "name": "stonadev/alumkit",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stonadev/alumkit.git",
-                "reference": "4310acb51edcc6e6fed7005a0a1d0054db6aece8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stonadev/alumkit/zipball/4310acb51edcc6e6fed7005a0a1d0054db6aece8",
-                "reference": "4310acb51edcc6e6fed7005a0a1d0054db6aece8",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^12.0||^13.0",
-                "laravel/fortify": "^1.37.2",
-                "livewire/livewire": "^3.5.0|^4.3.0",
-                "php": "^8.3",
-                "spatie/laravel-activitylog": "^4.9",
-                "spatie/laravel-permission": "^8.3",
-                "tallstackui/tallstackui": "^4.0"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^4.4",
-                "larastan/larastan": "^3.9",
-                "laravel/pao": "^1.0",
-                "laravel/pint": "^1.29",
-                "orchestra/testbench": "^10.0||^11.0",
-                "pestphp/pest": "^4.6",
-                "pestphp/pest-plugin-laravel": "^4.1",
-                "pestphp/pest-plugin-type-coverage": "^4.0.3",
-                "phpstan/extension-installer": "^1.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Alumkit\\Alumkit\\AlumkitServiceProvider"
-                    ],
-                    "aliases": {
-                        "Alumkit": "Alumkit\\Alumkit\\Facades\\Alumkit"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Alumkit\\Alumkit\\": "src/",
-                    "Alumkit\\Alumkit\\Database\\Seeders\\": "database/seeders/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Alumkit\\Alumkit\\Tests\\": "tests/",
-                    "Workbench\\App\\": "workbench/app/",
-                    "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-                    "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "@clear",
-                    "@prepare"
-                ],
-                "prepare": [
-                    "@php vendor/bin/testbench package:discover --ansi"
-                ],
-                "build": [
-                    "@php vendor/bin/testbench workbench:build --ansi"
-                ],
-                "serve": [
-                    "Composer\\Config::disableProcessTimeout",
-                    "@build",
-                    "@php vendor/bin/testbench serve --ansi"
-                ],
-                "lint": [
-                    "vendor/bin/pint --parallel"
-                ],
-                "lint:check": [
-                    "vendor/bin/pint --parallel --test"
-                ],
-                "analyse": [
-                    "php -d memory_limit=512M vendor/bin/phpstan analyse"
-                ],
-                "test:types": [
-                    "vendor/bin/pest --type-coverage --min=100"
-                ],
-                "test:unit": [
-                    "vendor/bin/pest --parallel"
-                ],
-                "test": [
-                    "@analyse",
-                    "@lint:check",
-                    "@test:types",
-                    "@test:unit"
-                ],
-                "clear": [
-                    "@php vendor/bin/testbench package:purge-skeleton --ansi"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shuvo Paul",
-                    "email": "shuvopaul@yahoo.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A Laravel toolkit for alumni management applications.",
-            "homepage": "https://github.com/stonadev/alumkit",
-            "keywords": [
-                "alumkit",
-                "laravel",
-                "stonadev"
-            ],
-            "support": {
-                "source": "https://github.com/stonadev/alumkit/tree/main",
-                "issues": "https://github.com/stonadev/alumkit/issues"
-            },
-            "funding": [
-                {
-                    "type": "github",
-                    "url": "https://github.com/stonadev"
-                }
-            ],
-            "time": "2026-10-03T17:49:33+00:00"
         },
         {
             "name": "symfony/clock",
@@ -12348,9 +12218,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "stonadev/alumkit": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
