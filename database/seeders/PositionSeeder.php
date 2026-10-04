@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Alumkit\Alumkit\Models\Position;
+use App\Models\Position;
 use Illuminate\Database\Seeder;
 
 class PositionSeeder extends Seeder
