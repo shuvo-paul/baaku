@@ -29,22 +29,22 @@ use App\Http\Controllers\UserStateController;
 use Illuminate\Support\Facades\Route;
 
 // Editor image uploads: streamed through the app (no storage:link requirement).
-Route::get('alumkit/style/editor-images/{file}', [MediaController::class, 'editorImage'])
+Route::get('media/editor-images/{file}', [MediaController::class, 'editorImage'])
     ->name('editor.image.show')->where('file', '[\w.\-]+');
 
 // Post thumbnails: streamed through the app (no storage:link requirement).
 if (config('alumkit.features.posts')) {
-    Route::get('alumkit/style/post-thumbnails/{file}', [MediaController::class, 'postThumbnail'])
+    Route::get('media/post-thumbnails/{file}', [MediaController::class, 'postThumbnail'])
         ->name('posts.thumbnail')->where('file', '[\w.\-]+');
 }
 
 // Profile photos: streamed through the app (no storage:link requirement).
-Route::get('alumkit/style/profile-photos/{file}', [MediaController::class, 'profilePhoto'])
+Route::get('media/profile-photos/{file}', [MediaController::class, 'profilePhoto'])
     ->name('profile.photo.show')->where('file', '[\w.\-]+');
 
 // Committee photos: streamed through the app (no storage:link requirement).
 if (config('alumkit.features.committee')) {
-    Route::get('alumkit/style/committee-photos/{file}', [MediaController::class, 'committeePhoto'])
+    Route::get('media/committee-photos/{file}', [MediaController::class, 'committeePhoto'])
         ->name('committee.photo')->where('file', '[\w.\-]+');
 }
 
