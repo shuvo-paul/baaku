@@ -1,0 +1,173 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Enums\UserState;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
+
+class UserRoleController extends Controller
+{
+    public function index(Request $request): View|JsonResponse
+    {
+        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
+        $isAdmin = $request->user()->can('manage members');
+
+        if ($isAdmin) {
+            $allowed = ['pending', 'unverified', 'rejected', 'suspended', 'active', 'all'];
+            $filter = $request->query('filter');
+
+            if (! in_array($filter, $allowed, true)) {
+                $filter = 'all';
+            }
+
+            $search = trim((string) $request->query('search'));
+
+            $query = $userModel::query()->with(['roles', 'profile.educations', 'profile.careers']);
+
+            if ($filter === 'all') {
+                $query->orderBy('name');
+            } elseif ($filter === 'pending') {
+                $query->where('state', UserState::Pending->value)->orderBy('created_at');
+            } else {
+                $query->where('state', $filter)->orderBy('name');
+            }
+
+            if ($search !== '') {
+                $like = '%'.str_replace(['%', '_'], ['\\%', '\\_'], $search).'%';
+                $query->where(fn (Builder $q) => $q->whereRaw('name LIKE ? ESCAPE \'\\\'', [$like])
+                    ->orWhereRaw('email LIKE ? ESCAPE \'\\\'', [$like]));
+            }
+
+            $users = $query->paginate(24)->appends([
+                'filter' => $filter,
+                'search' => $search,
+            ]);
+
+            if ($request->ajax()) {
+                return response()->json([
+                    'grid' => view('users.partials.grid', ['users' => $users->items(), 'filter' => $filter])->render(),
+                    'pagination' => view('vendor.pagination.users', ['paginator' => $users])->render(),
+                ]);
+            }
+
+            $counts = $userModel::query()
+                ->selectRaw('state, count(*) as aggregate')
+                ->groupBy('state')
+                ->pluck('aggregate', 'state')
+                ->all();
+        } else {
+            $filter = 'all';
+            $search = '';
+            $counts = [];
+            $users = $userModel::query()
+                ->with(['roles', 'profile.educations', 'profile.careers'])
+                ->where('state', UserState::Active->value)
+                ->orderBy('name')
+                ->paginate(24);
+
+            if ($request->ajax()) {
+                return response()->json([
+                    'grid' => view('users.partials.grid', ['users' => $users->items(), 'filter' => $filter])->render(),
+                    'pagination' => view('vendor.pagination.users', ['paginator' => $users])->render(),
+                ]);
+            }
+        }
+
+        /** @var View $view */
+        $view = view('users.index', [
+            'users' => $users,
+            'filter' => $filter,
+            'search' => $search,
+            'counts' => $counts,
+            'isAdmin' => $isAdmin,
+        ]);
+
+        return $view;
+    }
+
+    public function show(Request $request, string $user): View
+    {
+        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
+        $isAdmin = $request->user()->can('manage members');
+
+        $query = $userModel::query()
+            ->with(['roles', 'profile.educations', 'profile.careers']);
+
+        if (! $isAdmin) {
+            $query->where('state', UserState::Active->value);
+        }
+
+        $user = $query->findOrFail($user);
+
+        /** @var View $view */
+        $view = view('users.show', compact('user', 'isAdmin'));
+
+        return $view;
+    }
+
+    public function edit(string $user): View
+    {
+        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
+        $user = $userModel::findOrFail($user);
+
+        $roles = Role::all();
+
+        /** @var View $view */
+        $view = view('users.roles', compact('user', 'roles'));
+
+        return $view;
+    }
+
+    public function update(Request $request, string $user): RedirectResponse
+    {
+        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
+        $targetUser = $userModel::findOrFail($user);
+
+        if (is_null($targetUser->email_verified_at)) {
+            return redirect()->route('dashboard.users.show', $targetUser)
+                ->with('error', __('dashboard.unverified_user_no_transition'));
+        }
+
+        $request->validate([
+            'roles' => ['sometimes', 'array'],
+            'roles.*' => ['string', 'exists:roles,name'],
+        ]);
+
+        $requestedRoles = $request->input('roles', []);
+
+        // Prevent self-demotion: don't allow removing own admin role
+        if ($request->user()->getKey() === $targetUser->getKey()) {
+            $defaultRoles = config('alumkit.permission.default_roles', ['admin', 'moderator', 'member']);
+            $adminRole = $defaultRoles[0] ?? 'admin';
+
+            if ($targetUser->hasRole($adminRole) && ! in_array($adminRole, $requestedRoles)) {
+                return redirect()->route('dashboard.users.roles.edit', $targetUser)
+                    ->with('error', __('dashboard.cannot_remove_own_admin'));
+            }
+        }
+
+        $currentRoles = $targetUser->roles->pluck('name')->toArray();
+
+        $targetUser->syncRoles($requestedRoles);
+
+        activity('member_management')
+            ->performedOn($targetUser)
+            ->event('roles_synced')
+            ->withProperties([
+                'roles_added' => array_values(array_diff($requestedRoles, $currentRoles)),
+                'roles_removed' => array_values(array_diff($currentRoles, $requestedRoles)),
+            ])
+            ->log('roles updated');
+
+        return redirect()->route('dashboard.users.roles.edit', $targetUser)
+            ->with('status', __('dashboard.user_roles_updated'));
+    }
+}
