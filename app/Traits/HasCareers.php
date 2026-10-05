@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasCareers
 {
-    /** @phpstan-ignore missingType.generics */
+    /** @return HasMany<Career, $this> */
     public function careers(): HasMany
     {
         return $this->profile->careers();

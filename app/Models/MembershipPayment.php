@@ -62,7 +62,6 @@ class MembershipPayment extends Model
     /** @phpstan-ignore missingType.generics */
     public function user(): BelongsTo
     {
-        /** @phpstan-ignore argument.templateType */
         return $this->belongsTo(User::class);
     }
 
@@ -99,7 +98,6 @@ class MembershipPayment extends Model
     /** @phpstan-ignore missingType.generics */
     public function reviewer(): BelongsTo
     {
-        /** @phpstan-ignore argument.templateType */
         return $this->belongsTo(User::class, 'reviewed_by');
     }
 

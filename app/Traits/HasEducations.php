@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 trait HasEducations
 {
-    /** @phpstan-ignore missingType.generics */
+    /** @return HasOne<Profile, $this> */
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
     }
 
-    /** @phpstan-ignore missingType.generics */
+    /** @return HasMany<Education, $this> */
     public function educations(): HasMany
     {
         return $this->profile->educations();

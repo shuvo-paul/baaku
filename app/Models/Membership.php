@@ -51,7 +51,6 @@ class Membership extends Model
     /** @phpstan-ignore missingType.generics */
     public function user(): BelongsTo
     {
-        /** @phpstan-ignore argument.templateType */
         return $this->belongsTo(User::class);
     }
 

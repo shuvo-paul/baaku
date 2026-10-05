@@ -49,7 +49,6 @@ class CommitteeMember extends Model
      */
     public function user(): BelongsTo
     {
-        /** @phpstan-ignore argument.templateType */
         return $this->belongsTo(User::class);
     }
 

@@ -34,9 +34,7 @@ class UserSearch extends Component
             $user = User::find($selectedUserId);
 
             if ($user) {
-                /** @phpstan-ignore property.notFound */
                 $userName = $user->name;
-                /** @phpstan-ignore property.notFound */
                 $userEmail = $user->email;
                 $this->query = $userName.' — '.$userEmail;
             }
