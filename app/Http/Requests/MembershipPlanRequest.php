@@ -64,7 +64,7 @@ abstract class MembershipPlanRequest extends FormRequest
 
         $base = ($termDays > 0 ? $termDays : 0) + ($termMonths > 0 ? $termMonths * 30 : 0);
 
-        $features = $this->parseFeatures($this->input('features')) ?? [];
+        $features = [];
 
         // Overlay the gated-feature toggles onto the features map so the
         // admin's checkbox choices land in the same stored JSON.
@@ -82,47 +82,5 @@ abstract class MembershipPlanRequest extends FormRequest
             'is_active' => $this->has('is_active') ? $this->boolean('is_active') : true,
             'features' => $features === [] ? null : $features,
         ]);
-    }
-
-    /**
-     * The features field is authored as newline-separated `key=value` lines and
-     * stored as a flat string => string map.
-     *
-     * @return array<string, string>|null
-     */
-    protected function parseFeatures(mixed $input): ?array
-    {
-        if (is_array($input)) {
-            $result = [];
-            foreach ($input as $key => $value) {
-                if (is_string($key) && $value !== null && $value !== '') {
-                    $result[$key] = (string) $value;
-                }
-            }
-
-            return $result === [] ? null : $result;
-        }
-
-        if (! is_string($input) || trim($input) === '') {
-            return null;
-        }
-
-        $result = [];
-
-        foreach (preg_split('/\R/', $input) ?: [] as $line) {
-            $line = trim($line);
-
-            if ($line === '') {
-                continue;
-            }
-
-            $parts = preg_split('/\s*[=:]\s*/', $line, 2) ?: [];
-
-            if (count($parts) === 2 && trim($parts[0]) !== '') {
-                $result[trim($parts[0])] = trim($parts[1]);
-            }
-        }
-
-        return $result === [] ? null : $result;
     }
 }

@@ -5,7 +5,7 @@ use App\Models\MembershipPlan;
 use App\Models\Profile;
 use App\Models\User;
 
-it('renders the plan edit form for a user with the manage membership plans permission', function () {
+beforeEach(function () {
     $this->artisan('permissions:seed')->assertSuccessful();
 
     $user = User::factory()->create([
@@ -21,6 +21,10 @@ it('renders the plan edit form for a user with the manage membership plans permi
 
     $user->givePermissionTo('manage membership plans');
 
+    $this->actingAs($user);
+});
+
+it('renders the plan edit form without the features textarea', function () {
     $plan = MembershipPlan::create([
         'name' => 'Anual',
         'price' => '500.00',
@@ -28,10 +32,66 @@ it('renders the plan edit form for a user with the manage membership plans permi
         'features' => ['extra_key' => 'extra value'],
     ]);
 
-    $this->actingAs($user)
-        ->get(route('dashboard.plans.edit', $plan))
+    $this->get(route('dashboard.plans.edit', $plan))
         ->assertOk()
         ->assertSee('name="name"', false)
-        ->assertSee('name="features"', false)
-        ->assertSee('extra_key=extra value');
+        ->assertDontSee('name="features"', false);
+});
+
+it('renders the plan create form without the features textarea', function () {
+    $this->get(route('dashboard.plans.create'))
+        ->assertOk()
+        ->assertDontSee('name="features"', false);
+});
+
+it('stores the checkbox-built features map on update', function () {
+    $plan = MembershipPlan::create([
+        'name' => 'Anual',
+        'price' => '500.00',
+        'duration_days' => 360,
+    ]);
+
+    $this->put(route('dashboard.plans.update', $plan), [
+        'name' => 'Anual',
+        'price' => '500.00',
+        'term_days' => 360,
+        'feature_members' => '1',
+    ])->assertRedirect(route('dashboard.plans.index'));
+
+    expect($plan->fresh()->features)->toBe(['members' => '1']);
+});
+
+it('stores null features when no feature checkboxes are posted', function () {
+    $plan = MembershipPlan::create([
+        'name' => 'Anual',
+        'price' => '500.00',
+        'duration_days' => 360,
+        'features' => ['members' => '1'],
+    ]);
+
+    $this->put(route('dashboard.plans.update', $plan), [
+        'name' => 'Anual',
+        'price' => '500.00',
+        'term_days' => 360,
+    ])->assertRedirect(route('dashboard.plans.index'));
+
+    expect($plan->fresh()->features)->toBeNull();
+});
+
+it('drops non-gateable custom feature keys on update', function () {
+    $plan = MembershipPlan::create([
+        'name' => 'Anual',
+        'price' => '500.00',
+        'duration_days' => 360,
+        'features' => ['extra_key' => 'extra value', 'members' => '1'],
+    ]);
+
+    $this->put(route('dashboard.plans.update', $plan), [
+        'name' => 'Anual',
+        'price' => '500.00',
+        'term_days' => 360,
+        'feature_posts' => '1',
+    ])->assertRedirect(route('dashboard.plans.index'));
+
+    expect($plan->fresh()->features)->toBe(['posts' => '1']);
 });

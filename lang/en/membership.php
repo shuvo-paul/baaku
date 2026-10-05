@@ -20,7 +20,6 @@ return [
     'active' => 'Active',
     'inactive' => 'Inactive',
     'features' => 'Features',
-    'features_help' => 'One key/value pair per line, e.g. directory_access = true',
     'feature_gating' => 'Access this plan unlocks',
     'feature_gating_help' => 'Tick the dashboard areas members reach only with an active plan that grants them.',
     'feature_members' => 'Member Directory',

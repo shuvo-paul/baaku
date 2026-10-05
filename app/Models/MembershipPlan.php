@@ -117,17 +117,6 @@ class MembershipPlan extends Model
         return trans_choice('membership.term_days', $days, ['count' => $days]);
     }
 
-    public function hasFeature(string $key): bool
-    {
-        $value = $this->features[$key] ?? null;
-
-        if ($value === null) {
-            return false;
-        }
-
-        return in_array(strtolower(trim((string) $value)), ['1', 'true', 'yes', 'on'], true);
-    }
-
     /**
      * The single term calculator. Returns the term end date for a membership
      * starting at $start; a lifetime term returns null (no end).

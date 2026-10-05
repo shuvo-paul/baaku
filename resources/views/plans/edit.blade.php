@@ -73,11 +73,6 @@
                     <p class="mt-1 text-xs text-gray-500">{{ __('membership.feature_gating_help') }}</p>
                 </div>
 
-                @php
-                    $featuresDefault = old('features', collect($plan->features ?? [])->except(config('alumkit.membership.gateable_features', []))->map(fn ($v, $k) => $k.'='.$v)->implode("\n"));
-                @endphp
-                <x-form.textarea name="features" :label="__('membership.features')" :value="$featuresDefault" :placeholder="__('membership.features_help')" />
-
                 <x-form.checkbox name="is_active" :label="__('membership.is_active')" :checked="old('is_active', $plan->is_active)" />
             </div>
 
