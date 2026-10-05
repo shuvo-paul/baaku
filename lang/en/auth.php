@@ -1,0 +1,78 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'name' => 'Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'password' => 'Password',
+    'remember_me' => 'Remember me',
+    'sign_in' => 'Sign in',
+    'dashboard' => 'Dashboard',
+    'welcome' => 'Welcome, :email',
+    'logout' => 'Logout',
+    'credentials' => 'The provided credentials do not match our records.',
+    'confirm_password' => 'Confirm Password',
+    'forgot_password' => 'Forgot your password?',
+    'forgot_password_text' => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link.',
+    'reset_password' => 'Reset Password',
+    'send_link' => 'Email Password Reset Link',
+    'register' => 'Register',
+    'already_registered' => 'Already registered?',
+    'no_account' => "Don't have an account?",
+    'back_to_login' => 'Back to login',
+    'verify_email' => 'Email Verification',
+    'verify_email_resent' => 'Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you?',
+    'verify_email_sent' => 'A new verification link has been sent to the email address you provided during registration.',
+    'resend_verification' => 'Resend Verification Email',
+    'confirm_password_title' => 'Confirm Password',
+    'confirm_password_text' => 'This is a secure area of the application. Please confirm your password before continuing.',
+    'confirm' => 'Confirm',
+    'two_factor' => 'Two-Factor Authentication',
+    'two_factor_text' => 'Please enter your authentication code or a recovery code to access your account.',
+    'two_factor_code' => 'Authentication Code',
+    'recovery_code' => 'Recovery Code',
+    'use_recovery_code' => 'Use a recovery code',
+    'profile' => 'Profile',
+    'update_info' => 'Update Profile Information',
+    'update_password' => 'Update Password',
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'save' => 'Save',
+    'profile_updated' => 'Profile updated successfully.',
+    'password_updated' => 'Password updated successfully.',
+    'complete_profile' => 'Complete Your Profile',
+    'complete_profile_text' => 'Please add your career and profile details below.',
+    'account_details' => 'Account Details',
+    'submit_for_approval' => 'Update',
+    'submit' => 'Submit',
+    'step' => 'Step',
+    'of' => 'of',
+    'back' => 'Back',
+    'next' => 'Next',
+    'profile_completed' => 'Your profile has been updated.',
+    'two_factor_auth' => 'Two-Factor Authentication',
+    'two_factor_enabled' => 'Two-factor authentication has been enabled.',
+    'two_factor_confirmed' => 'Two-factor authentication has been confirmed.',
+    'two_factor_scan_qr' => 'Scan the QR code with your authenticator app and enter the code below to confirm two-factor authentication.',
+    'two_factor_setup_key' => 'Setup Key:',
+    'two_factor_recovery_codes' => 'Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two-factor authentication device is lost.',
+    'enable_2fa' => 'Enable Two-Factor Authentication',
+    'disable_2fa' => 'Disable Two-Factor Authentication',
+    'regenerate_recovery_codes' => 'Regenerate Recovery Codes',
+    'back_to_dashboard' => 'Back to dashboard',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel framework defaults
+    |--------------------------------------------------------------------------
+    |
+    | Retained from laravel/framework's auth language lines so Fortify's
+    | error responses (failed logins, login throttling) keep working now
+    | that this file shadows the framework's lang/en/auth.php.
+    |
+    */
+    'failed' => 'These credentials do not match our records.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+];

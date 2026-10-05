@@ -1,6 +1,6 @@
 <?php
 
-use Alumkit\Alumkit\Models\Position;
+use App\Models\Position;
 use Database\Seeders\PositionSeeder;
 
 it('seeds all fourteen committee positions', function () {

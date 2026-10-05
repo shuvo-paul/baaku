@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Alumkit\Alumkit\Facades\Alumkit;
-use Alumkit\Alumkit\Models\CommitteeMember;
+use App\Models\CommitteeMember;
+use App\Services\Committee as CommitteeService;
 use Illuminate\Support\Collection;
 
 final class Committee
@@ -12,7 +12,7 @@ final class Committee
     public static function all(): array
     {
         /** @var Collection<int, CommitteeMember> $members */
-        $members = Alumkit::recentCommitteeMembers();
+        $members = CommitteeService::recentMembers();
 
         return $members
             ->map(static fn (CommitteeMember $member): array => [

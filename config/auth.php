@@ -114,4 +114,15 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    'default_roles' => ['admin', 'moderator', 'member'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | App Permissions
+    |--------------------------------------------------------------------------
+    | App-specific permission names on top of the built-in
+    | Permissions::PERMISSIONS (always seeded, cannot be removed).
+    */
+    'permissions' => [],
+
 ];

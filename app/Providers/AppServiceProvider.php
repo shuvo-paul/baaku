@@ -2,16 +2,27 @@
 
 namespace App\Providers;
 
+use App\Content\ContentRegistry;
+use App\Listeners\MarkUserPendingOnVerification;
+use App\Livewire\CommitteeOrdering;
+use App\Livewire\LinkField;
+use App\Livewire\RepeaterField;
+use App\Livewire\UserSearch;
+use App\Models\Page;
+use App\Observers\PageObserver;
 use Carbon\CarbonImmutable;
 use Google\Client;
 use Google\Service\Drive;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use League\Flysystem\Filesystem;
+use Livewire\Livewire;
 use Masbug\Flysystem\GoogleDriveAdapter;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(ContentRegistry::class);
     }
 
     /**
@@ -30,6 +41,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+
+        $this->registerLivewireComponents();
+
+        Page::observe(PageObserver::class);
+
+        Event::listen(Verified::class, MarkUserPendingOnVerification::class);
 
         Storage::extend('google_drive', function ($app, array $config) {
             $client = new Client;
@@ -54,6 +71,17 @@ class AppServiceProvider extends ServiceProvider
 
             return new FilesystemAdapter($filesystem, $adapter);
         });
+    }
+
+    /**
+     * Register the dashboard's Livewire components under flattened names.
+     */
+    protected function registerLivewireComponents(): void
+    {
+        Livewire::component('link-field', LinkField::class);
+        Livewire::component('committee-ordering', CommitteeOrdering::class);
+        Livewire::component('repeater-field', RepeaterField::class);
+        Livewire::component('user-search', UserSearch::class);
     }
 
     /**

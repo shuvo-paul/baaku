@@ -1,8 +1,8 @@
 <?php
 
-use Alumkit\Alumkit\Models\CommitteeMember;
-use Alumkit\Alumkit\Models\Position;
 use App\Committee;
+use App\Models\CommitteeMember;
+use App\Models\Position;
 
 it('serves the committee page', function () {
     $position = Position::create(['name' => 'সভাপতি']);

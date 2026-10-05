@@ -10,13 +10,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "laravel/fortify": "^1.37.2",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
         "livewire/blaze": "^1.0",
         "livewire/livewire": "^4.1",
         "masbug/flysystem-google-drive-ext": "^2.5",
+        "spatie/laravel-activitylog": "^4.9",
         "spatie/laravel-backup": "^10.3",
-        "stonadev/alumkit": "@dev"
+        "spatie/laravel-permission": "^8.3",
+        "tallstackui/tallstackui": "^4.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24",
@@ -67,7 +70,7 @@
             "@test"
         ],
         "types:check": [
-            "phpstan analyse"
+            "phpstan analyse --memory-limit=1G"
         ],
         "test": [
             "@php artisan config:clear --ansi",
@@ -110,10 +113,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [{
-        "name": "stonadev/alumkit",
-        "type": "vcs",
-        "url": "https://github.com/stonadev/alumkit"
-    }]
+    "prefer-stable": true
 }
