@@ -21,9 +21,9 @@ return [
     ],
 
     'seeder' => [
-        'admin_name' => env('ALUMKIT_ADMIN_NAME', 'Admin'),
-        'admin_email' => env('ALUMKIT_ADMIN_EMAIL', 'admin@example.com'),
-        'admin_password' => env('ALUMKIT_ADMIN_PASSWORD', 'password'),
+        'admin_name' => env('ADMIN_NAME', 'Admin'),
+        'admin_email' => env('ADMIN_EMAIL', 'admin@example.com'),
+        'admin_password' => env('ADMIN_PASSWORD', 'password'),
     ],
 
     'default_state' => UserState::Pending,
@@ -208,13 +208,13 @@ return [
     ],
 
     'maintenance' => [
-        'enabled' => env('ALUMKIT_MAINTENANCE_ENABLED', false),
+        'enabled' => env('MAINTENANCE_ENABLED', false),
     ],
 
     'membership' => [
         // App-wide currency for all membership money, rendered by
         // Members::formatMoney() (e.g. "BDT 1,500.00").
-        'currency' => env('ALUMKIT_MEMBERSHIP_CURRENCY', 'BDT'),
+        'currency' => env('MEMBERSHIP_CURRENCY', 'BDT'),
 
         // Feature keys an admin can gate behind a membership plan. Each is a
         // toggle in the plan editor; when a plan grants a key, members with an

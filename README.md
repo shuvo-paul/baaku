@@ -9,7 +9,7 @@ php artisan db:seed
 ```
 
 This seeds committee positions, roles + permissions, and the admin user
-(from `ALUMKIT_ADMIN_*` env / `config('alumkit.seeder.*')`). Every seeder is
+(from `ADMIN_*` env / `config('alumkit.seeder.*')`). Every seeder is
 idempotent — safe to re-run.
 
 ### Individual commands
