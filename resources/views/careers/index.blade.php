@@ -39,7 +39,7 @@
                                 {{ $career->company }}
                             </td>
                             <td class="py-3 px-4 text-gray-600">
-                                {{ config("alumkit.career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}
+                                {{ config("career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}
                             </td>
                             <td class="py-3 px-4 text-gray-600">
                                 {{ $career->start_year ?? '—' }}

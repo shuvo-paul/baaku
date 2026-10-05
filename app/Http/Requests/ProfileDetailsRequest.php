@@ -52,7 +52,7 @@ class ProfileDetailsRequest extends FormRequest
             'emergency_contact.relation' => ['nullable', 'string', 'max:255'],
         ];
 
-        $localNames = config('alumkit.local_names', []);
+        $localNames = config('app.local_names', []);
 
         if ($localNames) {
             $rules['local_names'] = ['nullable', 'array'];

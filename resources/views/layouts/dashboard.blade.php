@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', __('auth.dashboard')) — {{ config('app.name', 'AlumKit') }}</title>
+    <title>@yield('title', __('auth.dashboard')) — {{ config('app.name') }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     <div class="min-h-screen flex" x-data="{ sidebarOpen: false }">
         {{-- Mobile top bar --}}
         <div class="fixed inset-x-0 top-0 z-40 flex items-center justify-between border-b border-outline-variant/60 bg-white/85 px-4 py-3 backdrop-blur lg:hidden">
-            <span class="font-serif text-lg font-semibold text-navy">{{ config('app.name', 'AlumKit') }}</span>
+            <span class="font-serif text-lg font-semibold text-navy">{{ config('app.name') }}</span>
             <button type="button" @click="sidebarOpen = true" class="btn-secondary px-3 py-1.5">
                 {{ __('dashboard.menu') }}
             </button>
@@ -32,7 +32,7 @@
                 <div>
                     <p class="label-caps text-gold">Alumni Network</p>
                     <h2 class="mt-1 text-xl font-semibold text-navy">
-                        {{ config('app.name', 'AlumKit') }}
+                        {{ config('app.name') }}
                     </h2>
                 </div>
                 <button type="button" @click="sidebarOpen = false" class="rounded p-1 text-on-surface-variant hover:text-navy lg:hidden" aria-label="Close menu">
@@ -50,9 +50,9 @@
                         ['label' => __('dashboard.member_directory'), 'route' => 'dashboard.users.index', 'show' => auth()->user()->state === \App\Enums\UserState::Active->value && auth()->user()->canAccessMembershipFeature('members')],
                         ['label' => __('activity_log.title'), 'route' => 'dashboard.activity.index', 'show' => auth()->user()->can('view activity log')],
                         ['label' => __('career.careers'), 'route' => 'dashboard.careers.index', 'show' => auth()->user()->can('manage careers')],
-                        ['label' => __('post.posts'), 'route' => 'dashboard.posts.index', 'show' => config('alumkit.features.posts') && auth()->user()->state === \App\Enums\UserState::Active->value && auth()->user()->canAccessMembershipFeature('posts')],
-                        ['label' => __('committee.committee'), 'route' => 'dashboard.committee.index', 'show' => config('alumkit.features.committee') && auth()->user()->can('manage committee')],
-                        ['label' => __('membership.membership'), 'route' => 'dashboard.membership.show', 'show' => config('alumkit.features.memberships') && auth()->user()->state === \App\Enums\UserState::Active->value],
+                        ['label' => __('post.posts'), 'route' => 'dashboard.posts.index', 'show' => config('features.posts') && auth()->user()->state === \App\Enums\UserState::Active->value && auth()->user()->canAccessMembershipFeature('posts')],
+                        ['label' => __('committee.committee'), 'route' => 'dashboard.committee.index', 'show' => config('features.committee') && auth()->user()->can('manage committee')],
+                        ['label' => __('membership.membership'), 'route' => 'dashboard.membership.show', 'show' => config('features.memberships') && auth()->user()->state === \App\Enums\UserState::Active->value],
                     ];
                 @endphp
 
@@ -69,7 +69,7 @@
                     @endif
                 @endforeach
 
-                @if (config('alumkit.features.memberships'))
+                @if (config('features.memberships'))
                     @php
                         $membershipAdminItems = [
                             ['label' => __('membership.manage_plans'), 'route' => 'dashboard.plans.index', 'show' => auth()->user()->can('manage membership plans')],
@@ -97,38 +97,6 @@
                     @endif
                 @endif
 
-                @foreach (config('alumkit.dashboard_nav', []) as $item)
-                    @if (! empty($item['children']) && is_array($item['children']))
-                        @if (empty($item['permission']) || auth()->user()->can($item['permission']))
-                            <p class="label-caps px-6 pt-5 pb-1 text-on-surface-variant">
-                                {{ $item['label'] }}
-                            </p>
-                            @foreach ($item['children'] as $child)
-                                @if (empty($child['permission']) || auth()->user()->can($child['permission']))
-                                    @php $active = request()->routeIs($child['route']); @endphp
-                                    <a href="{{ route($child['route']) }}"
-                                       class="relative flex items-center pl-10 pr-6 py-2 text-sm font-medium transition-colors {{ $active ? 'text-navy bg-surface-container' : 'text-on-surface-variant hover:text-navy hover:bg-surface-container/60' }}">
-                                        @if ($active)
-                                            <span class="absolute left-0 inset-y-0 w-1 bg-gold" aria-hidden="true"></span>
-                                        @endif
-                                        {{ $child['label'] }}
-                                    </a>
-                                @endif
-                            @endforeach
-                        @endif
-                    @elseif (! empty($item['route']))
-                        @if (empty($item['permission']) || auth()->user()->can($item['permission']))
-                            @php $active = request()->routeIs($item['route']); @endphp
-                            <a href="{{ route($item['route']) }}"
-                               class="relative flex items-center px-6 py-2 text-sm font-medium transition-colors {{ $active ? 'text-navy bg-surface-container' : 'text-on-surface-variant hover:text-navy hover:bg-surface-container/60' }}">
-                                @if ($active)
-                                    <span class="absolute left-0 inset-y-0 w-1 bg-gold" aria-hidden="true"></span>
-                                @endif
-                                {{ $item['label'] }}
-                            </a>
-                        @endif
-                    @endif
-                @endforeach
 
                 @if (Auth::user()->state !== \App\Enums\UserState::Suspended->value)
                     @php $profileActive = request()->routeIs('dashboard.profile'); @endphp
@@ -183,7 +151,7 @@
             </div>
         </main>
     </div>
-    @include('layouts.partials.alumkit-form-script')
+    @include('layouts.partials.form-script')
     @tallStackUiScript
     @livewireScripts
 </body>

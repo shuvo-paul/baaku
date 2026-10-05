@@ -16,7 +16,7 @@ class ProfileCareerController extends Controller
 {
     public function create(): View
     {
-        $employmentTypes = config('alumkit.career.employment_types', []);
+        $employmentTypes = config('career.employment_types', []);
 
         /** @var View $view */
         $view = view('profile.careers.create', compact('employmentTypes'));
@@ -36,7 +36,7 @@ class ProfileCareerController extends Controller
     public function edit(Request $request, int $career): View
     {
         $career = $request->user()->careers()->findOrFail($career);
-        $employmentTypes = config('alumkit.career.employment_types', []);
+        $employmentTypes = config('career.employment_types', []);
 
         /** @var View $view */
         $view = view('profile.careers.edit', compact('career', 'employmentTypes'));

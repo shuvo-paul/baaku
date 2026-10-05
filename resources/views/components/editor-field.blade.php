@@ -8,11 +8,11 @@
     @endif
 
     <div class="rounded-md border border-gray-300 bg-white shadow-sm"
-         data-alumkit-editor
+         data-editor
          data-upload-url="{{ route('editor.image') }}"
          @if ($value) data-value="{{ $value }}" @endif>
         <input type="hidden" name="{{ $name }}" value="{{ $value ?? '' }}">
-        <div class="alumkit-editor-holder"></div>
+        <div class="editor-holder"></div>
     </div>
 
     @vite('resources/js/editor.js')

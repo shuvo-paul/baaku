@@ -12,7 +12,7 @@ class CheckMaintenanceMode
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! config('alumkit.maintenance.enabled')) {
+        if (! config('app.maintenance.enabled')) {
             return $next($request);
         }
 

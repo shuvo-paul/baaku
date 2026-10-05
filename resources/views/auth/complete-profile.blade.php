@@ -27,7 +27,7 @@
             }
 
             $localNameRules = [];
-            foreach (config('alumkit.local_names', []) as $code => $langConfig) {
+            foreach (config('app.local_names', []) as $code => $langConfig) {
                 if ($langConfig['required'] ?? false) {
                     $localNameRules["local_names.{$code}"] = [
                         'required' => true,
@@ -341,9 +341,9 @@
                     </x-slot:label>
                 </x-photo-cropper>
 
-                @if (config('alumkit.local_names'))
+                @if (config('app.local_names'))
                     <div class="space-y-4">
-                        @foreach (config('alumkit.local_names') as $code => $langConfig)
+                        @foreach (config('app.local_names') as $code => $langConfig)
                             <div>
                                 <x-input
                                     type="text"

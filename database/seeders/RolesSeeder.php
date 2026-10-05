@@ -15,7 +15,7 @@ class RolesSeeder extends Seeder
         // Grants need the permissions to exist first.
         (new PermissionsSeeder)->run();
 
-        $defaultRoles = config('alumkit.permission.default_roles', ['admin', 'moderator', 'member']);
+        $defaultRoles = config('auth.default_roles', ['admin', 'moderator', 'member']);
 
         foreach ($defaultRoles as $roleName) {
             Role::findOrCreate($roleName);

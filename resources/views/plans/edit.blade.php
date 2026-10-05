@@ -66,7 +66,7 @@
                 <div>
                     <p class="block text-sm font-medium text-gray-700 mb-1">{{ __('membership.feature_gating') }}</p>
                     <div class="flex flex-wrap items-center gap-4">
-                        @foreach (config('alumkit.membership.gateable_features', []) as $key)
+                        @foreach (config('membership.gateable_features', []) as $key)
                             <x-form.checkbox name="feature_{{ $key }}" :label="__('membership.feature_'.$key)" :checked="old('feature_'.$key, filled($plan->features[$key] ?? null))" />
                         @endforeach
                     </div>

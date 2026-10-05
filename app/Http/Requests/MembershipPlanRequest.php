@@ -68,7 +68,7 @@ abstract class MembershipPlanRequest extends FormRequest
 
         // Overlay the gated-feature toggles onto the features map so the
         // admin's checkbox choices land in the same stored JSON.
-        $gateable = config('alumkit.membership.gateable_features', []);
+        $gateable = config('membership.gateable_features', []);
 
         foreach (is_array($gateable) ? $gateable : [] as $key) {
             if ($this->boolean('feature_'.(string) $key)) {

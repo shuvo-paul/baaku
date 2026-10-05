@@ -51,7 +51,7 @@ final class Members
      */
     public static function formatMoney(float|string $amount): string
     {
-        $currency = (string) config('alumkit.membership.currency', 'BDT');
+        $currency = (string) config('membership.currency', 'BDT');
 
         return $currency.' '.number_format((float) $amount, 2);
     }

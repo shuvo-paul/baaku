@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Enums\UserState;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;
 use Spatie\Permission\Models\Role;
@@ -13,13 +14,8 @@ class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
 
-        if (! class_exists($userModel)) {
-            return;
-        }
-
-        $defaultRoles = config('alumkit.permission.default_roles', ['admin', 'moderator', 'member']);
+        $defaultRoles = config('auth.default_roles', ['admin', 'moderator', 'member']);
         $adminRole = $defaultRoles[0] ?? 'admin';
 
         try {
@@ -28,11 +24,11 @@ class AdminUserSeeder extends Seeder
             return;
         }
 
-        $user = $userModel::updateOrCreate(
-            ['email' => config('alumkit.seeder.admin_email', 'admin@example.com')],
+        $user = User::updateOrCreate(
+            ['email' => config('app.seeder.admin_email', 'admin@example.com')],
             [
-                'name' => config('alumkit.seeder.admin_name', 'Admin'),
-                'password' => bcrypt(config('alumkit.seeder.admin_password', 'password')),
+                'name' => config('app.seeder.admin_name', 'Admin'),
+                'password' => bcrypt(config('app.seeder.admin_password', 'password')),
                 'email_verified_at' => now(),
                 'state' => UserState::Active->value,
             ],

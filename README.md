@@ -1,4 +1,4 @@
-# Alumkit
+# Baaku
 
 ## Seeding
 
@@ -9,7 +9,7 @@ php artisan db:seed
 ```
 
 This seeds committee positions, roles + permissions, and the admin user
-(from `ADMIN_*` env / `config('alumkit.seeder.*')`). Every seeder is
+(from `ADMIN_*` env / `config('app.seeder.*')`). Every seeder is
 idempotent — safe to re-run.
 
 ### Individual commands
@@ -17,7 +17,7 @@ idempotent — safe to re-run.
 | Command | Seeds |
 |---|---|
 | `php artisan positions:seed` | Committee positions |
-| `php artisan permissions:seed` | Permissions (built-in + `config('alumkit.permission.permissions')`) |
+| `php artisan permissions:seed` | Permissions (built-in + `config('auth.permissions')`) |
 | `php artisan roles:seed` | Roles + grants (ensures permissions exist first) |
 | `php artisan admin:seed` | The admin user and assigns the `admin` role |
 | `php artisan dev:seed` | Local-only dev user (refuses to run outside `local`) |

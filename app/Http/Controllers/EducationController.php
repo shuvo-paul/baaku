@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEducationRequest;
 use App\Http\Requests\UpdateEducationRequest;
 use App\Models\Education;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
@@ -25,8 +26,7 @@ class EducationController extends Controller
 
     public function create(): View
     {
-        $userModel = config('alumkit.auth.user_model');
-        $users = $userModel::all();
+        $users = User::all();
 
         /** @var View $view */
         $view = view('educations.create', compact('users'));

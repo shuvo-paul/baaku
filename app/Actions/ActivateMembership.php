@@ -39,8 +39,7 @@ class ActivateMembership
         return DB::transaction(function () use ($payment, $actor): Membership {
             $plan = $payment->plan()->lockForUpdate()->firstOrFail();
 
-            $userModel = config('alumkit.auth.user_model', User::class);
-            $user = $userModel::findOrFail($payment->user_id);
+            $user = User::findOrFail($payment->user_id);
 
             $existing = Membership::where('user_id', $user->getKey())
                 ->where('status', MembershipStatus::Active->value)

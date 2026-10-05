@@ -86,6 +86,6 @@ class Post extends Model
     public function user(): BelongsTo
     {
         /** @phpstan-ignore argument.templateType */
-        return $this->belongsTo(config('alumkit.auth.user_model'));
+        return $this->belongsTo(User::class);
     }
 }

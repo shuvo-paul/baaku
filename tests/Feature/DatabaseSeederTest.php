@@ -12,5 +12,5 @@ it('seeds the full foundation and no test user', function () {
         ->and(Permission::count())->toBe(10)
         ->and(Role::pluck('name')->all())->toEqualCanonicalizing(['admin', 'moderator', 'member'])
         ->and(User::where('email', 'test@example.com')->exists())->toBeFalse()
-        ->and(User::where('email', config('alumkit.seeder.admin_email'))->exists())->toBeTrue();
+        ->and(User::where('email', config('app.seeder.admin_email'))->exists())->toBeTrue();
 });

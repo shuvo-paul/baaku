@@ -63,7 +63,7 @@ class MembershipPayment extends Model
     public function user(): BelongsTo
     {
         /** @phpstan-ignore argument.templateType */
-        return $this->belongsTo(config('alumkit.auth.user_model'));
+        return $this->belongsTo(User::class);
     }
 
     /** @return BelongsTo<MembershipPlan, $this> */
@@ -100,7 +100,7 @@ class MembershipPayment extends Model
     public function reviewer(): BelongsTo
     {
         /** @phpstan-ignore argument.templateType */
-        return $this->belongsTo(config('alumkit.auth.user_model'), 'reviewed_by');
+        return $this->belongsTo(User::class, 'reviewed_by');
     }
 
     public function statusEnum(): PaymentStatus

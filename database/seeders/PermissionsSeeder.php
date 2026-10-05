@@ -20,8 +20,8 @@ class PermissionsSeeder extends Seeder
             Permission::findOrCreate($permission);
         }
 
-        // App-specific extensions via config('alumkit.permission.permissions').
-        foreach ((array) config('alumkit.permission.permissions', []) as $permission) {
+        // App-specific extensions via config('auth.permissions').
+        foreach ((array) config('auth.permissions', []) as $permission) {
             Permission::findOrCreate($permission);
         }
     }

@@ -18,8 +18,8 @@ Schedule::command('backup:monitor')->dailyAt('03:30')->timezone('Asia/Dhaka');
 Schedule::command('backup:clean')->weeklyOn(0, '04:00')->timezone('Asia/Dhaka');
 
 // Expire active, non-lifetime memberships whose end date has passed.
-if (config('alumkit.membership.expiry.enabled', true)) {
+if (config('membership.expiry.enabled', true)) {
     Schedule::command('memberships:expire')
-        ->dailyAt((string) config('alumkit.membership.expiry.at', '00:30'))
+        ->dailyAt((string) config('membership.expiry.at', '00:30'))
         ->name('memberships:expire');
 }

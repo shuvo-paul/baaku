@@ -18,7 +18,7 @@
                ]) }}>
 
         <div class="dark:text-dark-400 flex select-none items-center whitespace-nowrap text-gray-500 sm:text-sm ml-1 mr-2">
-            <button type="button" dusk="alumkit_form_password_reveal" @click="show = !show" class="cursor-pointer"
+            <button type="button" dusk="form_password_reveal" @click="show = !show" class="cursor-pointer"
                     :aria-label="show ? 'Hide password' : 'Show password'" :aria-pressed="show">
                 <svg class="h-5 w-5" x-show="!show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">
                     <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>

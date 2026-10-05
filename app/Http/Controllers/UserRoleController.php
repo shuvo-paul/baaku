@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Enums\UserState;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +18,6 @@ class UserRoleController extends Controller
 {
     public function index(Request $request): View|JsonResponse
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
         $isAdmin = $request->user()->can('manage members');
 
         if ($isAdmin) {
@@ -30,7 +30,7 @@ class UserRoleController extends Controller
 
             $search = trim((string) $request->query('search'));
 
-            $query = $userModel::query()->with(['roles', 'profile.educations', 'profile.careers']);
+            $query = User::query()->with(['roles', 'profile.educations', 'profile.careers']);
 
             if ($filter === 'all') {
                 $query->orderBy('name');
@@ -58,7 +58,7 @@ class UserRoleController extends Controller
                 ]);
             }
 
-            $counts = $userModel::query()
+            $counts = User::query()
                 ->selectRaw('state, count(*) as aggregate')
                 ->groupBy('state')
                 ->pluck('aggregate', 'state')
@@ -67,7 +67,7 @@ class UserRoleController extends Controller
             $filter = 'all';
             $search = '';
             $counts = [];
-            $users = $userModel::query()
+            $users = User::query()
                 ->with(['roles', 'profile.educations', 'profile.careers'])
                 ->where('state', UserState::Active->value)
                 ->orderBy('name')
@@ -95,10 +95,9 @@ class UserRoleController extends Controller
 
     public function show(Request $request, string $user): View
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
         $isAdmin = $request->user()->can('manage members');
 
-        $query = $userModel::query()
+        $query = User::query()
             ->with(['roles', 'profile.educations', 'profile.careers']);
 
         if (! $isAdmin) {
@@ -115,8 +114,7 @@ class UserRoleController extends Controller
 
     public function edit(string $user): View
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
-        $user = $userModel::findOrFail($user);
+        $user = User::findOrFail($user);
 
         $roles = Role::all();
 
@@ -128,8 +126,7 @@ class UserRoleController extends Controller
 
     public function update(Request $request, string $user): RedirectResponse
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
-        $targetUser = $userModel::findOrFail($user);
+        $targetUser = User::findOrFail($user);
 
         if (is_null($targetUser->email_verified_at)) {
             return redirect()->route('dashboard.users.show', $targetUser)
@@ -145,7 +142,7 @@ class UserRoleController extends Controller
 
         // Prevent self-demotion: don't allow removing own admin role
         if ($request->user()->getKey() === $targetUser->getKey()) {
-            $defaultRoles = config('alumkit.permission.default_roles', ['admin', 'moderator', 'member']);
+            $defaultRoles = config('auth.default_roles', ['admin', 'moderator', 'member']);
             $adminRole = $defaultRoles[0] ?? 'admin';
 
             if ($targetUser->hasRole($adminRole) && ! in_array($adminRole, $requestedRoles)) {

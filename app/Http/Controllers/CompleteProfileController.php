@@ -24,8 +24,8 @@ class CompleteProfileController extends Controller
             return redirect()->route('dashboard');
         }
 
-        $employmentTypes = config('alumkit.career.employment_types', []);
-        $adminRole = config('alumkit.permission.default_roles', ['admin', 'moderator', 'member'])[0] ?? 'admin';
+        $employmentTypes = config('career.employment_types', []);
+        $adminRole = config('auth.default_roles', ['admin', 'moderator', 'member'])[0] ?? 'admin';
         $isAdmin = $request->user()->hasRole($adminRole);
 
         /** @var View $view */
@@ -79,7 +79,7 @@ class CompleteProfileController extends Controller
 
         activity('profile')->performedOn($user)->event('submitted')->log('profile submitted');
 
-        $adminRole = config('alumkit.permission.default_roles', ['admin', 'moderator', 'member'])[0] ?? 'admin';
+        $adminRole = config('auth.default_roles', ['admin', 'moderator', 'member'])[0] ?? 'admin';
 
         if (! $user->hasRole($adminRole)) {
             return redirect()->route('dashboard')

@@ -29,7 +29,7 @@ function xsrfToken() {
 
 function initEditor(el) {
   const input = el.querySelector('input[type="hidden"]');
-  const holder = el.querySelector('.alumkit-editor-holder');
+  const holder = el.querySelector('.editor-holder');
   const data = el.dataset.value ? safeParse(el.dataset.value) : undefined;
 
   const editor = new EditorJS({
@@ -88,21 +88,21 @@ function initEditor(el) {
         saving = false;
       }
     }
-    el.__alumkitSync = sync;
+    el.__editorSync = sync;
     form.addEventListener('focusout', (e) => {
       // Save when focus leaves this editor (clicking Save/Cancel blurs it first).
       if (el.contains(e.target) && !el.contains(e.relatedTarget)) sync();
     }, true);
     form.addEventListener('submit', async (e) => {
       // Re-entered after we flushed the editors: submit for real.
-      if (el.__alumkitSubmitted) return;
+      if (el.__editorSubmitted) return;
       e.preventDefault();
-      el.__alumkitSubmitted = true;
+      el.__editorSubmitted = true;
       try {
         // Every editor on the form syncs (N-editor safe), then submit once.
         await Promise.all(
-          [...form.querySelectorAll('[data-alumkit-editor]')].map((editorEl) =>
-            editorEl.__alumkitSync?.()
+          [...form.querySelectorAll('[data-editor]')].map((editorEl) =>
+            editorEl.__editorSync?.()
           )
         );
         // form.submit() bypasses this handler (no re-entrancy, no race) and still
@@ -110,12 +110,12 @@ function initEditor(el) {
         // skips constraint validation, so run it here to keep `required` gates.
         if (!form.checkValidity()) {
           form.reportValidity();
-          el.__alumkitSubmitted = false;
+          el.__editorSubmitted = false;
           return;
         }
         form.submit();
       } catch {
-        el.__alumkitSubmitted = false;
+        el.__editorSubmitted = false;
         alert('Could not save the editor content. Please check the highlighted blocks.');
       }
     }, true);
@@ -123,11 +123,11 @@ function initEditor(el) {
 }
 
 function initAll() {
-  document.querySelectorAll('[data-alumkit-editor]').forEach(initEditor);
+  document.querySelectorAll('[data-editor]').forEach(initEditor);
 }
 
-if (!window.__alumkitEditorInit) {
-  window.__alumkitEditorInit = true;
+if (!window.__editorInit) {
+  window.__editorInit = true;
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAll);
   } else {

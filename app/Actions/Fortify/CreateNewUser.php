@@ -7,8 +7,7 @@ namespace App\Actions\Fortify;
 use App\Enums\UserState;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\Profile;
-use App\Models\User as AppUser;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -34,8 +33,7 @@ class CreateNewUser implements CreatesNewUsers
 
         $validated = $validator->validate();
 
-        /** @var AppUser $user */
-        $user = config('alumkit.auth.user_model')::create([
+        $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],

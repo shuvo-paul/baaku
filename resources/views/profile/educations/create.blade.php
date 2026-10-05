@@ -12,10 +12,10 @@
             @csrf
 
             <div class="space-y-4" x-data="{ is_current: {{ old('is_current', false) ? 'true' : 'false' }} }">
-                <x-suggest name="level" :label="__('education.level')" :value="old('level')" :suggestions="config('alumkit.education.levels', [])" required />
+                <x-suggest name="level" :label="__('education.level')" :value="old('level')" :suggestions="config('education.levels', [])" required />
 
-                <x-suggest name="institution" :label="__('education.institution')" :value="old('institution')" :suggestions="config('alumkit.education.institutions', [])" required />
-                <x-suggest name="subject" :label="__('education.subject')" :value="old('subject')" :suggestions="config('alumkit.education.subjects', [])" required />
+                <x-suggest name="institution" :label="__('education.institution')" :value="old('institution')" :suggestions="config('education.institutions', [])" required />
+                <x-suggest name="subject" :label="__('education.subject')" :value="old('subject')" :suggestions="config('education.subjects', [])" required />
                 <x-input type="text" name="student_id" :label="__('education.student_id')" :value="old('student_id')" />
 
                 <div class="grid grid-cols-2 gap-4">

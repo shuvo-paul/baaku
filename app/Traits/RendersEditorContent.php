@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Traits;
 
 /**
- * Converts Editor.js JSON (as stored by the alumkit editor field) to HTML for
+ * Converts Editor.js JSON (as stored by the editor field) to HTML for
  * display. Plain-text values are escaped and shown as-is.
  */
 trait RendersEditorContent

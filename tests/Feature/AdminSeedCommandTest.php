@@ -6,7 +6,7 @@ it('seeds the admin user with the admin role and active state', function () {
     $this->artisan('roles:seed')->assertSuccessful();
     $this->artisan('admin:seed')->assertSuccessful();
 
-    $admin = User::where('email', config('alumkit.seeder.admin_email'))->first();
+    $admin = User::where('email', config('app.seeder.admin_email'))->first();
 
     expect($admin)
         ->not->toBeNull()

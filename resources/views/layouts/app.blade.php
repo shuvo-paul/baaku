@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'AlumKit') }}</title>
+    <title>{{ config('app.name') }}</title>
     @tallStackUiStyle
     @fonts(['noto-sans-bengali', 'instrument-sans'])
     @vite('resources/css/app.css')
@@ -16,7 +16,7 @@
             @yield('content')
         </div>
     </div>
-    @include('layouts.partials.alumkit-form-script')
+    @include('layouts.partials.form-script')
     @tallStackUiScript
     @livewireScripts
     @stack('scripts')

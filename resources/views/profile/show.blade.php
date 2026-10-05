@@ -49,7 +49,7 @@
             <section id="profile" role="tabpanel" aria-labelledby="tab-profile" x-show="tab === 'profile'" x-cloak>
                 @php
                     $localNameRules = [];
-                    foreach (config('alumkit.local_names', []) as $code => $langConfig) {
+                    foreach (config('app.local_names', []) as $code => $langConfig) {
                         if ($langConfig['required'] ?? false) {
                             $localNameRules["local_names.{$code}"] = [
                                 'required' => true,
@@ -77,7 +77,7 @@
                     @endif
 
                     <form method="POST" action="{{ route('dashboard.profile.details.update') }}" enctype="multipart/form-data" class="space-y-4"
-                          x-data="alumkitForm({{ Js::from($profileFieldRules) }}, {{ Js::from($errors->getMessages()) }})"
+                          x-data="appForm({{ Js::from($profileFieldRules) }}, {{ Js::from($errors->getMessages()) }})"
                           @focusout="validateField($event.target.name, $event.target.value)">
                         @csrf
                         @method('PUT')
@@ -131,9 +131,9 @@
                             box-class="h-32 w-32"
                             :choose-label="__('profile.choose_photo')" />
 
-                        @if (config('alumkit.local_names'))
+                        @if (config('app.local_names'))
                             <div class="space-y-4">
-                                @foreach (config('alumkit.local_names') as $code => $langConfig)
+                                @foreach (config('app.local_names') as $code => $langConfig)
                                     <div>
                                         <x-input
                                             type="text"
@@ -352,7 +352,7 @@
                                     </p>
                                     <div class="mt-1 flex items-center gap-2">
                                         <h3 class="font-serif text-lg font-semibold text-navy">{{ $career->job_title }}</h3>
-                                        <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ config("alumkit.career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}</span>
+                                        <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ config("career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}</span>
                                     </div>
                                     <p class="mt-0.5 text-sm text-on-surface-variant">{{ $career->company }}</p>
                                     @if ($career->industry || $career->location)
@@ -399,7 +399,7 @@
                         @endif
 
                         <form method="POST" action="{{ route('user-password.update') }}" class="mt-4 space-y-4"
-                              x-data="alumkitForm({
+                              x-data="appForm({
                                   current_password: { required: true, requiredMsg: {{ Js::from(__('validation.required', ['attribute' => __('auth.current_password')])) }} },
                                   password: { required: true, requiredMsg: {{ Js::from(__('validation.required', ['attribute' => __('auth.new_password')])) }}, min: 8, minMsg: {{ Js::from(__('validation.min.string', ['attribute' => __('auth.new_password'), 'min' => 8])) }} },
                                   password_confirmation: { required: true, requiredMsg: {{ Js::from(__('validation.required', ['attribute' => __('auth.confirm_password')])) }}, confirmed: 'password', confirmedMsg: {{ Js::from(__('validation.confirmed', ['attribute' => __('auth.confirm_password')])) }} },

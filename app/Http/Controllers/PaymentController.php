@@ -42,7 +42,6 @@ class PaymentController extends Controller
 
     public function create(): View
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
         $plans = MembershipPlan::active()->get();
         $methods = MembershipPaymentMethod::active()->get();
 
@@ -57,7 +56,7 @@ class PaymentController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('proof')) {
-            $path = $request->file('proof')->store('membership-payment-proofs', config('alumkit.membership.proof.disk', 'public'));
+            $path = $request->file('proof')->store('membership-payment-proofs', config('membership.proof.disk', 'public'));
             abort_unless(is_string($path), 500);
             $data['proof_path'] = $path;
         }
@@ -126,7 +125,7 @@ class PaymentController extends Controller
 
         abort_unless($allowed, 403);
 
-        $disk = config('alumkit.membership.proof.disk', 'public');
+        $disk = config('membership.proof.disk', 'public');
         $path = $payment->proof_path;
 
         abort_unless($path !== null && Storage::disk($disk)->exists($path), 404);

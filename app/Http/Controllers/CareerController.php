@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCareerRequest;
 use App\Http\Requests\UpdateCareerRequest;
 use App\Models\Career;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
@@ -25,9 +26,8 @@ class CareerController extends Controller
 
     public function create(): View
     {
-        $employmentTypes = config('alumkit.career.employment_types', []);
-        $userModel = config('alumkit.auth.user_model');
-        $users = $userModel::all();
+        $employmentTypes = config('career.employment_types', []);
+        $users = User::all();
 
         /** @var View $view */
         $view = view('careers.create', compact('employmentTypes', 'users'));
@@ -45,7 +45,7 @@ class CareerController extends Controller
 
     public function edit(Career $career): View
     {
-        $employmentTypes = config('alumkit.career.employment_types', []);
+        $employmentTypes = config('career.employment_types', []);
 
         /** @var View $view */
         $view = view('careers.edit', compact('career', 'employmentTypes'));

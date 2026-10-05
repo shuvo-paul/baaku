@@ -177,7 +177,7 @@
                             </p>
                             <div class="mt-1 flex flex-wrap items-center gap-2">
                                 <h3 class="font-serif text-lg font-semibold text-navy">{{ $career->job_title }}</h3>
-                                <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ config("alumkit.career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}</span>
+                                <span class="rounded bg-surface-container px-2 py-0.5 text-xs font-medium text-navy">{{ config("career.employment_types.{$career->employment_type->value}", $career->employment_type->value) }}</span>
                             </div>
                             <p class="mt-0.5 text-on-surface-variant">{{ $career->company }}</p>
                             @if ($career->industry || $career->location)
@@ -196,7 +196,7 @@
             <section class="card p-6 lg:p-8">
                 <h2 class="font-serif text-2xl font-semibold text-navy">{{ __('dashboard.membership') }}</h2>
 
-                @if (auth()->user()->can('manage memberships') && config('alumkit.features.memberships'))
+                @if (auth()->user()->can('manage memberships') && config('features.memberships'))
                     @php
                         $memberMembership = $user->latestMembership()->with('plan')->first();
                         $memberPayments = \App\Models\MembershipPayment::where('user_id', $user->getKey())->with('plan')->latest('id')->limit(5)->get();
@@ -246,7 +246,7 @@
                 @if ($isAdmin)
                 @if ($user->email_verified_at && $user->getKey() !== auth()->id())
                 <script>
-                    function alumkitSubmitState(url, state, reason) {
+                    function submitState(url, state, reason) {
                         var f = document.createElement('form');
                         f.method = 'POST';
                         f.action = url;
@@ -277,7 +277,7 @@
                     reason: '',
                     open(state, url, label, needsReason) {
                         if (!needsReason) {
-                            alumkitSubmitState(url, state, null);
+                            submitState(url, state, null);
                             return;
                         }
                         this.targetState = state;
@@ -290,7 +290,7 @@
                     },
                     confirm() {
                         if (!this.reason.trim()) return;
-                        alumkitSubmitState(this.actionUrl, this.targetState, this.reason);
+                        submitState(this.actionUrl, this.targetState, this.reason);
                     },
                     close() {
                         this.showModal = false;

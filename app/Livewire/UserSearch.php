@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
 class UserSearch extends Component
@@ -31,9 +31,7 @@ class UserSearch extends Component
         $this->selectedUserId = $selectedUserId;
 
         if ($selectedUserId) {
-            /** @var class-string<Model> $userModel */
-            $userModel = config('alumkit.auth.user_model');
-            $user = $userModel::find($selectedUserId);
+            $user = User::find($selectedUserId);
 
             if ($user) {
                 /** @phpstan-ignore property.notFound */
@@ -54,10 +52,7 @@ class UserSearch extends Component
             return;
         }
 
-        /** @var class-string<Model> $userModel */
-        $userModel = config('alumkit.auth.user_model');
-
-        $this->results = $userModel::query()
+        $this->results = User::query()
             ->where('state', 'active')
             ->where(function (Builder $q): void {
                 $q->where('name', 'like', '%'.$this->query.'%')

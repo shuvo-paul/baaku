@@ -1,1 +1,1 @@
-<div>Alumkit placeholder view.</div>
+<div>Placeholder view.</div>

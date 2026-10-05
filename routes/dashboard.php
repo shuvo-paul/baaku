@@ -33,7 +33,7 @@ Route::get('media/editor-images/{file}', [MediaController::class, 'editorImage']
     ->name('editor.image.show')->where('file', '[\w.\-]+');
 
 // Post thumbnails: streamed through the app (no storage:link requirement).
-if (config('alumkit.features.posts')) {
+if (config('features.posts')) {
     Route::get('media/post-thumbnails/{file}', [MediaController::class, 'postThumbnail'])
         ->name('posts.thumbnail')->where('file', '[\w.\-]+');
 }
@@ -43,7 +43,7 @@ Route::get('media/profile-photos/{file}', [MediaController::class, 'profilePhoto
     ->name('profile.photo.show')->where('file', '[\w.\-]+');
 
 // Committee photos: streamed through the app (no storage:link requirement).
-if (config('alumkit.features.committee')) {
+if (config('features.committee')) {
     Route::get('media/committee-photos/{file}', [MediaController::class, 'committeePhoto'])
         ->name('committee.photo')->where('file', '[\w.\-]+');
 }
@@ -52,7 +52,7 @@ if (config('alumkit.features.committee')) {
 Route::middleware(['auth', 'verified', 'user.suspended'])->group(function () {
     Route::get('profile/complete', [CompleteProfileController::class, 'create'])->name('profile.complete');
     Route::post('profile/complete', [CompleteProfileController::class, 'store'])->name('profile.complete.store');
-    Route::post('alumkit/editor/image', [EditorImageController::class, 'store'])->name('editor.image');
+    Route::post('editor/image', [EditorImageController::class, 'store'])->name('editor.image');
 });
 
 // Protected routes: require auth, email verification, and completed profile.
@@ -101,7 +101,7 @@ Route::middleware(['auth', 'verified', 'complete-profile.check'])->group(functio
             Route::put('globals/{key}', [GlobalContentController::class, 'update'])->name('globals.update');
         });
 
-        if (config('alumkit.features.posts')) {
+        if (config('features.posts')) {
             Route::middleware('user.approved')->group(function () {
                 Route::resource('posts', PostController::class)->middleware('membership:posts');
             });
@@ -119,7 +119,7 @@ Route::middleware(['auth', 'verified', 'complete-profile.check'])->group(functio
         });
 
         // positions are committee-only — toggled with the committee feature
-        if (config('alumkit.features.committee')) {
+        if (config('features.committee')) {
             Route::middleware('permission:manage committee')->group(function () {
                 Route::resource('positions', PositionController::class)->except(['show']);
                 Route::resource('committee', CommitteeController::class)->except(['show']);
@@ -128,7 +128,7 @@ Route::middleware(['auth', 'verified', 'complete-profile.check'])->group(functio
         }
 
         // memberships — toggled with the memberships feature
-        if (config('alumkit.features.memberships')) {
+        if (config('features.memberships')) {
             Route::middleware('user.approved')->group(function () {
                 Route::get('membership', [MyMembershipController::class, 'show'])->name('membership.show');
                 Route::get('membership/plans', [MyMembershipController::class, 'plans'])->name('membership.plans');

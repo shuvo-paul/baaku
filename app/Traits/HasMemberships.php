@@ -79,7 +79,7 @@ trait HasMemberships
      */
     public function canAccessMembershipFeature(string $feature): bool
     {
-        if (! config('alumkit.features.memberships')) {
+        if (! config('features.memberships')) {
             return true;
         }
 

@@ -41,8 +41,7 @@ class RejectPayment
 
         PaymentRejected::dispatch($payment);
 
-        $userModel = config('alumkit.auth.user_model', User::class);
-        $notifiable = $userModel::find($payment->user_id);
+        $notifiable = User::find($payment->user_id);
 
         $notifiable?->notify(new MembershipRejectedNotification($payment));
     }

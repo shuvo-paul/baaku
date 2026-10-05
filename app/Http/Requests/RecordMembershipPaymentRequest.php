@@ -21,8 +21,8 @@ class RecordMembershipPaymentRequest extends FormRequest
     public function rules(): array
     {
         $methodTypes = MembershipPaymentMethod::active()->pluck('type')->all();
-        $mimes = implode(',', (array) config('alumkit.membership.proof.mimes', ['jpg', 'jpeg', 'png', 'pdf']));
-        $maxKb = (int) config('alumkit.membership.proof.max_kb', 2048);
+        $mimes = implode(',', (array) config('membership.proof.mimes', ['jpg', 'jpeg', 'png', 'pdf']));
+        $maxKb = (int) config('membership.proof.max_kb', 2048);
 
         return [
             'user_id' => ['required', 'integer', 'exists:users,id'],

@@ -77,7 +77,7 @@ class MyMembershipController extends Controller
         if ($request->hasFile('proof')) {
             $path = $request->file('proof')->store(
                 'membership-payment-proofs',
-                config('alumkit.membership.proof.disk', 'public'),
+                config('membership.proof.disk', 'public'),
             );
             abort_unless(is_string($path), 500);
             $proofPath = $path;
@@ -118,7 +118,7 @@ class MyMembershipController extends Controller
     {
         abort_unless($payment->user_id === $request->user()->getKey(), 403);
 
-        $disk = config('alumkit.membership.proof.disk', 'public');
+        $disk = config('membership.proof.disk', 'public');
         $path = $payment->proof_path;
 
         abort_unless($path !== null && Storage::disk($disk)->exists($path), 404);

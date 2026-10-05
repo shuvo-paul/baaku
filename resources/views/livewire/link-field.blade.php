@@ -24,13 +24,13 @@
         <x-button wire:click="$set('showModal', true)" :text="__('link-field.add_link')" />
     @endif
 
-    <x-modal :id="'alumkit-link-field-modal-'.$this->getId()" :wire="'showModal'"
+    <x-modal :id="'link-field-modal-'.$this->getId()" :wire="'showModal'"
              :title="__('link-field.link')"
-             x-on:open="$tsui.focus('alumkit-link-field-url-'.$this->getId())">
+             x-on:open="$tsui.focus('link-field-url-'.$this->getId())">
         <div class="space-y-4">
             <x-input wire:model="label" :label="__('link-field.label')" />
 
-            <x-input :id="'alumkit-link-field-url-'.$this->getId()" wire:model.live.debounce.250ms="url"
+            <x-input :id="'link-field-url-'.$this->getId()" wire:model.live.debounce.250ms="url"
                      :label="__('link-field.url')" placeholder="https://" />
 
             @if ($url && empty($suggestions))
@@ -54,7 +54,7 @@
         </div>
 
         <x-slot:footer>
-            <x-button outline x-on:click="$tsui.close.modal('alumkit-link-field-modal-'.$this->getId())" :text="__('link-field.cancel')" />
+            <x-button outline x-on:click="$tsui.close.modal('link-field-modal-'.$this->getId())" :text="__('link-field.cancel')" />
             <button type="button" wire:click="save" :disabled="! $url"
                     class="inline-flex items-center justify-center rounded-md bg-navy px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-navy-700 disabled:opacity-50">
                 {{ __('link-field.save') }}

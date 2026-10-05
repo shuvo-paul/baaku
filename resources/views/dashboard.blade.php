@@ -29,9 +29,9 @@
                 ['route' => 'dashboard.roles.index', 'show' => auth()->user()->can('manage roles'), 'overline' => __('dashboard.roles'), 'title' => __('dashboard.roles'), 'description' => __('dashboard.manage_roles_description')],
                 ['route' => 'dashboard.users.index', 'show' => auth()->user()->state === \App\Enums\UserState::Active->value, 'overline' => __('dashboard.member_directory'), 'title' => __('dashboard.member_directory'), 'description' => $canManageMembers ? __('dashboard.manage_members_description') : __('dashboard.member_directory_description')],
                 ['route' => 'dashboard.careers.index', 'show' => auth()->user()->can('manage careers'), 'overline' => __('career.careers'), 'title' => __('career.careers'), 'description' => __('dashboard.careers_description')],
-                ['route' => 'dashboard.posts.index', 'show' => config('alumkit.features.posts') && auth()->user()->state === \App\Enums\UserState::Active->value, 'overline' => __('post.posts'), 'title' => __('post.posts'), 'description' => __('dashboard.posts_description')],
-                ['route' => 'dashboard.committee.index', 'show' => config('alumkit.features.committee') && auth()->user()->can('manage committee'), 'overline' => __('committee.committee'), 'title' => __('committee.committee'), 'description' => __('dashboard.committee_description')],
-                ['route' => 'dashboard.membership.show', 'show' => config('alumkit.features.memberships') && auth()->user()->state === \App\Enums\UserState::Active->value, 'overline' => __('membership.membership'), 'title' => __('membership.membership'), 'description' => __('membership.view_plans')],
+                ['route' => 'dashboard.posts.index', 'show' => config('features.posts') && auth()->user()->state === \App\Enums\UserState::Active->value, 'overline' => __('post.posts'), 'title' => __('post.posts'), 'description' => __('dashboard.posts_description')],
+                ['route' => 'dashboard.committee.index', 'show' => config('features.committee') && auth()->user()->can('manage committee'), 'overline' => __('committee.committee'), 'title' => __('committee.committee'), 'description' => __('dashboard.committee_description')],
+                ['route' => 'dashboard.membership.show', 'show' => config('features.memberships') && auth()->user()->state === \App\Enums\UserState::Active->value, 'overline' => __('membership.membership'), 'title' => __('membership.membership'), 'description' => __('membership.view_plans')],
             ];
             $links = array_values(array_filter($links, fn ($link) => $link['show']));
         @endphp
@@ -57,7 +57,7 @@
             </section>
         @endif
 
-        @if (Auth::user()->state !== \App\Enums\UserState::Suspended->value && config('alumkit.features.memberships'))
+        @if (Auth::user()->state !== \App\Enums\UserState::Suspended->value && config('features.memberships'))
             @php
                 $activeMembership = Auth::user()->activeMembership()->with('plan')->first();
             @endphp

@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        $levels = config('alumkit.education.levels', []);
+        $levels = config('education.levels', []);
         $defaultLevel = is_array($levels) ? ($levels[0] ?? '') : '';
         $defaultEducation = ['level' => $defaultLevel, 'institution' => '', 'student_id' => '', 'subject' => '', 'start_year' => '', 'start_month' => '', 'is_current' => false, 'end_year' => '', 'end_month' => ''];
         $oldEducations = array_map(
@@ -121,7 +121,7 @@
                                 x-bind:name="'educations[' + index + '][level]'"
                                 x-model="edu.level"
                                 :label="__('education.level')"
-                                :suggestions="config('alumkit.education.levels', [])"
+                                :suggestions="config('education.levels', [])"
                                 required
                             />
                             <p x-show="fieldError('educations.' + index + '.level')" x-cloak
@@ -134,7 +134,7 @@
                                 x-bind:name="'educations[' + index + '][institution]'"
                                 x-model="edu.institution"
                                 :label="__('education.institution')"
-                                :suggestions="config('alumkit.education.institutions', [])"
+                                :suggestions="config('education.institutions', [])"
                                 required
                             />
                             <p x-show="fieldError('educations.' + index + '.institution')" x-cloak
@@ -147,7 +147,7 @@
                                 x-bind:name="'educations[' + index + '][subject]'"
                                 x-model="edu.subject"
                                 :label="__('education.subject')"
-                                :suggestions="config('alumkit.education.subjects', [])"
+                                :suggestions="config('education.subjects', [])"
                                 required
                             />
                             <p x-show="fieldError('educations.' + index + '.subject')" x-cloak

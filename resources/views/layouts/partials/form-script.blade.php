@@ -1,5 +1,5 @@
 <script>
-    window.alumkitForm = (rules, errors) => ({
+    window.appForm = (rules, errors) => ({
         errors: errors || {},
         values: {},
         rules: rules || {},

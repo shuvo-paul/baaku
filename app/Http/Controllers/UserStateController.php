@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Enums\UserState;
+use App\Models\User;
 use App\Notifications\UserActivatedNotification;
 use App\Notifications\UserRejectedNotification;
 use App\Notifications\UserSuspendedNotification;
@@ -16,8 +17,7 @@ class UserStateController extends Controller
 {
     public function update(Request $request, string $user): RedirectResponse
     {
-        $userModel = config('alumkit.auth.user_model', 'App\\Models\\User');
-        $targetUser = $userModel::findOrFail($user);
+        $targetUser = User::findOrFail($user);
 
         $request->validate([
             'state' => ['required', 'string', 'in:'.implode(',', array_column(UserState::cases(), 'value'))],
