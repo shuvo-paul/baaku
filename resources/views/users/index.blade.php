@@ -70,6 +70,6 @@
     </div>
 
     <div id="user-pagination" class="mt-6">
-        @include('vendor.pagination.users', ['paginator' => $users])
+        @include('pagination.users', ['paginator' => $users])
     </div>
 @endsection

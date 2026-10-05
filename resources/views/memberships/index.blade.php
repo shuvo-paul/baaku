@@ -67,7 +67,7 @@
             </table>
 
             <div class="mt-6">
-                @include('vendor.pagination.simple', ['paginator' => $memberships])
+                @include('pagination.simple', ['paginator' => $memberships])
             </div>
         @endif
     </x-card>

@@ -139,7 +139,7 @@
                     @endforeach
                 </ol>
 
-                {{ $activities->links('vendor.pagination.simple') }}
+                {{ $activities->links('pagination.simple') }}
             </section>
         @endif
     </div>

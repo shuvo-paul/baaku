@@ -107,7 +107,7 @@
                 </table>
 
                 <div class="mt-6">
-                    @include('vendor.pagination.simple', ['paginator' => $payments])
+                    @include('pagination.simple', ['paginator' => $payments])
                 </div>
             @endif
         </section>

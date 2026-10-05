@@ -54,7 +54,7 @@ class UserRoleController extends Controller
             if ($request->ajax()) {
                 return response()->json([
                     'grid' => view('users.partials.grid', ['users' => $users->items(), 'filter' => $filter])->render(),
-                    'pagination' => view('vendor.pagination.users', ['paginator' => $users])->render(),
+                    'pagination' => view('pagination.users', ['paginator' => $users])->render(),
                 ]);
             }
 
@@ -76,7 +76,7 @@ class UserRoleController extends Controller
             if ($request->ajax()) {
                 return response()->json([
                     'grid' => view('users.partials.grid', ['users' => $users->items(), 'filter' => $filter])->render(),
-                    'pagination' => view('vendor.pagination.users', ['paginator' => $users])->render(),
+                    'pagination' => view('pagination.users', ['paginator' => $users])->render(),
                 ]);
             }
         }
