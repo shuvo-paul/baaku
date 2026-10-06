@@ -26,9 +26,9 @@
                     <x-input name="paid_at" type="date" :label="__('membership.paid_at')" :value="old('paid_at', now()->format('Y-m-d'))" required />
                 </div>
 
-                <x-form.textarea name="notes" :label="__('membership.notes')" :value="old('notes')" />
-
                 <x-input name="proof" type="file" :label="__('membership.upload_proof')" />
+
+                <x-form.textarea name="notes" :label="__('membership.notes')" :value="old('notes')" />
 
                 <x-form.checkbox name="activate" label="Activate membership immediately" :checked="old('activate')" />
             </div>
