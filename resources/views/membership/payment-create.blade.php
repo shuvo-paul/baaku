@@ -11,7 +11,7 @@
         <form method="POST" action="{{ route('dashboard.membership.payments.store') }}" enctype="multipart/form-data">
             @csrf
 
-            <div class="space-y-4" x-data="{ chosenMethod: @js(old('method')) }">
+            <div class="space-y-4" x-data="{ chosenMethod: @js(old('method', $methods->first()?->type)) }">
                 <x-select name="membership_plan_id" :label="__('membership.plan')" :options="$plans->pluck('name', 'id')->all()" :value="old('membership_plan_id')" required />
 
                 <div class="grid grid-cols-2 gap-4">

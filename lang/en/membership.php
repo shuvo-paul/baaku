@@ -81,7 +81,7 @@ return [
     'method_updated' => 'Payment method updated.',
     'method_deleted' => 'Payment method deleted.',
     'no_payment_methods' => 'No payment methods yet.',
-    'reference' => 'Reference',
+    'reference' => 'Transaction Id/Reference',
     'paid_at' => 'Paid on',
     'proof' => 'Proof',
     'upload_proof' => 'Upload proof',
