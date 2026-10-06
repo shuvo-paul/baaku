@@ -62,7 +62,7 @@ trait RendersEditorContent
         $tag = ($data['style'] ?? '') === 'ordered' ? 'ol' : 'ul';
         $items = '';
         foreach ($data['items'] ?? [] as $item) {
-            $items .= '<li>'.e($item).'</li>';
+            $items .= '<li>'.e(is_array($item) ? (string) ($item['content'] ?? '') : $item).'</li>';
         }
 
         return "<{$tag}>{$items}</{$tag}>";
